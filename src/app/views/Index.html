@@ -14,7 +14,7 @@
   <nav>
     <a href="/index" class="logo"><img src="resources/img/logo.gif" alt="Wubba Lubba Dub-Duel logo"></a>
     <a href="#cartas">Cartas</a>
-    <a href="#como-jugar">Cómo jugar</a>
+    <a href="/register">Registrarse</a>
     <a href="#login">Iniciar sesión</a>
   </nav>
 
@@ -26,16 +26,6 @@
   </header>
 
   <main>
-    <section id="como-jugar" class="info-section">
-      <h2>¿Cómo se juega?</h2>
-      <ol>
-        <li>Regístrate y consigue tu primer sobre.</li>
-        <li>Compra sobres en la tienda y desbloquea nuevas cartas.</li>
-        <li>Lucha contra otros jugadores y sube de nivel.</li>
-      </ol>
-    </section>
-
-    <!-- Solo muestro la parte relevante que cambia dentro del <section id="cartas"> -->
     <section id="cartas">
       <h2>Cartas destacadas</h2>
 
@@ -100,17 +90,25 @@
       </div>
     </section>
 
-    <section>
-      <h2>Vista previa de la tienda</h2>
-      <p>¡Consigue sobres interdimensionales y cartas legendarias!</p>
-      <img src="https://i.imgur.com/jt9RyVr.png" alt="Sobre de cartas" style="max-width: 200px; border-radius: 8px;">
-    </section>
-
-    <div class="btn-container" id="login">
-      <a href="/login">Iniciar sesión</a>
-      <a href="/register">Registrarse</a>
-    </div>
+    <section id="how-to-play" class="how-to-play-section">
+      <h2>¿Cómo se juega?</h2>
+      <div class="portal-glow"></div>
+      <div class="how-to-play-content">
+        <img src="resources/img/jerry.gif" alt="Jerry burlándose" class="how-to-play-image"> 
+        <ol class="how-to-play-steps">
+          <li>🧪 Regístrate y consigue tu primer sobre interdimensional.</li>
+          <li>📦 Abre sobres en la tienda y colecciona cartas raras y legendarias.</li>
+          <li>⚔️ Desafía a otros jugadores y sube de nivel tu mazo.</li>
+        </ol>
+      </div>
+      <div class="play-button-container">
+        <a href="/register" class="play-button">¡Empieza ahora!</a>
+      </div>
+    </section>    
+    
+    
   </main>
+
   <footer>
     © 2025 Wubba Lubba Dub-Duel! – Todos los derechos reservados
   </footer>
@@ -121,23 +119,7 @@
     <span class="close" onclick="closeModal(event)">×</span>
   </div>
 
-  <script>
-    function openModal(cardElement) {
-      const modal = document.getElementById('modal');
-      const modalContent = document.getElementById('modalContent');
-      modalContent.innerHTML = cardElement.innerHTML;
-      modalContent.className = 'modal-content ' + cardElement.classList.value;
-      modal.style.display = 'flex';
-    }
-
-    function closeModal(event) {
-      const modal = document.getElementById('modal');
-      if (event.target === modal || event.target.classList.contains('close')) {
-        modal.style.display = 'none';
-      }
-    }
-
-  </script>
+  <script src="js/index.js"></script>  
 </body>
 
 </html>

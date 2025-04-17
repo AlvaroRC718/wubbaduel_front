@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Wubba Lubba Dub-Duel!: Registro</title>
+  <link rel="icon" href="resources/img/logo.png" type="image/png">
+  <link href="https://fonts.googleapis.com/css2?family=Bungee&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="body-index">
+
+  <nav>
+    <a href="/index" class="logo"><img src="resources/img/logo.gif" alt="Wubba Lubba Dub-Duel logo"></a>
+    <a href="#cartas">Cartas</a>
+    <a href="/register">Registrarse</a>
+    <a href="#login">Iniciar sesión</a>
+  </nav>
+<main>
+    <section id="registro" class="registro-seccion">
+        <h2>Registro de Usuario</h2>
+        <div class="contenedor-formulario">
+          <form id="formularioRegistro" action="#" method="post" class="tarjeta-formulario">
+            <p id="errorGeneral" class="error-formulario"></p>
+      
+            <label for="nombre">Nombre:<span class="obligatorio">*</span></label>
+            <input type="text" id="nombre" name="nombre" placeholder="Introduce tu nombre aquí" required />
+      
+            <label for="apellidos">Apellidos:<span class="obligatorio">*</span></label>
+            <input type="text" id="apellidos" name="apellidos" placeholder="Introduce tu apellidos aquí" required />
+      
+            <label for="email">Email:<span class="obligatorio">*</span></label>
+            <input type="email" id="email" name="email" placeholder="Introduce tu email aquí" required />
+      
+            <label for="usuario">Usuario:<span class="obligatorio">*</span></label>
+            <input type="text" id="usuario" name="usuario" placeholder="Introduce tu usuario aquí" required />
+      
+            <label for="contrasena">Contraseña:<span class="obligatorio">*</span></label>
+            <input type="password" id="contrasena" name="contrasena" placeholder="Introduce tu contraseña aquí" required />
+      
+            <label for="robot" id="labelRobot">¿Eres un robot?<span class="obligatorio">*</span></label>
+            <input type="text" id="robot" name="robot" placeholder="Introduce el resultado de la operación aquí" required />
+      
+            <input type="submit"  class="play-button" id="btnRegistrar" name="Registrarse" value="Registrarse" onclick="comprobarCampos()" />
+          </form>
+          <p class="nota-formulario">Los campos marcados con <span class="obligatorio">*</span> son obligatorios.</p>
+        </div>
+      </section>
+      
+      <footer>
+        © 2025 Wubba Lubba Dub-Duel! – Todos los derechos reservados
+      </footer>
+      <script src="js/register.js"></script>      
+      
+</main>
+ 
+</body>
+
+</html>
