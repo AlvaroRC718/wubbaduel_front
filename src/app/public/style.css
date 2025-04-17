@@ -1,222 +1,369 @@
-body {
-    margin: 0;
-    background-color: #0c0c0c;
-    color: white;
-    font-family: 'Bungee', sans-serif;
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.body-index {
+  height: 100%;
+  overflow-x: hidden;
+  /* Desactiva el desplazamiento horizontal */
+  overflow-y: auto;
+  /* Permite el desplazamiento vertical */
+  background-color: #000000;
+  color: white;
+  font-family: 'Bungee', sans-serif;
+  position: relative;
+}
+
+.body-index::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: url('resources/img/background.png') center/cover no-repeat;
+  background-size: 200% 200%;
+  /* Aumenta el tamaño de la imagen aún más */
+  filter: blur(10px) brightness(0.4);
+  animation: spinPortal 100s linear infinite;
+  z-index: -1;
+  pointer-events: none;
+  will-change: transform;
+  transform-origin: center;
+}
+
+@keyframes spinPortal {
+  from {
+    transform: rotate(0deg) scale(2);
+    /* Aumenta la escala para que la imagen esté ampliada */
   }
 
-  nav {
-    background: #111;
-    padding: 10px 20px;
+  to {
+    transform: rotate(360deg) scale(2);
+    /* Mantiene la imagen ampliada mientras rota */
+  }
+}
+
+nav {
+  background: #111;
+  padding: 10px 20px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  gap: 0.5%;
+}
+
+.logo{
+  width: 3%;
+}
+nav img {
+  width: 100%;
+}
+
+nav a {
+  color: #00ff88;
+  margin-right: 20px;
+  text-decoration: none;
+  font-size: medium;
+}
+
+.hero {
+  color: white;
+  text-align: center;
+  padding: 5%;
+  position: relative;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.hero h1 {
+  font-family: 'Bungee', cursive;
+  font-size: 60px;
+  margin-bottom: 20px;
+  color: #ffffff;
+  text-shadow:
+    0 0 10px #00ff88,
+    0 0 20px #00ff88,
+    2px 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+.hero p {
+  font-size: 20px;
+  color: #e0ffe8;
+  line-height: 1.5;
+}
+
+section {
+  padding: 40px 20px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.info-section {
+  background-color: #151515;
+  border-radius: 12px;
+  padding: 30px;
+  margin-top: 20px;
+  box-shadow: 0 0 15px rgba(0, 255, 136, 0.2);
+  animation: fadeDown 0.8s ease;
+}
+
+.info-section h2 {
+  color: #00ff88;
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+
+.info-section ol {
+  list-style: none;
+  padding-left: 0;
+  font-size: 16px;
+  color: #ccc;
+}
+
+.info-section ol li {
+  margin-bottom: 12px;
+  position: relative;
+  padding-left: 25px;
+}
+
+.info-section ol li::before {
+  content: '🌀';
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: #00ff88;
+}
+
+@keyframes fadeDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-15px);
   }
 
-  nav a {
-    color: #00ff88;
-    margin-right: 20px;
-    text-decoration: none;
-    font-size: 14px;
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.card-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 5%;
+  margin-top: 2%;
+}
+
+.card {
+  width: 300px;
+  border-radius: 10px;
+  padding: 2%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease-in-out;
+  transform-style: preserve-3d;
+  animation: float 3s ease-in-out infinite;
+}
+
+.card:hover {
+  cursor: pointer;
+  transform: scale(1.05) rotateY(5deg);
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0);
   }
 
-  header {
-    padding: 40px 20px;
-    text-align: center;
-    background-color: #1a1a1a;
+  50% {
+    transform: translateY(-10px);
   }
 
-  header h1 {
-    font-size: 48px;
-    color: #00ff88;
-    margin-bottom: 10px;
+  100% {
+    transform: translateY(0);
   }
+}
 
-  header p {
-    font-size: 18px;
-    max-width: 600px;
-    margin: 0 auto;
-  }
+.card-normal {
+  border: 2px solid #777;
+  background: linear-gradient(145deg, #2a2a2a, #1e1e1e);
+  box-shadow: 0 0 10px rgba(200, 200, 200, 0.2);
+}
 
-  section {
-    padding: 40px 20px;
-    max-width: 1200px;
-    margin: auto;
-  }
+.card-rare {
+  border: 2px solid #00aaff;
+  background: linear-gradient(145deg, #003344, #001f2e);
+  box-shadow: 0 0 15px rgba(0, 170, 255, 0.4);
+  animation: float 3s ease-in-out infinite, pulseRare 4s infinite ease-in-out;
+}
 
-  .card-grid {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 5%;
-    perspective: 1000px; 
-  }
+.card-legendary {
+  border: 2px solid gold;
+  background: linear-gradient(145deg, #4d3900, #1f1500);
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.6);
+  animation: float 3s ease-in-out infinite, pulseLegendary 3s infinite ease-in-out;
+}
 
-  .card {
-    width: 250px;
-    border-radius: 10px;
-    padding: 2%;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    transition: transform 0.3s ease-in-out;
-    transform-style: preserve-3d;  /* Habilita el 3D */
-    animation: float 3s ease-in-out infinite; /* Animación de flotación */
-  }
-  
-  /* Animación de flotación */
-  @keyframes float {
-    0% {
-      transform: translateY(0);  /* Posición inicial */
-    }
-    50% {
-      transform: translateY(-10px); /* Mueve hacia arriba */
-    }
-    100% {
-      transform: translateY(0); /* Regresa a la posición original */
-    }
-  }
-  
-  
+@keyframes pulseRare {
 
-  .card-normal {
-    border: 2px solid #777;
-    background: linear-gradient(145deg, #2a2a2a, #1e1e1e);
-    box-shadow: 0 0 10px rgba(200, 200, 200, 0.2);
-  }
-
-  .card-rare {
-    border: 2px solid #00aaff;
-    background: linear-gradient(145deg, #003344, #001f2e);
+  0%,
+  100% {
     box-shadow: 0 0 15px rgba(0, 170, 255, 0.4);
-    animation: float 3s ease-in-out infinite, pulseRare 4s infinite ease-in-out;
   }
-  
-  .card-legendary {
-    border: 2px solid gold;
-    background: linear-gradient(145deg, #4d3900, #1f1500);
+
+  50% {
+    box-shadow: 0 0 25px rgba(0, 170, 255, 0.6);
+  }
+}
+
+@keyframes pulseLegendary {
+
+  0%,
+  100% {
     box-shadow: 0 0 20px rgba(255, 215, 0, 0.6);
-    animation: float 3s ease-in-out infinite, pulseLegendary 3s infinite ease-in-out;
-  }
-  
-
-  @keyframes pulseRare {
-    0%, 100% { box-shadow: 0 0 15px rgba(0, 170, 255, 0.4); }
-    50% { box-shadow: 0 0 25px rgba(0, 170, 255, 0.6); }
   }
 
-  @keyframes pulseLegendary {
-    0%, 100% { box-shadow: 0 0 20px rgba(255, 215, 0, 0.6); }
-    50% { box-shadow: 0 0 35px rgba(255, 215, 0, 0.9); }
+  50% {
+    box-shadow: 0 0 35px rgba(255, 215, 0, 0.9);
+  }
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: larger;
+  margin-bottom: 2%;
+}
+
+.card-cost {
+  font-size: xx-large;
+}
+
+.card img {
+  width: 100%;
+  border-radius: 6px;
+  margin-bottom: 3%;
+}
+
+.card-stats {
+  display: flex;
+  justify-content: space-between;
+  font-size: x-large;
+  margin-bottom: 7%;
+}
+
+.card-description {
+  font-size: small;
+  margin-bottom: 10%;
+  color: #ccc;
+}
+
+.card-number {
+  font-size: x-small;
+  position: absolute;
+  bottom: 8px;
+  left: 10px;
+  color: #999;
+}
+
+.rarity-label {
+  position: absolute;
+  bottom: 8px;
+  right: 10px;
+  font-size: 10px;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 2px 6px;
+  border-radius: 4px;
+  color: white;
+  text-transform: uppercase;
+}
+
+.normal {
+  border: 1px solid #aaa;
+}
+
+.rare {
+  border: 1px solid #00aaff;
+}
+
+.legendary {
+  border: 1px solid gold;
+}
+
+/* MODAL */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  position: relative;
+  width: 320px;
+  padding: 20px;
+  border-radius: 12px;
+  animation: fadeIn 0.3s ease;
+}
+
+.modal .close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+@keyframes fadeIn {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
   }
 
-  .card-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size:larger;
-    margin-bottom: 2%;
+  to {
+    transform: scale(1);
+    opacity: 1;
   }
+}
 
-  .card-cost{
-    font-size:xx-large;
-  }
+.btn-container {
+  text-align: center;
+  margin-top: 40px;
+}
 
-  .card img {
-    width: 100%;
-    border-radius: 6px;
-    margin-bottom: 3%;
-  }
+.btn-container a {
+  display: inline-block;
+  margin: 10px;
+  padding: 10px 20px;
+  background: #00ff88;
+  color: black;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 6px;
+}
 
-  .card-stats {
-    display: flex;
-    justify-content: space-between;
-    font-size:x-large;
-    margin-bottom: 7%;
-  }
-
-  .card-description {
-    font-size: small;
-    margin-bottom: 10%;
-    color: #ccc;
-  }
-
-  .card-number {
-    font-size:x-small;
-    position: absolute;
-    bottom: 8px;
-    left: 10px;
-    color: #999;
-  }
-
-  .rarity-label {
-    position: absolute;
-    bottom: 8px;
-    right: 10px;
-    font-size: 10px;
-    background: rgba(0, 0, 0, 0.6);
-    padding: 2px 6px;
-    border-radius: 4px;
-    color: white;
-    text-transform: uppercase;
-  }
-
-  .normal { border: 1px solid #aaa; }
-  .rare { border: 1px solid #00aaff; }
-  .legendary { border: 1px solid gold; }
-
-  /* MODAL */
-  .modal {
-    display: none;
-    position: fixed;
-    z-index: 999;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.8);
-    justify-content: center;
-    align-items: center;
-  }
-
-  .modal-content {
-    position: relative;
-    width: 320px;
-    padding: 20px;
-    border-radius: 12px;
-    animation: fadeIn 0.3s ease;
-  }
-
-  .modal .close {
-    position: absolute;
-    top: 10px;
-    right: 15px;
-    color: white;
-    font-size: 24px;
-    cursor: pointer;
-  }
-
-  @keyframes fadeIn {
-    from { transform: scale(0.8); opacity: 0; }
-    to { transform: scale(1); opacity: 1; }
-  }
-
-  .btn-container {
-    text-align: center;
-    margin-top: 40px;
-  }
-
-  .btn-container a {
-    display: inline-block;
-    margin: 10px;
-    padding: 10px 20px;
-    background: #00ff88;
-    color: black;
-    text-decoration: none;
-    font-weight: bold;
-    border-radius: 6px;
-  }
-
-  footer {
-    text-align: center;
-    font-size: 12px;
-    color: #666;
-    padding: 20px;
-  }
+footer {
+  text-align: center;
+  font-size: 12px;
+  background: #111;
+  color: #666;
+  padding: 20px;
+}
