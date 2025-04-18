@@ -48,6 +48,9 @@ nav {
   display: flex;
   align-items: center;
   gap: 0.5%;
+  justify-content: space-between;
+  box-shadow: 0 0 10px #00ff88;
+  z-index: 10;
 }
 
 .logo {
@@ -63,6 +66,30 @@ nav a {
   margin-right: 20px;
   text-decoration: none;
   font-size: medium;
+}
+
+nav a:hover {
+  color: #00ffaa;
+}
+
+.music-control {
+  margin-left: auto;
+}
+
+#toggleMusic {
+  background-color: transparent;
+  border: none;
+  color: #00ffcc;
+  padding: 6px 12px;
+  font-size: 1.5em;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+#toggleMusic:hover {
+  transform: scale(1.2);
+  color: #00ffaa;
 }
 
 .hero {
@@ -452,4 +479,5 @@ footer {
   margin-top: 10px;
   color: #aaa;
   font-size: 0.85em;
+  text-align: center;
 }

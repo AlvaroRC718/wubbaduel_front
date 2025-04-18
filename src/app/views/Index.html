@@ -14,8 +14,14 @@
   <nav>
     <a href="/index" class="logo"><img src="resources/img/logo.gif" alt="Wubba Lubba Dub-Duel logo"></a>
     <a href="#cartas">Cartas</a>
-    <a href="/register">Registrarse</a>
-    <a href="#login">Iniciar sesión</a>
+    <a href="/login">Iniciar sesión</a>
+    <div class="music-control">
+      <button id="toggleMusic">🔇</button>
+      <audio id="backgroundMusic" loop>
+        <source src="resources/audio/main_theme.weba" type="audio/mpeg">
+        Tu navegador no soporta audio HTML5.
+      </audio>
+    </div>
   </nav>
 
   <header class="hero">
@@ -94,7 +100,7 @@
       <h2>¿Cómo se juega?</h2>
       <div class="portal-glow"></div>
       <div class="how-to-play-content">
-        <img src="resources/img/jerry.gif" alt="Jerry burlándose" class="how-to-play-image"> 
+        <img src="resources/img/jerry.gif" alt="Jerry burlándose" class="how-to-play-image">
         <ol class="how-to-play-steps">
           <li>🧪 Regístrate y consigue tu primer sobre interdimensional.</li>
           <li>📦 Abre sobres en la tienda y colecciona cartas raras y legendarias.</li>
@@ -104,13 +110,13 @@
       <div class="play-button-container">
         <a href="/register" class="play-button">¡Empieza ahora!</a>
       </div>
-    </section>    
-    
-    
+    </section>
+
+
   </main>
 
   <footer>
-    © 2025 Wubba Lubba Dub-Duel! – Todos los derechos reservados
+    ©2025 Cybercode Creations. Wubba Lubba Dub-Duel!. ©2013–2025 Adult Swim. TM, ®Adult Swim.
   </footer>
 
   <!-- MODAL -->
@@ -119,7 +125,14 @@
     <span class="close" onclick="closeModal(event)">×</span>
   </div>
 
-  <script src="js/index.js"></script>  
+  <!-- RESOURCES -->
+  <audio id="portalSound" preload="auto">
+    <source src="resources/audio/portal_sound.weba" type="audio/mpeg">
+    Tu navegador no soporta audio HTML5.
+  </audio>
+  <!-- SCRIPTS -->
+  <script src="js/comun.js"></script>
+  <script src="js/index.js"></script>
 </body>
 
 </html>
