@@ -70,6 +70,7 @@ nav a {
 
 nav a:hover {
   color: #00ffaa;
+  text-shadow: 0 0 10px #00ff88, 0 0 20px #00ff88, 2px 2px 4px rgba(0, 0, 0, 0.6);
 }
 
 .music-control {
@@ -95,7 +96,7 @@ nav a:hover {
 .hero {
   color: white;
   text-align: center;
-  padding: 5%;
+  padding: 2%;
   position: relative;
 }
 
@@ -109,7 +110,6 @@ nav a:hover {
 .hero h1 {
   font-family: 'Bungee', cursive;
   font-size: 60px;
-  margin-bottom: 20px;
   color: #fff;
   text-shadow: 0 0 10px #00ff88, 0 0 20px #00ff88, 2px 2px 4px rgba(0, 0, 0, 0.6);
 }
@@ -131,7 +131,6 @@ section {
   flex-wrap: wrap;
   justify-content: center;
   gap: 5%;
-  margin-top: 2%;
 }
 
 .card {
@@ -144,6 +143,7 @@ section {
   transition: transform 0.3s ease-in-out;
   transform-style: preserve-3d;
   animation: float 3s ease-in-out infinite;
+  box-sizing: border-box;
 }
 
 .card:hover {
@@ -191,12 +191,12 @@ section {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: larger;
+  font-size: large;
   margin-bottom: 2%;
 }
 
 .card-cost {
-  font-size: xx-large;
+  font-size: x-large;
 }
 
 .card img {
@@ -208,18 +208,18 @@ section {
 .card-stats {
   display: flex;
   justify-content: space-between;
-  font-size: x-large;
+  font-size: larger;
   margin-bottom: 7%;
 }
 
 .card-description {
-  font-size: small;
+  font-size:smaller;
   margin-bottom: 10%;
   color: #ccc;
 }
 
 .card-number {
-  font-size: x-small;
+  font-size: xx-small;
   position: absolute;
   bottom: 8px;
   left: 10px;
