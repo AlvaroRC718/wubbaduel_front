@@ -13,16 +13,8 @@ router.get("/index", (req, res) => {
     res.sendFile(path.join(path.resolve(), "views/index.html"));
 });
 
-router.get("/contact", (req, res) => {
-    res.sendFile(path.join(path.resolve(), "views/contact.html"));
-});
-
-router.get("/events", (req, res) => {
-    res.sendFile(path.join(path.resolve(), "views/events.html"));
-});
-
-router.get("/games", (req, res) => {
-    res.sendFile(path.join(path.resolve(), "views/games.html"));
+router.get("/cards", (req, res) => {
+    res.sendFile(path.join(path.resolve(), "views/cards.html"));
 });
 
 router.get("/register", (req, res) => {

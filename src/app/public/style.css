@@ -133,8 +133,13 @@ section {
   gap: 5%;
 }
 
+.card-base{
+  width: 15vw;
+  margin-bottom: 2%;
+}
+
 .card {
-  width: 300px;
+  height: 55vh;
   border-radius: 10px;
   padding: 2%;
   position: relative;
@@ -158,28 +163,49 @@ section {
 }
 
 .card-normal {
-  border: 2px solid #777;
+  border: 8px solid #777;
   background: linear-gradient(145deg, #2a2a2a, #1e1e1e);
   box-shadow: 0 0 10px rgba(200, 200, 200, 0.2);
+  border-left: 16px solid #151515;     /* Más oscuro aún */
+  border-bottom: 16px solid #0a0a0a;
 }
 
 .card-rare {
-  border: 2px solid #00aaff;
+  border: 8px solid #00aaff;
   background: linear-gradient(145deg, #003344, #001f2e);
   box-shadow: 0 0 15px rgba(0, 170, 255, 0.4);
   animation: float 3s ease-in-out infinite, pulseRare 4s infinite ease-in-out;
+  border-left: 16px solid #005577;  /* Más profundo */
+  border-bottom: 16px solid #003344;
+}
+
+.card-epic {
+  border: 8px solid #a020f0;
+  background: linear-gradient(145deg, #2c003e, #1a0026);
+  box-shadow: 0 0 18px rgba(160, 32, 240, 0.5);
+  animation: float 3s ease-in-out infinite, pulseEpic 4s infinite ease-in-out;
+  border-left: 16px solid #400080;  /* Tono violeta profundo */
+  border-bottom: 16px solid #260050;
 }
 
 .card-legendary {
-  border: 2px solid gold;
+  border: 8px solid gold;
   background: linear-gradient(145deg, #4d3900, #1f1500);
   box-shadow: 0 0 20px rgba(255, 215, 0, 0.6);
   animation: float 3s ease-in-out infinite, pulseLegendary 3s infinite ease-in-out;
+  border-left: 16px solid #a87d00;  /* Tono oro viejo más oscuro */
+  border-bottom: 16px solid #6b4e00;
 }
+
 
 @keyframes pulseRare {
   0%, 100% { box-shadow: 0 0 15px rgba(0, 170, 255, 0.4); }
   50% { box-shadow: 0 0 25px rgba(0, 170, 255, 0.6); }
+}
+
+@keyframes pulseEpic {
+  0%, 100% { box-shadow: 0 0 18px rgba(160, 32, 240, 0.5); }
+  50% { box-shadow: 0 0 30px rgba(160, 32, 240, 0.8); }
 }
 
 @keyframes pulseLegendary {
@@ -188,49 +214,57 @@ section {
 }
 
 .card-header {
+  height: 10%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: large;
+  font-size: 115%;
   margin-bottom: 2%;
 }
 
+.card-name {
+  font-size: small;
+}
+
 .card-cost {
-  font-size: x-large;
+  font-size: large;
+  width: 30%;
+  text-align: end;
+  justify-content: center;
 }
 
 .card img {
   width: 100%;
   border-radius: 6px;
-  margin-bottom: 3%;
+  margin-bottom: 2%;
 }
 
 .card-stats {
   display: flex;
   justify-content: space-between;
   font-size: larger;
-  margin-bottom: 7%;
+  margin-bottom: 3%;
 }
 
 .card-description {
   font-size:smaller;
-  margin-bottom: 10%;
+  margin-bottom: 5%;
   color: #ccc;
 }
 
 .card-number {
   font-size: xx-small;
   position: absolute;
-  bottom: 8px;
-  left: 10px;
+  bottom: 2%;
+  left: 2%;
   color: #999;
 }
 
 .rarity-label {
   position: absolute;
-  bottom: 8px;
-  right: 10px;
-  font-size: 10px;
+  bottom: 2%;
+  right: 2%;
+  font-size: 60%;
   background: rgba(0, 0, 0, 0.6);
   padding: 2px 6px;
   border-radius: 4px;
@@ -238,10 +272,10 @@ section {
   text-transform: uppercase;
 }
 
-.normal { border: 1px solid #aaa; }
-.rare { border: 1px solid #00aaff; }
-.legendary { border: 1px solid gold; }
-
+.normal { border: 2px solid #aaa; }
+.rare { border: 2px solid #00aaff; }
+.legendary { border: 2px solid gold; }
+.epic { border: 2px solid #a020f0;}
 
 .how-to-play-section {
   width: 70%;
@@ -334,6 +368,7 @@ section {
   background: linear-gradient(90deg, #00ffcc, #00ff88);
   color: #000;
   padding: 14px 28px;
+  font-family: 'Bungee', cursive;
   font-size: larger;
   font-weight: bold;
   border-radius: 999px;
@@ -377,7 +412,8 @@ section {
 
 .modal-content {
   position: relative;
-  width: 320px;
+  width: 20vw;
+  height: 30vw;
   padding: 20px;
   border-radius: 12px;
   animation: fadeIn 0.3s ease;
@@ -481,3 +517,50 @@ footer {
   font-size: 0.85em;
   text-align: center;
 }
+
+/*////////////////////////////////////////cards.html////////////////////*/
+.album {
+  width: 90%;
+  margin: 5% auto;
+  padding: 60px 50px;
+  background: linear-gradient(145deg, #1a1a1a, #111);
+  border-radius: 24px;
+  border: 2px solid #00ff88;
+  box-shadow:
+    0 0 25px rgba(0, 255, 136, 0.2),
+    0 0 10px rgba(0, 255, 255, 0.1),
+    inset 0 0 30px rgba(0, 255, 136, 0.05);
+  position: relative;
+  overflow: hidden;
+  color: #f0f0f0;
+  z-index: 1;
+}
+
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 3rem;
+  z-index: 2;
+  position: relative;
+  padding: 1rem;
+}
+
+/* Marco brillante tipo “slot” del álbum */
+.album-card {
+  padding-top: 4%;
+  padding-left: 6%;
+  padding-right: 3%;
+  padding-bottom: 6%;
+  border-radius: 16px;
+  background: linear-gradient(145deg, #1c1c1c, #000000);
+  border: 1px solid rgba(0, 255, 136, 0.2);
+  box-shadow:
+    inset 0 0 15px rgba(0, 255, 136, 0.1),
+    0 0 10px rgba(0, 255, 255, 0.05);
+  backdrop-filter: blur(3px);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+

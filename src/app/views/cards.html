@@ -24,28 +24,13 @@
         </div>
     </nav>
     <main>
-        <section id="login" class="registro-seccion">
-            <h2>Iniciar sesión</h2>
-            <div class="contenedor-formulario">
-                <form id="formularioLogin" action="#" method="post" class="tarjeta-formulario">
-                    <p id="errorGeneral" class="error-formulario"></p>
+        <section class="album">
+            <h2>Todas las Cartas</h2>
+            <div class="card-container" id="cards-container">
 
-                    <label for="usuario">Usuario:</label>
-                    <input type="text" id="usuario" name="usuario" placeholder="Introduce tu usuario aquí" required />
-
-                    <label for="contrasena">Contraseña:</label>
-                    <input type="password" id="contrasena" name="contrasena" placeholder="Introduce tu contraseña aquí"
-                        required />
-
-                    <input type="submit" class="play-button" id="btnIniciarSesion" name="IniciarSesion"
-                        value="Iniciar sesión" onclick="comprobarCamposLogin()" />
-                </form>
-                <p class="nota-formulario">¿A qué esperas, Morty? <br />
-                    ¡<a href="/register" style="color: #00ff88;">Regístrarte</a> y empieza tu duelo interdimensional ya
-                    mismo! 
-                </p>
             </div>
         </section>
+
     </main>
 
     <footer>
@@ -53,12 +38,16 @@
     </footer>
 
 
-
+    <!-- MODAL -->
+    <div class="modal" id="modal" onclick="closeModal(event)">
+        <div class="modal-content" id="modalContent"></div>
+        <span class="close" onclick="closeModal(event)">×</span>
+    </div>
     <!-- RESOURCES -->
     <audio id="portalSound" src="resources/audio/portal_sound.weba" preload="auto"></audio>
     <!-- SCRIPTS -->
     <script src="js/comun.js"></script>
-    <script src="js/login.js"></script>
+    <script src="js/cards.js"></script>
 </body>
 
 </html>
