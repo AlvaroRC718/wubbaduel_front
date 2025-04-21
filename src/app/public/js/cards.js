@@ -699,36 +699,36 @@ const cards = [
     "age": 60,
     "origin": "Korblock-9"
   },
-  
+
 ];
 
 function generateCards() {
   const container = document.getElementById("cards-container");
   for (let i = 0; i < cards.length; i++) {
-      const character = cards[i];
-      const card = `
+    const character = cards[i];
+    const card = `
       <div class="album-card">
           <div class="card card-${character.rarity}" onclick="openModal(this)">
-              <div class="card-inner">
-                  <div class="card-header">
-                      <span class="card-name">${character.name}</span>
-                      <span class="card-cost">⚡ ${character.cost}</span>
-                  </div>
-                  <img src="${character.image}" alt="${character.name}" class="${character.rarity}">
-                  <div class="card-stats">
-                      <div>🗡 ${character.attack}</div>
-                      <div>❤️ ${character.health}</div>
-                  </div>
-                  <div class="card-description">
-                      ${character.description}
-                  </div>
-                  <div class="card-number">Carta Nº ${character.id}</div>
+              <div class="card-header">
+                  <span class="card-name">${character.name}</span>
+                  <span class="card-cost">⚡ ${character.cost}</span>
+              </div>
+              <img src="${character.image}" alt="${character.name}" class="${character.rarity}">
+              <div class="card-stats">
+                  <div>🗡 ${character.attack}</div>
+                  <div>❤️ ${character.health}</div>
+              </div>
+              <div class="card-description">
+                  ${character.description}
+              </div>
+              <div class="card-info"> 
+                  <div class="card-number">Nº ${character.id}</div>
                   <div class="rarity-label ${character.rarity}">${character.rarity}</div>
               </div>
           </div>
       </div>
       `;
-      container.innerHTML += card; 
+    container.innerHTML += card;
   }
 }
 

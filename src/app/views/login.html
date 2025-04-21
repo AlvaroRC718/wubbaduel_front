@@ -12,33 +12,34 @@
 <body class="body-index">
 
     <nav>
-        <a href="/index" class="logo"><img src="resources/img/logo.gif" alt="Wubba Lubba Dub-Duel logo"></a>
-        <a href="/cards">Cartas</a>
+        <a href="/index" class="logo"><img src="resources/img/portal.gif" alt="Wubba Lubba Dub-Duel logo"></a>
+        <a href="/cards">Dubdex</a>
+        <a href="/shop">Dub-Market</a>
         <a href="/login">Iniciar sesión</a>
         <div class="music-control">
-            <button id="toggleMusic">🔇</button>
-            <audio id="backgroundMusic" loop>
-                <source src="resources/audio/main_theme.weba" type="audio/mpeg">
-                Tu navegador no soporta audio HTML5.
-            </audio>
+          <button id="toggleMusic">🔇</button>
+          <audio id="backgroundMusic" loop>
+            <source src="resources/audio/main_theme.weba" type="audio/mpeg">
+            Tu navegador no soporta audio HTML5.
+          </audio>
         </div>
-    </nav>
+      </nav>
     <main>
         <section id="login" class="registro-seccion">
             <h2>Iniciar sesión</h2>
             <div class="contenedor-formulario">
-                <form id="formularioLogin" action="#" method="post" class="tarjeta-formulario">
+                <form  action="#" method="post" class="tarjeta-formulario">
                     <p id="errorGeneral" class="error-formulario"></p>
 
-                    <label for="usuario">Usuario:</label>
-                    <input type="text" id="usuario" name="usuario" placeholder="Introduce tu usuario aquí" required />
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" placeholder="Introduce tu email aquí" required />
 
-                    <label for="contrasena">Contraseña:</label>
-                    <input type="password" id="contrasena" name="contrasena" placeholder="Introduce tu contraseña aquí"
+                    <label for="password">Contraseña:</label>
+                    <input type="password" id="password" name="password" placeholder="Introduce tu contraseña aquí"
                         required />
 
                     <input type="submit" class="play-button" id="btnIniciarSesion" name="IniciarSesion"
-                        value="Iniciar sesión" onclick="comprobarCamposLogin()" />
+                        value="Iniciar sesión" onclick="" />
                 </form>
                 <p class="nota-formulario">¿A qué esperas, Morty? <br />
                     ¡<a href="/register" style="color: #00ff88;">Regístrarte</a> y empieza tu duelo interdimensional ya

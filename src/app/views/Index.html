@@ -12,8 +12,9 @@
 <body class="body-index">
 
   <nav>
-    <a href="/index" class="logo"><img src="resources/img/logo.gif" alt="Wubba Lubba Dub-Duel logo"></a>
-    <a href="/cards">Cartas</a>
+    <a href="/index" class="logo"><img src="resources/img/portal.gif" alt="Wubba Lubba Dub-Duel logo"></a>
+    <a href="/cards">Dubdex</a>
+    <a href="/shop">Dub-Market</a>
     <a href="/login">Iniciar sesión</a>
     <div class="music-control">
       <button id="toggleMusic">🔇</button>
@@ -27,7 +28,7 @@
   <header class="hero">
     <div class="hero-content">
       <h1>Wubba Lubba Dub-Duel!</h1>
-      <p>¡Colecciona cartas de Rick and Morty y lucha por el multiverso con estrategia y fluido de portal!</p>
+      <p>¡Colecciona Dub's de Rick and Morty y lucha por el multiverso con estrategia y fluido de portal!</p>
     </div>
   </header>
 
@@ -40,20 +41,20 @@
 
         <div class="card-base">
           <div class="card card-legendary" onclick="openModal(this)">
-            <div class="card-inner">
-              <div class="card-header">
-                <span class="card-name">Rick Sánchez</span>
-                <span class="card-cost">⚡ 5</span>
-              </div>
-              <img src="https://rickandmortyapi.com/api/character/avatar/1.jpeg" alt="Rick" class="legendary">
-              <div class="card-stats">
-                <div>🗡 90</div>
-                <div>❤️ 70</div>
-              </div>
-              <div class="card-description">
-                Genio loco con habilidades interdimensionales impredecibles.
-              </div>
-              <div class="card-number">Carta Nº 001</div>
+            <div class="card-header">
+              <span class="card-name">Rick Sánchez</span>
+              <span class="card-cost">⚡ 5</span>
+            </div>
+            <img src="https://rickandmortyapi.com/api/character/avatar/1.jpeg" alt="Rick" class="legendary">
+            <div class="card-stats">
+              <div>🗡 90</div>
+              <div>❤️ 70</div>
+            </div>
+            <div class="card-description">
+              Genio loco con habilidades interdimensionales impredecibles.
+            </div>
+            <div class="card-info">
+              <div class="card-number">Dub Nº 001</div>
               <div class="rarity-label legendary">Legendary</div>
             </div>
           </div>
@@ -61,20 +62,20 @@
 
         <div class="card-base">
           <div class="card card-normal" onclick="openModal(this)">
-            <div class="card-inner">
-              <div class="card-header">
-                <span class="card-name">Morty Smith</span>
-                <span class="card-cost">⚡ 2</span>
-              </div>
-              <img src="https://rickandmortyapi.com/api/character/avatar/2.jpeg" alt="Morty" class="normal">
-              <div class="card-stats">
-                <div>🗡 40</div>
-                <div>❤️ 50</div>
-              </div>
-              <div class="card-description">
-                Inseguro pero valiente, perfecto para jugadas inesperadas.
-              </div>
-              <div class="card-number">Carta Nº 002</div>
+            <div class="card-header">
+              <span class="card-name">Morty Smith</span>
+              <span class="card-cost">⚡ 2</span>
+            </div>
+            <img src="https://rickandmortyapi.com/api/character/avatar/2.jpeg" alt="Morty" class="normal">
+            <div class="card-stats">
+              <div>🗡 40</div>
+              <div>❤️ 50</div>
+            </div>
+            <div class="card-description">
+              Inseguro pero valiente, perfecto para jugadas inesperadas.
+            </div>
+            <div class="card-info">
+              <div class="card-number">Dub Nº 002</div>
               <div class="rarity-label normal">Normal</div>
             </div>
           </div>
@@ -82,20 +83,20 @@
 
         <div class="card-base">
           <div class="card card-rare" onclick="openModal(this)">
-            <div class="card-inner" onmousemove="tiltCard(event, this)" onmouseleave="resetTilt(this)">
-              <div class="card-header">
-                <span class="card-name">Summer Smith</span>
-                <span class="card-cost">⚡ 3</span>
-              </div>
-              <img src="https://rickandmortyapi.com/api/character/avatar/3.jpeg" alt="Summer" class="rare">
-              <div class="card-stats">
-                <div>🗡 60</div>
-                <div>❤️ 65</div>
-              </div>
-              <div class="card-description">
-                Summer no se queda atrás y sabe defender su mundo.
-              </div>
-              <div class="card-number">Carta Nº 003</div>
+            <div class="card-header">
+              <span class="card-name">Summer Smith</span>
+              <span class="card-cost">⚡ 3</span>
+            </div>
+            <img src="https://rickandmortyapi.com/api/character/avatar/3.jpeg" alt="Summer" class="rare">
+            <div class="card-stats">
+              <div>🗡 60</div>
+              <div>❤️ 65</div>
+            </div>
+            <div class="card-description">
+              Summer no se queda atrás y sabe defender su mundo.
+            </div>
+            <div class="card-info">
+              <div class="card-number">Dub Nº 003</div>
               <div class="rarity-label rare">Rare</div>
             </div>
           </div>
@@ -110,7 +111,7 @@
         <img src="resources/img/jerry.gif" alt="Jerry burlándose" class="how-to-play-image">
         <ol class="how-to-play-steps">
           <li>🧪 Regístrate y consigue tu primer sobre interdimensional.</li>
-          <li>📦 Abre sobres en la tienda y colecciona cartas raras y legendarias.</li>
+          <li>📦 Abre sobres en la tienda y colecciona Dub's epicas y legendarias.</li>
           <li>⚔️ Desafía a otros jugadores y sube de nivel tu mazo.</li>
         </ol>
       </div>

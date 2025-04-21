@@ -25,8 +25,8 @@ router.get("/login", (req, res) => {
     res.sendFile(path.join(path.resolve(), "views/login.html"));
 });
 
-router.get("/play", (req, res) => {
-    res.sendFile(path.join(path.resolve(), "views/play.html"));
+router.get("/shop", (req, res) => {
+    res.sendFile(path.join(path.resolve(), "views/shop.html"));
 });
 
 router.get("/profile", (req, res) => {

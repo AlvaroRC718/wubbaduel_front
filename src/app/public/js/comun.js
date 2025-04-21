@@ -2,12 +2,13 @@
 
 //////////////////////////////////Musica y efectos de sonido////////////////////////////////
 const buttons = document.querySelectorAll("a"); 
-const musicButton = document.getElementById("toggleMusic");
-
+const musicButton = document.getElementById("toggleMusic")
 const clickSound = document.getElementById("portalSound");
 const backgroundMusic = document.getElementById("backgroundMusic"); 
 const isMusicPlaying = localStorage.getItem("musicPlaying") === "true"; 
 let musicTime = localStorage.getItem("musicTime"); 
+
+clickSound.volume = 0.4;
 
 function updateMusicIcon() { 
   musicButton.textContent = backgroundMusic.paused ? "🔇" : "🔊";
@@ -23,6 +24,22 @@ function toggleMusic() {
   }
   updateMusicIcon(); 
 }
+
+
+document.addEventListener('DOMContentLoaded', () => {
+  if (isMusicPlaying) {
+    clickSound.currentTime = 0;
+    clickSound.play().catch(() => {});
+  }
+
+  if (isMusicPlaying) {
+    backgroundMusic.play();
+    if (musicTime) { 
+      backgroundMusic.currentTime = parseFloat(musicTime);
+    }
+  }
+  updateMusicIcon(); 
+});
 
 if (isMusicPlaying) {
   backgroundMusic.play();
@@ -52,7 +69,7 @@ buttons.forEach(button => {
       }
 
       const navigate = () => window.location.href = href;
-      setTimeout(navigate, 600); 
+      setTimeout(navigate, 800); 
     });
   }
 });

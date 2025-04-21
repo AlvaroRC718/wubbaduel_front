@@ -104,11 +104,40 @@ function comprobarCampos() { //test OK
     errorGeneral.textContent = "¡Oh no! Parece que algo salió mal. :( ";
   } else {
     errorGeneral.textContent = "";
+    const dataUser = {
+      name: nombre.value,
+      lastName: apellidos.value,
+      user: usuario.value,
+      email: email.value,
+      password: contrasena.value
+    };
+
+    ///////////////////////////////FETCH a la API////////////////////////////////////
+    fetch("http://localhost:8080/api/register", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(dataUser)
+    })
+      .then(response => {
+        if (!response.ok) throw new Error("Error en el registro.");
+        return response.json();
+      })
+      .then(data => {
+        console.log("Registro exitoso:", data);
+        window.location.href = '/profile'; // o a donde quieras ir después del login
+      })
+      .catch(error => {
+        console.error("Error al registrar:", error);
+        errorGeneral.textContent = "Hubo un problema al registrar el usuario.";
+      });
   }
 
+  /*
   //Cada vez que realizo las comprobaciones, vacio el campo y genero una nueva operacion
   robot.value = "";
-  genOperacion();
+  genOperacion();*/
 }
 
 
