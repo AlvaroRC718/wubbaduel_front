@@ -1,4 +1,13 @@
 "use strict";
+document.addEventListener('DOMContentLoaded', () => {
+  // Si existe un usuario, redirigir a /profile
+  const savedUser = JSON.parse(localStorage.getItem('user'));
+  if (savedUser) {
+      window.location.href = '/profile';
+      return; 
+  }
+});
+
 //Variables Globales
 let resultado;
 let errorPresente = 0;

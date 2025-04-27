@@ -1,4 +1,32 @@
 "use strict";
+//////////////////////////////////Usuario y sesion////////////////////////////////
+//Usuario Pruebas
+const userTest = {
+  id: 718,
+  username: 'El_Kaki718',
+  email: 'alvaro_718@hotmail.es',
+  avatarUrl: 'resources/img/logo.png',
+  tokens: 9999999,
+};
+
+localStorage.setItem('user', JSON.stringify(userTest));
+
+document.addEventListener('DOMContentLoaded', () => {
+  const loginLink = document.getElementById('login-link');
+  const userTokensDiv = document.getElementById('userTokens');
+  const tokensCount = document.getElementById('tokensCount');
+
+  const savedUser = JSON.parse(localStorage.getItem('user'));
+
+  if (savedUser) {
+    loginLink.textContent = savedUser.username;
+    loginLink.href = '/profile';
+
+    userTokensDiv.style.display = 'block';
+    tokensCount.textContent = savedUser.tokens || 0;
+  }
+});
+
 
 //////////////////////////////////Musica y efectos de sonido////////////////////////////////
 const buttons = document.querySelectorAll("a"); 
@@ -83,6 +111,7 @@ function openModal(cardElement) {
   const modalContent = document.getElementById('modalContent');
   modalContent.innerHTML = cardElement.innerHTML;
   modalContent.className = 'modal-content ' + cardElement.classList.value;
+  modalContent.classList.remove('locked-card');
   modal.style.display = 'flex';
 }
 

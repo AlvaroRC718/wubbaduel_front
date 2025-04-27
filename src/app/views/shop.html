@@ -15,7 +15,7 @@
         <a href="/index" class="logo"><img src="resources/img/portal.gif" alt="Wubba Lubba Dub-Duel logo"></a>
         <a href="/cards">Dubdex</a>
         <a href="/shop">Dub-Market</a>
-        <a href="/login">Iniciar sesión</a>
+        <a href="/login " id="login-link">Iniciar sesión</a>
         <div class="music-control">
             <button id="toggleMusic">🔇</button>
             <audio id="backgroundMusic" loop>
@@ -32,36 +32,36 @@
                 <div class="booster-card">
                     <img src="resources/img/sobre3.png" alt="Sobre Normal" class="booster-image">
                     <div class="booster-description">
-                        <h2>Sobre Normal</h2>
-                        <p>Rareza común</p>
-                        <button class="play-button" data-pack="normal">100 <img src="resources/img/ticket.webp" alt="ticket"/></button>
+                        <h2>Sobre<br />Normal</h2>
+                        <button class="play-button" data-pack="normal">100 <img src="resources/img/ticket.webp"
+                                alt="ticket" /></button>
                     </div>
                 </div>
 
                 <div class="booster-card">
                     <img src="resources/img/sobre1.png" alt="Sobre Raro" class="booster-image">
                     <div class="booster-description">
-                        <h2>Sobre Raro</h2>
-                        <p>Posibilidad de rarezas altas</p>
-                        <button class="play-button" data-pack="rare">250 <img src="resources/img/ticket.webp" alt="ticket"/></button>
+                        <h2>Sobre<br />Raro</h2>
+                        <button class="play-button" data-pack="rare">250 <img src="resources/img/ticket.webp"
+                                alt="ticket" /></button>
                     </div>
                 </div>
 
                 <div class="booster-card">
                     <img src="resources/img/sobre2.png" alt="Sobre Épico" class="booster-image">
                     <div class="booster-description">
-                        <h2>Sobre Épico</h2>
-                        <p>Mínimo una épica garantizada</p>
-                        <button class="play-button" data-pack="epic">500 <img src="resources/img/ticket.webp" alt="ticket"/></button>
+                        <h2>Sobre<br />Épico</h2>
+                        <button class="play-button" data-pack="epic">500 <img src="resources/img/ticket.webp"
+                                alt="ticket" /></button>
                     </div>
                 </div>
 
                 <div class="booster-card">
                     <img src="resources/img/sobre4.png" alt="Sobre Legendario" class="booster-image">
                     <div class="booster-description">
-                        <h2>Sobre Legendario</h2>
-                        <p>Legendaria asegurada</p>
-                        <button class="play-button" data-pack="legendary">1000 <img src="resources/img/ticket.webp" alt="ticket"/></button>
+                        <h2>Sobre<br />Legendario</h2>
+                        <button class="play-button" data-pack="legendary">1000 <img src="resources/img/ticket.webp"
+                                alt="ticket" /></button>
                     </div>
                 </div>
             </div>
@@ -69,11 +69,14 @@
     </main>
 
     <footer>
-        ©2025 Cybercode Creations. Wubba Lubba Dub-Duel!. ©2013–2025 Adult Swim. TM, ®Adult Swim.
+        ©2025 Cybercode Creations. Wubba Lubba Dub-Duel!.
     </footer>
 
 
-
+    <!-- TOKENS USUARIO-->
+    <div id="userTokens" class="user-tokens">
+        <a href="/addtokens" class="tokens-link"><span id="tokensCount">0</span><img src="resources/img/ticket.webp"alt="ticket" /></a>
+    </div>
     <!-- RESOURCES -->
     <audio id="portalSound" src="resources/audio/portal_sound.weba" preload="auto"></audio>
     <!-- SCRIPTS -->

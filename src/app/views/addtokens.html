@@ -25,40 +25,39 @@
         </div>
     </nav>
     <main>
-        <section id="login" class="registro-seccion">
-            <h2>Iniciar sesión</h2>
-            <div class="contenedor-formulario">
-                <form action="#" method="post" class="tarjeta-formulario">
-                    <p id="errorGeneral" class="error-formulario"></p>
-
-                    <label for="email">Email:</label>
-                    <input type="email" id="email" name="email" placeholder="Introduce tu email aquí" required />
-
-                    <label for="password">Contraseña:</label>
-                    <input type="password" id="password" name="password" placeholder="Introduce tu contraseña aquí"
-                        required />
-
-                    <input type="submit" class="play-button" id="btnIniciarSesion" name="IniciarSesion"
-                        value="Iniciar sesión" onclick="" />
-                </form>
-                <p class="nota-formulario">¿A qué esperas, Morty? <br />
-                    ¡<a href="/register" style="color: #00ff88;">Regístrarte</a> y empieza tu duelo interdimensional ya
-                    mismo!
-                </p>
+        <section class="reward-section">
+            <h3>**************************En Desarrollo**************************<h3>
+            <h2 class="section-title">¿Quieres conseguir Tickets de Blitz & Chits? <br>¡Reproduce este anuncio!</h2>
+            <div class="video-container">
+                <video id="reward-video" class="reward-video">
+                    <source src="resources/video/anuncio.mp4" type="video/mp4">
+                    Tu navegador no soporta la reproducción de videos.
+                </video>
             </div>
+            <div class="video-controls">
+                <button class="btn videobtn" id="play-pause-btn">▶️</button>
+                <button class="btn videobtn" id="mute-btn">🔊</button>
+            </div>
+            <br>
+            <button id="claim-coins" class="btn claim-btn" disabled>¡Dale play para comenzar!</button>
         </section>
     </main>
+
 
     <footer>
         ©2025 Cybercode Creations. Wubba Lubba Dub-Duel!.
     </footer>
 
-
+    <!-- TOKENS USUARIO-->
+    <div id="userTokens" class="user-tokens">
+        <a href="/addtokens" class="tokens-link"><span id="tokensCount">0</span><img src="resources/img/ticket.webp"
+                alt="ticket" /></a>
+    </div>
     <!-- RESOURCES -->
     <audio id="portalSound" src="resources/audio/portal_sound.weba" preload="auto"></audio>
     <!-- SCRIPTS -->
     <script src="js/comun.js"></script>
-    <script src="js/login.js"></script>
+    <script src="js/profile.js"></script>
 </body>
 
 </html>
