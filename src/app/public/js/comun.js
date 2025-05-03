@@ -8,7 +8,6 @@ const userTest = {
   avatarUrl: 'resources/img/logo.png',
   tokens: 9999999,
 };
-
 localStorage.setItem('user', JSON.stringify(userTest));
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -24,6 +23,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     userTokensDiv.style.display = 'block';
     tokensCount.textContent = savedUser.tokens || 0;
+  }else{
+    loginLink.textContent = 'Iniciar sesión';
+    loginLink.href = '/login';
   }
 });
 
@@ -37,6 +39,7 @@ const isMusicPlaying = localStorage.getItem("musicPlaying") === "true";
 let musicTime = localStorage.getItem("musicTime"); 
 
 clickSound.volume = 0.4;
+backgroundMusic.volume = 1;
 
 function updateMusicIcon() { 
   musicButton.textContent = backgroundMusic.paused ? "🔇" : "🔊";

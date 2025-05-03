@@ -25,12 +25,16 @@ router.get("/login", (req, res) => {
     res.sendFile(path.join(path.resolve(), "views/login.html"));
 });
 
+router.get("/profile", (req, res) => {
+    res.sendFile(path.join(path.resolve(), "views/profile.html"));
+});
+
 router.get("/shop", (req, res) => {
     res.sendFile(path.join(path.resolve(), "views/shop.html"));
 });
 
-router.get("/profile", (req, res) => {
-    res.sendFile(path.join(path.resolve(), "views/profile.html"));
+router.get("/openpack", (req, res) => {
+    res.sendFile(path.join(path.resolve(), "views/openpack.html"));
 });
 
 router.get("/addtokens", (req, res) => {

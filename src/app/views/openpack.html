@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Wubba Lubba Dub-Duel!: Iniciar sesión</title>
+    <title>Wubba Lubba Dub-Duel!: Apertura</title>
     <link rel="icon" href="resources/img/logo.png" type="image/png">
     <link href="https://fonts.googleapis.com/css2?family=Bungee&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
@@ -25,38 +25,23 @@
         </div>
     </nav>
     <main>
-        <section class="reward-section">
-            <h2 class="section-title">¿Quieres conseguir Tickets de Blitz & Chits? <br>¡Reproduce este anuncio!</h2>
-            <div class="video-container">
-                <video id="reward-video" class="reward-video">
-                    <source src="resources/video/anuncio.mp4" type="video/mp4">
-                    Tu navegador no soporta la reproducción de videos.
-                </video>
-            </div>
-            <div class="video-controls">
-                <button class="btn videobtn" id="play-pause-btn">▶️</button>
-                <button class="btn videobtn" id="mute-btn">🔊</button>
-            </div>
-            <br>
-            <button id="claim-coins" class="btn claim-btn" disabled>¡Dale play para comenzar!</button>
+        <section >
+            <img id="pack" src="" alt="Sobre de Cartas" class="pack-image">
+            <div id="cards-container-pack"></div>
         </section>
     </main>
-
 
     <footer>
         ©2025 Cybercode Creations. Wubba Lubba Dub-Duel!.
     </footer>
 
-    <!-- TOKENS USUARIO-->
-    <div id="userTokens" class="user-tokens">
-        <a href="/addtokens" class="tokens-link"><span id="tokensCount">0</span><img src="resources/img/ticket.webp"
-                alt="ticket" /></a>
-    </div>
+    <!-- CANVAS -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
     <!-- RESOURCES -->
     <audio id="portalSound" src="resources/audio/portal_sound.weba" preload="auto"></audio>
     <!-- SCRIPTS -->
     <script src="js/comun.js"></script>
-    <script src="js/addtokens.js"></script>
+    <script src="js/openpack.js"></script>
 </body>
 
 </html>
