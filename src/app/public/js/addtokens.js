@@ -49,7 +49,7 @@ document.addEventListener("DOMContentLoaded", function () {
   
       try {
   
-        const response = await fetch("http://localhost:8080/api/user/tokens", {
+        const response = await fetch("http://localhost:8080/user/tokens", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ userId: user.id, tokens: 50 }),

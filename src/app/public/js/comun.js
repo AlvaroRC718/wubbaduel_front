@@ -61,9 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (isMusicPlaying) {
     clickSound.currentTime = 0;
     clickSound.play().catch(() => {});
-  }
 
-  if (isMusicPlaying) {
     backgroundMusic.play();
     if (musicTime) { 
       backgroundMusic.currentTime = parseFloat(musicTime);
@@ -72,20 +70,6 @@ document.addEventListener('DOMContentLoaded', () => {
   updateMusicIcon(); 
 });
 
-if (isMusicPlaying) {
-  backgroundMusic.play();
-  if (musicTime) { 
-    backgroundMusic.currentTime = parseFloat(musicTime);
-  }
-}
-
-updateMusicIcon(); 
-
-setInterval(() => {
-  if (!backgroundMusic.paused) {
-    localStorage.setItem("musicTime", backgroundMusic.currentTime);
-  }
-}, 500);
 
 buttons.forEach(button => {
   const href = button.getAttribute("href");
@@ -96,11 +80,11 @@ buttons.forEach(button => {
 
       if (!backgroundMusic.paused) {
         clickSound.currentTime = 0;
-        clickSound.play().catch(() => {});
+        clickSound.play();
+        clickSound.onended = () => window.location.href = href;
+      } else {
+        window.location.href = href;
       }
-
-      const navigate = () => window.location.href = href;
-      setTimeout(navigate, 800); 
     });
   }
 });
