@@ -1,6 +1,6 @@
 "use strict";
 //////////////////////////////////Usuario y sesion////////////////////////////////
-//Usuario Pruebas
+/*/Usuario Pruebas
 const userTest = {
   id: 718,
   username: 'El_Kaki718',
@@ -8,7 +8,7 @@ const userTest = {
   avatarUrl: 'resources/img/logo.png',
   tokens: 9999999,
 };
-localStorage.setItem('user', JSON.stringify(userTest));
+localStorage.setItem('user', JSON.stringify(userTest));*/
 
 document.addEventListener('DOMContentLoaded', () => {
   const loginLink = document.getElementById('login-link');

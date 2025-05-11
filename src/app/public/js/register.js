@@ -115,8 +115,8 @@ function comprobarCampos() { //test OK
     errorGeneral.textContent = "";
     const dataUser = {
       name: nombre.value,
-      lastName: apellidos.value,
-      user: usuario.value,
+      lastname: apellidos.value,
+      username: usuario.value,
       email: email.value,
       password: contrasena.value
     };
@@ -135,6 +135,7 @@ function comprobarCampos() { //test OK
       })
       .then(data => {
         console.log("Registro exitoso:", data);
+        localStorage.setItem('user', JSON.stringify(data));
         window.location.href = '/profile'; // o a donde quieras ir después del login
       })
       .catch(error => {
@@ -148,6 +149,12 @@ function comprobarCampos() { //test OK
   robot.value = "";
   genOperacion();*/
 }
+
+const form = document.getElementById("formularioRegistro");
+form.addEventListener("submit", function(event) {
+  event.preventDefault();  
+  comprobarCampos();  
+});
 
 
 function mostrarError(elemento, mensaje) {

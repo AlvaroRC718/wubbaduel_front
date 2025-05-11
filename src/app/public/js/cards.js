@@ -1,6 +1,6 @@
 //Tanto cards como usercards se obtendran con sus correspondientes metodos y peticiones
 //Estas son pruebas 
-const cards = [
+/*const cards = [
   {
     "id": 1,
     "name": "Rick Sanchez",
@@ -702,7 +702,7 @@ const cards = [
     "origin": "Korblock-9"
   },
 
-];
+];*/
 
 const userCards = [
   {
@@ -946,9 +946,6 @@ const userCards = [
   },
 ];
 
-//const cards = fetchAllCards() ;
-//const userCards = fetchUnlockedCards() ;
-
 async function fetchAllCards() {
   try {
     const response = await fetch('http://localhost:8080/api/cards');
@@ -1006,7 +1003,7 @@ function generateCards() {
             <img src="${character.image}" alt="${character.name}" class="${character.rarity}">
             <div class="card-stats">
               <div>🗡 ${character.attack}</div>
-              <div>❤️ ${character.health}</div>
+              <div>❤️ ${character.hp}</div>
             </div>
             <div class="card-description">
               ${character.description}
@@ -1034,7 +1031,7 @@ function generateCards() {
             <img src="${character.image}" alt="${character.name}" class="${character.rarity}">
             <div class="card-stats">
               <div>🗡 ${character.attack}</div>
-              <div>❤️ ${character.health}</div>
+              <div>❤️ ${character.hp}</div>
             </div>
             <div class="card-description">
               ${character.description}
@@ -1051,5 +1048,16 @@ function generateCards() {
   }
 }
 
-// Llamamos a la función para generar las cartas
-generateCards();
+// Llamamos a la función para generar las cartas correctamente una vez cargadas
+async function init() {
+  cards = await fetchAllCards();
+
+  const savedUser = JSON.parse(localStorage.getItem('user'));
+  if (savedUser) {
+    //userCards = await fetchUnlockedCards();
+  }
+
+  generateCards();
+}
+
+init();

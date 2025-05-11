@@ -169,7 +169,7 @@ section {
   }
 }
 
-.card-normal {
+.card-NORMAL {
   border: 8px solid #777;
   background: linear-gradient(145deg, #2a2a2a, #1e1e1e);
   box-shadow: 0 0 10px rgba(200, 200, 200, 0.2);
@@ -178,7 +178,7 @@ section {
   border-bottom: 16px solid #0a0a0a;
 }
 
-.card-rare {
+.card-RARE {
   border: 8px solid #00aaff;
   background: linear-gradient(145deg, #003344, #001f2e);
   box-shadow: 0 0 15px rgba(0, 170, 255, 0.4);
@@ -187,7 +187,7 @@ section {
   border-bottom: 16px solid #003344;
 }
 
-.card-epic {
+.card-EPIC {
   border: 8px solid #a020f0;
   background: linear-gradient(145deg, #2c003e, #1a0026);
   box-shadow: 0 0 18px rgba(160, 32, 240, 0.5);
@@ -196,7 +196,7 @@ section {
   border-bottom: 16px solid #260050;
 }
 
-.card-legendary {
+.card-LEGENDARY {
   border: 8px solid gold;
   background: linear-gradient(145deg, #4d3900, #1f1500);
   box-shadow: 0 0 20px rgba(255, 215, 0, 0.6);
@@ -301,19 +301,19 @@ section {
   text-transform: uppercase;
 }
 
-.normal {
+.NORMAL {
   border: 2px solid #aaa;
 }
 
-.rare {
+.RARE {
   border: 2px solid #00aaff;
 }
 
-.legendary {
+.LEGENDARY {
   border: 2px solid gold;
 }
 
-.epic {
+.EPIC {
   border: 2px solid #a020f0;
 }
 

@@ -46,21 +46,24 @@ document.addEventListener("DOMContentLoaded", function () {
   
     // 🎁 Reclamar recompensa
     claimButton.addEventListener("click", async function () {
-  
       try {
-  
-        const response = await fetch("http://localhost:8080/user/tokens", {
+        let user = JSON.parse(localStorage.getItem('user')); 
+        let userId = user.id;
+    
+        const response = await fetch("http://localhost:8080/api/user/tokens", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ userId: user.id, tokens: 50 }),
+          body: JSON.stringify({ userId: userId, tokens: 50 }),
         });
-  
+    
         const data = await response.json();
-  
+    
         if (response.ok) {
-          user.tokens = data.tokens;
+          user.tokens = data.tokens;  
+          localStorage.setItem('user', JSON.stringify(user));
+    
           alert("¡Has ganado 50 Tickets de Blitz & Chits!");
-          window.location.href = "shop";
+          window.location.href = "shop"; 
         } else {
           alert(data.message || "Error al reclamar.");
         }
@@ -68,5 +71,5 @@ document.addEventListener("DOMContentLoaded", function () {
         console.error("Error al procesar:", error);
         alert("Error de conexión con el servidor.");
       }
-    });
+    });    
   });
