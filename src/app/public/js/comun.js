@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 //////////////////////////////////Musica y efectos de sonido////////////////////////////////
 const buttons = document.querySelectorAll("a"); 
-const musicButton = document.getElementById("toggleMusic")
+const musicButton = document.getElementById("toggleMusic");
 const clickSound = document.getElementById("portalSound");
 const backgroundMusic = document.getElementById("backgroundMusic"); 
 const isMusicPlaying = localStorage.getItem("musicPlaying") === "true"; 
@@ -56,40 +56,26 @@ function toggleMusic() {
   updateMusicIcon(); 
 }
 
-
 document.addEventListener('DOMContentLoaded', () => {
   if (isMusicPlaying) {
     clickSound.currentTime = 0;
     clickSound.play().catch(() => {});
 
-    backgroundMusic.play();
-    if (musicTime) { 
+    if (musicTime) {
       backgroundMusic.currentTime = parseFloat(musicTime);
     }
+
+    backgroundMusic.play().catch(() => {});
   }
   updateMusicIcon(); 
 });
 
-
-buttons.forEach(button => {
-  const href = button.getAttribute("href");
-
-  if (href && href !== "#" && !href.startsWith("javascript:")) {
-    button.addEventListener("click", (event) => {
-      event.preventDefault(); 
-
-      if (!backgroundMusic.paused) {
-        clickSound.currentTime = 0;
-        clickSound.play();
-        clickSound.onended = () => window.location.href = href;
-      } else {
-        window.location.href = href;
-      }
-    });
-  }
+window.addEventListener("beforeunload", () => {
+  localStorage.setItem("musicTime", backgroundMusic.currentTime);
 });
 
 musicButton.addEventListener("click", toggleMusic);
+
 
 //////////////////////////////////Modal Cartas////////////////////////////////
 

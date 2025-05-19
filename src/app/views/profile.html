@@ -37,6 +37,10 @@
                         <img src="resources/img/ticket.webp" alt="ticket" class="ticket-icon" />
                     </p>
                 </div>
+                <div class="account-actions">
+                    <button id="logoutButton" class="action-button">Cerrar sesión</button>
+                    <button id="deleteAccountButton" class="action-button danger">Borrar cuenta</button>
+                </div>
             </div>
         </section>
     </main>
@@ -46,6 +50,15 @@
         ©2025 Cybercode Creations. Wubba Lubba Dub-Duel!.
     </footer>
 
+    <!-- MODAL ELIMINAR CUENTA -->
+    <div id="passwordModal">
+        <div>
+            <p>Estás a punto de eliminar tu cuenta. ¿Seguro que quieres continuar?</p>
+            <input type="password" id="passwordInput" placeholder="Introduce tu contraseña">
+            <button id="confirmDelete">Confirmar eliminación</button>
+            <button id="cancelDelete">Cancelar</button>
+        </div>
+    </div>
     <!-- TOKENS USUARIO-->
     <div id="userTokens" class="user-tokens">
         <a href="/addtokens" class="tokens-link"><span id="tokensCount">0</span><img src="resources/img/ticket.webp"

@@ -3,13 +3,14 @@ document.querySelectorAll('.play-button').forEach(button => {
     button.addEventListener('click', async () => {
         const rarity = button.getAttribute('data-pack');
         const packCosts = {
-            normal: 100,
-            rare: 250,
-            epic: 500,
-            legendary: 1000
+            NORMAL: 100,
+            RARE: 250,
+            EPIC: 500,
+            LEGENDARY: 1000
         };
         const cost = packCosts[rarity];
 
+        
         try {
             const savedUser = JSON.parse(localStorage.getItem('user'));
 
@@ -18,7 +19,7 @@ document.querySelectorAll('.play-button').forEach(button => {
                 return;
             }
             
-            const tokenResponse = await fetch('http://localhost:8080/api/user/tokens', {
+            const tokenResponse = await fetch('http://localhost:8080/api/user/get-tokens', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -44,13 +45,17 @@ document.querySelectorAll('.play-button').forEach(button => {
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({ userId: savedUser.id, tokens: -cost }),
                 });
+                const data = await response.json();
 
-                if (!response.ok) {
+                if (response.ok) {
+                    savedUser.tokens = data.tokens;
+                    localStorage.setItem('user', JSON.stringify(savedUser));
+                    window.location.href = '/openpack';
+                } else {
                     alert("Error al restar los tickets. Intenta de nuevo.");
                     return;
                 }
 
-                window.location.href = '/openpack';
             } else {
                 alert("No tienes suficientes tickets para este sobre.");
             }

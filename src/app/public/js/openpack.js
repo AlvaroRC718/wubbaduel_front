@@ -7,30 +7,35 @@ document.addEventListener('DOMContentLoaded', async () => {
         return;
     }
     const packImages = {
-        normal: "resources/img/sobre3.png",
-        rare: "resources/img/sobre1.png",
-        epic: "resources/img/sobre2.png",
-        legendary: "resources/img/sobre4.png"
+        NORMAL: "resources/img/sobre3.png",
+        RARE: "resources/img/sobre1.png",
+        EPIC: "resources/img/sobre2.png",
+        LEGENDARY: "resources/img/sobre4.png"
     };
 
-    const rarity = 'epic';
-    /*const packInfo = JSON.parse(localStorage.getItem('packInfo'));
+    const packInfo = JSON.parse(localStorage.getItem('packInfo'));
     if (!packInfo || !packInfo.rarity || !packInfo.canOpen) {
         alert('No puedes abrir este sobre.');
         window.location.href = '/shop';
         return;
     }
     const rarity = packInfo.rarity;
-    localStorage.removeItem('packInfo');*/
+    localStorage.removeItem('packInfo');
+
+    const pack = document.getElementById("pack");
+    pack.src = packImages[rarity];
+
+    const preloadImg = new Image();
+    preloadImg.src = packImages[rarity];
 
     try {
-        /*
-        const response = await fetch('http://localhost:8080/api/openpack', {
+
+        const response = await fetch('http://localhost:8080/api/user-cards/open-pack', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ rarity })
+            body: JSON.stringify({ id: savedUser.id, rarity })
         });
 
         if (!response.ok) {
@@ -38,127 +43,36 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
 
         const cards = await response.json();
-        */
-        const cards = [
-            {
-                "id": 1,
-                "name": "Rick Sanchez",
-                "description": "Un científico genio con una actitud imprudente y una fuerte adicción al alcohol.",
-                "cost": 5,
-                "image": "https://rickandmortyapi.com/api/character/avatar/1.jpeg",
-                "attack": 8,
-                "health": 6,
-                "rarity": "legendary",
-                "species": "Human",
-                "gender": "Male",
-                "age": 70,
-                "origin": "Earth (C-137)"
-            },
-            {
-                "id": 2,
-                "name": "Morty Smith",
-                "description": "El nieto ansioso e impresionable de Rick que lo acompaña en sus aventuras.",
-                "cost": 3,
-                "image": "https://rickandmortyapi.com/api/character/avatar/2.jpeg",
-                "attack": 4,
-                "health": 4,
-                "rarity": "rare",
-                "species": "Human",
-                "gender": "Male",
-                "age": 14,
-                "origin": "Earth (C-137)"
-            },
-            {
-                "id": 3,
-                "name": "Summer Smith",
-                "description": "La hermana mayor de Morty. Inteligente, atrevida y a veces sorprendentemente útil.",
-                "cost": 3,
-                "image": "https://rickandmortyapi.com/api/character/avatar/3.jpeg",
-                "attack": 3,
-                "health": 5,
-                "rarity": "rare",
-                "species": "Human",
-                "gender": "Female",
-                "age": 17,
-                "origin": "Earth (Replacement Dimension)"
-            },
-            {
-                "id": 4,
-                "name": "Beth Smith",
-                "description": "La hija de Rick, una brillante cirujana de caballos con problemas de autoestima.",
-                "cost": 4,
-                "image": "https://rickandmortyapi.com/api/character/avatar/4.jpeg",
-                "attack": 4,
-                "health": 6,
-                "rarity": "rare",
-                "species": "Human",
-                "gender": "Female",
-                "age": 34,
-                "origin": "Earth (Replacement Dimension)"
-            },
-            {
-                "id": 5,
-                "name": "Jerry Smith",
-                "description": "El inseguro esposo de Beth, blanco frecuente de burlas, pero sorprendentemente perseverante.",
-                "cost": 2,
-                "image": "https://rickandmortyapi.com/api/character/avatar/5.jpeg",
-                "attack": 2,
-                "health": 5,
-                "rarity": "normal",
-                "species": "Human",
-                "gender": "Male",
-                "age": 35,
-                "origin": "Earth (Replacement Dimension)"
-            },
-            {
-                "id": 6,
-                "name": "Abadango Cluster Princess",
-                "description": "La princesa del cúmulo Abadango, una figura de autoridad en su planeta natal.",
-                "cost": 4,
-                "image": "https://rickandmortyapi.com/api/character/avatar/6.jpeg",
-                "attack": 5,
-                "health": 5,
-                "rarity": "epic",
-                "species": "Alien",
-                "gender": "Female",
-                "age": 28,
-                "origin": "Abadango"
-            },
-        ]
-
-        const pack = document.getElementById("pack");
         const container = document.getElementById("cards-container-pack");
 
-        // Función para obtener la rareza máxima
+        // Función para obtener la RAREza máxima
         function getMaxRarity(cards) {
-            let maxRarity = 'normal';
+            let maxRarity = 'NORMAL';
             cards.forEach(card => {
-                if (card.rarity === 'legendary') {
-                    maxRarity = 'legendary';
-                } else if (card.rarity === 'epic' && maxRarity !== 'legendary') {
-                    maxRarity = 'epic';
-                } else if (card.rarity === 'rare' && maxRarity === 'normal') {
-                    maxRarity = 'rare';
+                if (card.rarity === 'LEGENDARY') {
+                    maxRarity = 'LEGENDARY';
+                } else if (card.rarity === 'EPIC' && maxRarity !== 'LEGENDARY') {
+                    maxRarity = 'EPIC';
+                } else if (card.rarity === 'RARE' && maxRarity === 'NORMAL') {
+                    maxRarity = 'RARE';
                 }
             });
             return maxRarity;
         }
 
         const maxRarity = getMaxRarity(cards);
-        pack.src = packImages[rarity];
-
         // Función para definir el color del confeti
         function getConfettiColor(rarity) {
             const colors = {
-                normal: "#c5c5c5",
-                rare: "#4287f5",
-                epic: "#9b59b6",
-                legendary: "#f39c12"
+                NORMAL: "#c5c5c5",
+                RARE: "#4287f5",
+                EPIC: "#9b59b6",
+                LEGENDARY: "#f39c12"
             };
             return colors[rarity] || "#c5c5c5";
         }
 
-        
+
         // Evento: abrir sobre
         pack.addEventListener("click", async () => {
             pack.classList.add("opened");
@@ -187,7 +101,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                           <img src="${c.image}" alt="${c.name}" class="${c.rarity}">
                           <div class="card-stats">
                             <div>🗡 ${c.attack}</div>
-                            <div>❤️ ${c.health}</div>
+                            <div>❤️ ${c.hp}</div>
                           </div>
                           <div class="card-description">
                             ${c.description}

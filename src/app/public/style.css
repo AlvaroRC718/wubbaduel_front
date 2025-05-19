@@ -603,6 +603,12 @@ footer {
   margin-left: 4px;
 }
 
+.red{
+  color: #ff4444;
+  font-weight: lighter;
+  font-size: small;
+}
+
 .error-formulario {
   color: #ff4d4d;
   font-size: 0.9em;
@@ -896,6 +902,116 @@ footer {
   width: 3%;
   height: auto;
   filter: drop-shadow(0 0 6px rgba(0, 255, 136, 0.6));
+}
+
+.action-button {
+    background: #00ffaa;
+    font-family: 'Bungee', sans-serif;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    margin: 10px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.action-button:hover {
+    background: linear-gradient(90deg, #00ffaa, #00ccff);
+}
+
+.action-button.danger {
+    background-color: #ff5050;
+}
+
+.action-button.danger:hover {
+  background: linear-gradient(90deg, #ff5050, #cc0000);
+}
+
+#passwordModal {
+    display: none;
+    background-color: rgba(0, 0, 0, 0.7);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    text-align: center;
+}
+
+#passwordModal > div {
+    background-color: #2c2c2c; 
+    margin-top: 5%; 
+    padding: 2%;
+    border-radius: 8px;
+    width: 20%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+#passwordModal p {
+    color: #ff4c4c; 
+    font-weight: bold;
+    font-size: 18px;
+}
+
+#passwordInput {
+    padding: 10px;
+    margin-top: 10px;
+    border: 2px solid #ff4c4c; 
+    border-radius: 5px;
+    width: 100%;
+    font-size: 16px;
+    background-color: #333; 
+    color: white; 
+}
+
+#passwordInput:hover {
+    box-shadow: 0 0 10px #e60000;
+}
+
+#passwordInput:focus {
+    box-shadow: 0 0 10px #e60000;
+}
+
+#confirmDelete, #cancelDelete {
+    width: 100%;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    border: none;
+    font-size: 16px;
+}
+
+#confirmDelete {
+    background-color: #ff4c4c; 
+    color: white;
+}
+
+#confirmDelete:hover {
+    background-color: #e60000;
+}
+
+#cancelDelete {
+    background-color: #444; 
+    color: white;
+}
+
+#cancelDelete:hover {
+    background-color: #666; 
+}
+
+#confirmDelete:hover, #cancelDelete:hover {
+    transform: scale(1.05); 
+    transition: 0.2s ease-in-out;
 }
 
 /*///////////////////////////////////////addtokens.html/////////////////////////////////////////////////*/

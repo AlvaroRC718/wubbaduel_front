@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         } catch (err) {
             console.error('Error de red:', err);
-            errorGeneral.textContent = 'No se pudo conectar con el servidor.';
+            errorGeneral.textContent = 'Contraseña o email incorrectos.';
         }
     });
 });

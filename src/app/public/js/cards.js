@@ -704,7 +704,7 @@
 
 ];*/
 
-const userCards = [
+/*const userCards = [
   {
     "id": 1,
     "name": "Rick Sanchez",
@@ -944,7 +944,7 @@ const userCards = [
     "age": 45,
     "origin": "Bird World"
   },
-];
+];*/
 
 async function fetchAllCards() {
   try {
@@ -964,12 +964,25 @@ async function fetchAllCards() {
 
 async function fetchUnlockedCards() {
   try {
-    const response = await fetch('http://localhost:8080/api/usercards');
+    const savedUser = JSON.parse(localStorage.getItem('user'));
+    if (!savedUser || !savedUser.id) {
+      console.error('Usuario no encontrado en localStorage');
+      return [];
+    }
+
+    const response = await fetch('http://localhost:8080/api/user-cards/get-by-user', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ userId: savedUser.id }),
+    });
+
     if (response.ok) {
       const data = await response.json();
       return data;
     } else {
-      console.error('Error al obtener las cartas', response.status);
+      console.error('Error al obtener las cartas del usuario', response.status);
       return [];
     }
   } catch (error) {
@@ -977,6 +990,7 @@ async function fetchUnlockedCards() {
     return [];
   }
 }
+
 
 function generateCards() {
   const container = document.getElementById("cards-container");
@@ -986,7 +1000,7 @@ function generateCards() {
 
   if (savedUser) {
     // Si el usuario está logueado, mostramos las cartas desbloqueadas o grisadas si no están desbloqueadas
-    const userCardsIds = userCards.map(card => card.id);
+     const userCardsIds = userCards.map(userCard => userCard.card.id);
     for (let i = 0; i < cards.length; i++) {
       const character = cards[i];
 
@@ -1054,7 +1068,7 @@ async function init() {
 
   const savedUser = JSON.parse(localStorage.getItem('user'));
   if (savedUser) {
-    //userCards = await fetchUnlockedCards();
+     userCards = await fetchUnlockedCards();
   }
 
   generateCards();
