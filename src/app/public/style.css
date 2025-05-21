@@ -42,6 +42,7 @@
   }
 }
 
+
 nav {
   background: #111;
   padding: 10px 20px;
@@ -52,7 +53,7 @@ nav {
   gap: 0.5%;
   justify-content: space-between;
   box-shadow: 0 0 10px #00ff88;
-  z-index: 10;
+  z-index: 9999;
 }
 
 .logo {
@@ -104,7 +105,6 @@ nav a:hover {
 
 .hero-content {
   position: relative;
-  z-index: 1;
   max-width: 900px;
   margin: 0 auto;
 }
@@ -148,6 +148,8 @@ section {
   transition: transform 0.3s ease-in-out;
   transform-style: preserve-3d;
   box-sizing: border-box;
+  max-width: 250px;
+  min-width: 250px;
 }
 
 .card:hover {
@@ -341,7 +343,6 @@ section {
   width: 200%;
   height: 200%;
   background: radial-gradient(circle at center, rgba(0, 255, 136, 0.08), transparent);
-  z-index: 0;
 }
 
 h2 {
@@ -350,7 +351,6 @@ h2 {
   margin-bottom: 35px;
   font-size: 2.4rem;
   position: relative;
-  z-index: 1;
 }
 
 .how-to-play-content {
@@ -360,7 +360,6 @@ h2 {
   gap: 50px;
   flex-wrap: wrap;
   position: relative;
-  z-index: 1;
 }
 
 .how-to-play-steps {
@@ -400,7 +399,6 @@ h2 {
   display: flex;
   justify-content: center;
   margin-top: 40px;
-  z-index: 1;
   position: relative;
 }
 
@@ -451,7 +449,7 @@ footer {
 .modal {
   display: none;
   position: fixed;
-  z-index: 999;
+  z-index: 10000;
   left: 0;
   top: 0;
   width: 100%;
@@ -466,8 +464,11 @@ footer {
   width: 375px;
   height: 600px;
   padding: 0.5%;
-  animation: fadeIn 0.3s ease;
   font-size: x-large;
+}
+.modal-content.card{
+  max-width: 375px;
+  width: 375px;
 }
 
 .modal-content .card-name {
@@ -487,20 +488,8 @@ footer {
   cursor: pointer;
 }
 
-@keyframes fadeIn {
-  from {
-    transform: scale(0.8);
-    opacity: 0;
-  }
-
-  to {
-    transform: scale(1);
-    opacity: 1;
-  }
-}
-
 .user-tokens {
-  z-index: 99999;
+  z-index: 9997;
   text-align: center;
   position: fixed;
   top: 12%;
@@ -649,6 +638,7 @@ footer {
   letter-spacing: 1px;
   text-transform: uppercase;
   animation: glowDarkPulse 3s infinite alternate;
+  margin-bottom: 2%;
 }
 
 @keyframes glowDarkPulse {
@@ -693,12 +683,12 @@ footer {
   }
 }
 
-
-
 .album {
   width: 90%;
-  margin: 5% auto;
-  padding: 60px 50px;
+  margin: 2% auto;
+  padding: 1%;
+  padding-top: 2%;
+  padding-bottom: 2%;
   background: linear-gradient(145deg, #1a1a1a, #111);
   border-radius: 24px;
   border: 2px solid #00ff88;
@@ -709,23 +699,22 @@ footer {
   position: relative;
   overflow: hidden;
   color: #f0f0f0;
-  z-index: 1;
 }
 
 .card-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
   gap: 3rem;
-  z-index: 2;
-  position: relative;
   padding: 1rem;
 }
 
 .album-card {
-  padding-top: 4%;
-  padding-left: 6%;
-  padding-right: 3%;
-  padding-bottom: 6%;
+  padding-top: 15px;
+  padding-left: 20px;
+  padding-right: 10px;
+  padding-bottom: 20px;
   border-radius: 16px;
   background: linear-gradient(145deg, #1c1c1c, #000000);
   border: 1px solid rgba(0, 255, 136, 0.2);
@@ -737,12 +726,131 @@ footer {
   display: flex;
   align-items: center;
   justify-content: center;
+  max-width: 285px;
 }
 
 .locked-card {
   filter: grayscale(100%);
   animation: none !important;
   transition: none !important;
+}
+
+.loading-modal {
+  position: fixed;
+  z-index: 9998;
+  inset: 0;
+  background: radial-gradient(circle at center, #111 0%, #000 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.loading-content {
+  text-align: center;
+  background: rgba(0, 0, 0, 0.8);
+  border: 3px solid #00ff88;
+  border-radius: 16px;
+  padding: 40px;
+  box-shadow: 0 0 30px #00ffaa88;
+  width: 40vw;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 20px;
+  background: #222;
+  border: 2px solid #00ffaa;
+  border-radius: 12px;
+  overflow: hidden;
+  margin: 20px 0;
+  box-shadow: 0 0 10px #00ffaa66;
+}
+
+.progress-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #00ffaa, #00ff88, #00ffaa);
+  animation-fill-mode: forwards;
+  box-shadow: 0 0 15px #00ff88aa;
+}
+
+@keyframes loadingProgress {
+  0% { width: 0%; }
+  100% { width: 100%; }
+}
+
+.loading-portal {
+  width: 90px;
+  margin-top: 20px;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.card-filters {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1%;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.search-input,
+.rarity-select {
+  font-family: 'Press Start 2P', cursive;
+  background: #111;
+  color: #00ff88;
+  border: 2px solid #00ff88;
+  border-radius: 12px;
+  padding: 10px 20px;
+  font-size: 0.9rem;
+  font-weight: lighter;
+  text-shadow: 0 0 3px #00ff88, 0 0 6px #00ffaa;
+  box-shadow:
+    inset 0 0 10px rgba(0, 255, 136, 0.2),
+    0 0 8px rgba(0, 255, 255, 0.2);
+  transition: all 0.3s ease;
+  outline: none;
+  margin-top: 2%;
+}
+
+.search-input::placeholder {
+  color: #00ffaa88;
+  text-shadow: none;
+}
+
+.search-input:focus,
+.rarity-select:focus {
+  box-shadow:
+    0 0 10px #00ffaa,
+    0 0 20px rgba(0, 255, 136, 0.6);
+  background: #000;
+}
+
+.card-count{
+  font-family: 'Press Start 2P', cursive;
+  color: #00ff88;
+  text-align: center;
+  text-shadow:
+    -3px -3px 0 #000,
+    3px -3px 0 #000,
+    -3px 3px 0 #000,
+    3px 3px 0 #000,
+    -3px 0px 0 #000,
+    3px 0px 0 #000,
+    0px -3px 0 #000,
+    0px 3px 0 #000,
+    -2px -2px 0 #000,
+    2px -2px 0 #000,
+    -2px 2px 0 #000,
+    2px 2px 0 #000,
+    /* Efecto neón */
+    0 0 3px #00ff88,
+    0 0 6px #00ffaa,
+    0 0 10px rgba(0, 255, 136, 0.5),
+    0 0 16px rgba(0, 255, 255, 0.4);
 }
 
 
@@ -801,7 +909,6 @@ footer {
 .booster-image {
   width: 100%;
   transition: transform 0.3s;
-  z-index: 1;
   animation: float 4s ease-in-out infinite;
 }
 
@@ -1033,7 +1140,6 @@ footer {
   border-radius: 14px;
   box-shadow: 0 0 20px rgba(0, 255, 136, 0.5);
   transition: transform 0.4s ease;
-  z-index: 1;
   position: relative;
 }
 
@@ -1047,7 +1153,6 @@ footer {
   gap: 3%;
   align-items: center;
   justify-content: center;
-  z-index: 1;
   position: relative;
 }
 
@@ -1112,7 +1217,7 @@ footer {
 }
 
 #cards-container-pack {
-  width: 80%;
+  width: 90%;
   margin: auto;
   margin-top: 4%;
   margin-bottom: 4%;
@@ -1128,9 +1233,9 @@ footer {
 #cards-container-pack.visible {
   opacity: 1;
 }
+
 #cards-container-pack .card {
-  margin: 5%;
-  width: 250px;
+  width: 230px;
   transform: scale(0);
   animation: showCard 0.5s forwards;
 }

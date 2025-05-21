@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Wubba Lubba Dub-Duel!: Iniciar sesión</title>
+    <title>Wubba Lubba Dub-Duel!: Dubdex</title>
     <link rel="icon" href="resources/img/logo.png" type="image/png">
     <link href="https://fonts.googleapis.com/css2?family=Bungee&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
@@ -27,6 +27,17 @@
     <main>
         <section class="album">
             <h2 class="pixel-font-dark">Dubdex</h2>
+            <div class="card-filters">
+                <input type="text" id="searchInput" placeholder="Buscar por nombre..." class="search-input"/>
+                <div class="card-count" id="cardCount">0 / 0</div>
+                <select id="rarityFilter" class="rarity-select">
+                    <option value="all">Todas las rarezas</option>
+                    <option value="NORMAL">Normal</option>
+                    <option value="RARE">Rara</option>
+                    <option value="EPIC">Épica</option>
+                    <option value="LEGENDARY">Legendaria</option>
+                </select>
+            </div>
             <div class="card-container" id="cards-container">
 
             </div>
@@ -38,7 +49,16 @@
         ©2025 Cybercode Creations. Wubba Lubba Dub-Duel!.
     </footer>
 
-
+    <!-- LOADING MODAL -->
+    <div id="loadingModal" class="loading-modal">
+        <div class="loading-content">
+            <h2 class="pixel-font-dark">Cargando Dubdex...</h2>
+            <div class="progress-bar">
+                <div class="progress-fill"></div>
+            </div>
+            <img src="resources/img/portal.gif" alt="Portal animado" class="loading-portal">
+        </div>
+    </div>
     <!-- MODAL -->
     <div class="modal" id="modal" onclick="closeModal(event)">
         <div class="modal-content" id="modalContent"></div>
@@ -46,7 +66,8 @@
     </div>
     <!-- TOKENS USUARIO-->
     <div id="userTokens" class="user-tokens">
-        <a href="/addtokens" class="tokens-link"><span id="tokensCount">0</span><img src="resources/img/ticket.webp"alt="ticket" /></a>
+        <a href="/addtokens" class="tokens-link"><span id="tokensCount">0</span><img src="resources/img/ticket.webp"
+                alt="ticket" /></a>
     </div>
     <!-- RESOURCES -->
     <audio id="portalSound" src="resources/audio/portal_sound.mp3" preload="auto"></audio>
