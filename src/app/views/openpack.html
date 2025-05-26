@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Wubba Lubba Dub-Duel!: Apertura</title>
+    <link rel="icon" href="resources/img/logo.png" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=Bungee&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="body-index">
+
+    <nav>
+        <a href="/index" class="logo"><img src="resources/img/portal.gif" alt="Wubba Lubba Dub-Duel logo"></a>
+        <a href="/cards">Dubdex</a>
+        <a href="/shop">Dub-Market</a>
+        <a href="/login " id="login-link"></a>
+        <div class="music-control">
+            <button id="toggleMusic">🔇</button>
+            <audio id="backgroundMusic" loop>
+                <source src="resources/audio/main_theme.weba" type="audio/mpeg">
+                Tu navegador no soporta audio HTML5.
+            </audio>
+        </div>
+    </nav>
+    <main>
+        <section >
+            <img id="pack" src="resources/img/portal.gif" alt="Sobre de Cartas" class="pack-image">
+            <div id="cards-container-pack"></div>
+        </section>
+    </main>
+
+    <footer>
+        ©2025 Cybercode Creations. Wubba Lubba Dub-Duel!.
+    </footer>
+
+    <!-- MODAL -->
+    <div class="modal" id="modal" onclick="closeModal(event)">
+        <div class="modal-content" id="modalContent"></div>
+        <span class="close" onclick="closeModal(event)">×</span>
+    </div>
+    <!-- CANVAS -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+    <!-- RESOURCES -->
+    <audio id="portalSound" src="resources/audio/portal_sound.mp3" preload="auto"></audio>
+    <!-- SCRIPTS -->
+    <script src="js/comun.js"></script>
+    <script src="js/openpack.js"></script>
+</body>
+
+</html>

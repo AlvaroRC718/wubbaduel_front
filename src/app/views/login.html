@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Wubba Lubba Dub-Duel!: Iniciar sesión</title>
+    <link rel="icon" href="resources/img/logo.png" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=Bungee&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="body-index">
+
+    <nav>
+        <a href="/index" class="logo"><img src="resources/img/portal.gif" alt="Wubba Lubba Dub-Duel logo"></a>
+        <a href="/cards">Dubdex</a>
+        <a href="/shop">Dub-Market</a>
+        <a href="/login " id="login-link"></a>
+        <div class="music-control">
+            <button id="toggleMusic">🔇</button>
+            <audio id="backgroundMusic" loop>
+                <source src="resources/audio/main_theme.weba" type="audio/mpeg">
+                Tu navegador no soporta audio HTML5.
+            </audio>
+        </div>
+    </nav>
+    <main>
+        <section id="login" class="registro-seccion">
+            <h2>Iniciar sesión</h2>
+            <div class="contenedor-formulario">
+                <form action="#" method="post" class="tarjeta-formulario">
+                    <p id="errorGeneral" class="error-formulario"></p>
+
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" placeholder="Introduce tu email aquí" required />
+
+                    <label for="password">Contraseña:</label>
+                    <input type="password" id="password" name="password" placeholder="Introduce tu contraseña aquí"
+                        required />
+
+                    <input type="submit" class="play-button" id="btnIniciarSesion" name="IniciarSesion"
+                        value="Iniciar sesión" onclick="" />
+                </form>
+                <p class="nota-formulario">¿A qué esperas, Morty? <br />
+                    ¡<a href="/register" style="color: #00ff88;">Regístrarte</a> y empieza tu duelo interdimensional ya
+                    mismo!
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        ©2025 Cybercode Creations. Wubba Lubba Dub-Duel!.
+    </footer>
+
+
+    <!-- RESOURCES -->
+    <audio id="portalSound" src="resources/audio/portal_sound.mp3" preload="auto"></audio>
+    <!-- SCRIPTS -->
+    <script src="js/comun.js"></script>
+    <script src="js/login.js"></script>
+</body>
+
+</html>
