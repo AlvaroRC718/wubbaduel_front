@@ -918,6 +918,10 @@ footer {
   }
 }
 
+#loadingMessage{
+  margin-top: 2%;
+}
+
 .card-filters {
   display: flex;
   gap: 1rem;

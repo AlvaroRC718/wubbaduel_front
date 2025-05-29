@@ -200,6 +200,32 @@ let currentInitToken = null;
 async function init() {
   const loadingModal = document.getElementById("loadingModal");
   const progressFill = document.querySelector(".progress-fill");
+  const loadingMessage = document.getElementById("loadingMessage");
+  const messages = [
+  "Escaneando tu Dubdex... Cuidado con los parásitos de memoria.",
+  "Buscando tus Dubs... en el espacio-tiempo cuántico.",
+  "Rick está ordenando tus Dubs. No te emociones, Morty.",
+  "Decodificando ADN de Dubs interdimensionales...",
+  "Wubba Lubba Dub-Dex! Esto puede tardar un poquito...",
+  "Comprobando si tienes una carta que valga la pena.",
+  "Morty está clasificando tus Dubs... espera sentado.",
+  "¡Multiverso inestable! Reiniciando catálogo de Dubs...",
+  "Cargando tus Dubs... con un 3% de ciencia y un 97% de sarcasmo.",
+  "Rick está mezclando tus Dubs con tequila... por eficiencia.",
+  "¿Sabías que tus Dubs podrían estar vivas? Rick no lo niega.",
+  "Recuperando Dubs perdidos en la dimensión de los calcetines.",
+  "Analizando rarezas... sí, la mayoría son basura, Morty.",
+  "¡Alerta de carta legendaria! ...es broma. Sigue esperando.",
+  "Morty se metió en la Dubdex otra vez. Estamos limpiando el desastre.",
+  "Accediendo a tus Dubs... con el permiso de la Federación Galáctica.",
+  "Tus Dubs están encriptadas con ácido... descomponiéndolas ahora.",
+  "Cuidado, hay un Meeseeks ayudando. Esto podría explotar.",
+  "Escaneando tus stats... sí, siguen siendo mediocres.",
+  "Invocando tu colección desde la dimensión Rickroll. Ups."
+];
+const randomIndex = Math.floor(Math.random() * messages.length);
+loadingMessage.textContent = messages[randomIndex];
+
 
   const token = Symbol("init");
   currentInitToken = token;

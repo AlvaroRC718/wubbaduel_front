@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     ];
     const randomIndex = Math.floor(Math.random() * messages.length);
     loadingMessage.textContent = messages[randomIndex];
-    
+
     const progressFill = document.querySelector(".progress-fill");
 
     const showLoading = () => {
@@ -103,7 +103,12 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
 
         // Permitir clic en el sobre para abrir cartas
+
+        let clicked = false;
+
         pack.addEventListener("click", () => {
+            if (clicked) return;
+            clicked = true;
             pack.classList.add("opened");
 
             setTimeout(() => {
