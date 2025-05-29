@@ -1171,7 +1171,7 @@ footer {
 
 /*///////////////////////////////////////profile.html/////////////////////////////////////////////////*/
 .user-profile {
-  margin: 6% auto;
+  margin: 1.5% auto;
   width: 70%;
   text-align: center;
   padding: 3%;
@@ -1186,7 +1186,6 @@ footer {
   width: 15%;
   border-radius: 50%;
   border: 4px solid #00ff88;
-  margin-bottom: 2%;
   box-shadow: 0 0 15px rgba(0, 255, 136, 0.3);
   transition: transform 0.4s ease-in-out, filter 0.3s;
 }
@@ -1538,8 +1537,9 @@ footer {
 }
 
 .social-card {
-  border: 2px solid #4caf50;
-  border-radius: 12px;
+  border-radius: 16px;
+  box-shadow: inset 0 0 20px rgba(0, 255, 136, 0.15), 0 0 10px rgba(0, 255, 255, 0.1);
+  border: 1px solid rgba(0, 255, 136, 0.2);
   padding: 1%;
   margin: 1.5%;
   width: 370px;

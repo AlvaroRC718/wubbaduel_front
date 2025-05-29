@@ -41,8 +41,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                     `;
                     card.addEventListener('click', () => {
-                        sessionStorage.setItem('selectedUserId', user.id);
-                        window.location.href = '/profile';
+                        sessionStorage.setItem('socialUser', JSON.stringify(user));
+                        window.location.href = '/socialprofile';
                     });
                     section.appendChild(card);
                 });

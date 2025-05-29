@@ -45,6 +45,10 @@ router.get("/social", (req, res) => {
     res.sendFile(path.join(path.resolve(), "views/social.html"));
 });
 
+router.get("/socialprofile", (req, res) => {
+    res.sendFile(path.join(path.resolve(), "views/socialprofile.html"));
+});
+
 
 
 export default router

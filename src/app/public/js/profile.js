@@ -14,10 +14,6 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('userAvatar').src = savedUser.avatarUrl || 'resources/img/default-avatar.png';
     document.getElementById('tokensCount').textContent = savedUser.tokens || 0;
 
-    const loginLink = document.getElementById('login-link');
-    loginLink.textContent = savedUser.username;
-    loginLink.href = '/profile';
-
     // Cerrar sesión
     document.getElementById('logoutButton').addEventListener('click', () => {
         localStorage.removeItem('user');
@@ -107,12 +103,13 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log(favoriteCards);
 
     if (favoriteCards.length > 0) {
-        favoritesSection.style.display = 'block'; // Mostrar sección
+        favoritesSection.style.display = 'block';
         favoriteCards.forEach(favWrapper => {
             container.insertAdjacentHTML('beforeend', createCardHTML(favWrapper.card));
         });
     } else {
         favoritesSection.style.display = 'none'; // Ocultar si no hay favoritas
+        document.querySelector('footer').classList.add('fixed-footer');
     }
 }
 
