@@ -1240,26 +1240,30 @@ footer {
 }
 
 .action-button {
-  background: #00ffaa;
+  background-color: #00ffaa;
   font-family: 'Bungee', sans-serif;
   padding: 10px 20px;
   border: none;
   border-radius: 10px;
   margin: 10px;
   cursor: pointer;
-  transition: background 0.3s ease;
+  transition: transform 0.2s ease, background-color 0.3s ease;
+  transform: scale(1);
 }
 
 .action-button:hover {
-  background: linear-gradient(90deg, #00ffaa, #00ccff);
+  background-color: #00ccff;
+  transform: scale(1.05);
 }
 
 .action-button.danger {
   background-color: #ff5050;
+  transition: transform 0.2s ease, background-color 0.3s ease;
 }
 
 .action-button.danger:hover {
-  background: linear-gradient(90deg, #ff5050, #cc0000);
+  background-color: #cc0000;
+  transform: scale(1.05);
 }
 
 #passwordModal {
@@ -1499,4 +1503,109 @@ footer {
   to {
     transform: scale(1);
   }
+}
+
+/*///////////////////////////////////////social.html/////////////////////////////////////////////////*/
+.social-section {
+  width: 80%;
+  margin: auto;
+  padding: 0.5%;
+  background: linear-gradient(145deg, #1c1c1c, #0d0d0d);
+  border-radius: 20px;
+  box-shadow: 0 0 30px rgba(0, 255, 136, 0.3), 0 0 10px rgba(0, 255, 255, 0.2);
+  color: #f0f0f0;
+  border: 2px solid #00ff88;
+  position: relative;
+  overflow: hidden;
+  margin-top: 1.5%;
+  max-width: 1300px;
+  min-height: 600px;
+}
+
+#div-social-cards {
+  width: 100%;
+  height: 500px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+#divButtons {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.social-card {
+  border: 2px solid #4caf50;
+  border-radius: 12px;
+  padding: 1%;
+  margin: 1.5%;
+  width: 370px;
+  text-align: center;
+  background: #222;
+  color: white;
+  transition: transform 0.2s ease;
+  display: flex;
+  max-height: 130px;
+}
+
+.social-card:hover {
+  transform: scale(1.05);
+}
+
+.social-card .avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 0.5rem;
+}
+
+.social-info {
+  color: #00ffcc;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.social-email {
+  color: white;
+}
+
+.social-tickets {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1.5%;
+  gap: 2%;
+}
+
+.social-tickets img {
+  width: 10%;
+  height: auto;
+  filter: drop-shadow(0 0 6px rgba(0, 255, 136, 0.6));
+}
+
+.pagination-buttons {
+  margin: 1rem 0;
+  text-align: center;
+}
+
+.pagination-buttons button {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  margin: 0 0.3rem;
+  padding: 0.4rem 0.8rem;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.pagination-buttons button:disabled {
+  background-color: #888;
+  cursor: not-allowed;
 }
