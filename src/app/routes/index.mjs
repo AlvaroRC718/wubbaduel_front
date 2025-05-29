@@ -41,6 +41,10 @@ router.get("/addtokens", (req, res) => {
     res.sendFile(path.join(path.resolve(), "views/addtokens.html"));
 });
 
+router.get("/social", (req, res) => {
+    res.sendFile(path.join(path.resolve(), "views/social.html"));
+});
+
 
 
 export default router

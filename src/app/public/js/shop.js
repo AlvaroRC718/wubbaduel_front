@@ -66,3 +66,75 @@ document.querySelectorAll('.play-button').forEach(button => {
         }
     });
 });
+
+const PACK_PROBABILITIES = {
+  NORMAL: {
+    NORMAL: 0.85,
+    RARE: 0.13,
+    EPIC: 0.015,
+    LEGENDARY: 0.005,
+  },
+  RARE: {
+    NORMAL: 0.50,
+    RARE: 0.40,
+    EPIC: 0.08,
+    LEGENDARY: 0.02,
+  },
+  EPIC: {
+    NORMAL: 0.20,
+    RARE: 0.40,
+    EPIC: 0.30,
+    LEGENDARY: 0.10,
+  },
+  LEGENDARY: {
+    NORMAL: 0.05,
+    RARE: 0.15,
+    EPIC: 0.50,
+    LEGENDARY: 0.30,
+  }
+};
+
+function openRatiosModal(packType) {
+  const ratios = PACK_PROBABILITIES[packType];
+  const modal = document.getElementById("ratiosModal");
+  const list = document.getElementById("ratiosList");
+  const title = document.getElementById("modalTitle");
+
+  title.textContent = `Ratios de aparición`;
+  list.innerHTML = '';
+
+  Object.entries(ratios).forEach(([rarity, probability]) => {
+  const li = document.createElement('li');
+
+  const img = document.createElement('img');
+  img.src = `resources/img/${rarity.toLowerCase()}.png`;
+  img.alt = `${rarity} card`;
+  img.classList.add('rarity-icon');
+
+  const text = document.createTextNode(`${rarity}: ${(probability * 100).toFixed(1)}%`);
+
+  li.appendChild(img);
+  li.appendChild(text);
+  list.appendChild(li);
+});
+
+  modal.style.display = "flex";
+}
+
+function closeRatiosModal() {
+  document.getElementById("ratiosModal").style.display = "none";
+}
+
+document.querySelectorAll('.ratios-button').forEach(button => {
+  button.addEventListener('click', () => {
+    const packType = button.getAttribute('data-pack');
+    openRatiosModal(packType);
+  });
+});
+
+window.addEventListener('click', function(event) {
+  const modal = document.getElementById("ratiosModal");
+  if (event.target === modal) {
+    modal.style.display = "none";
+  }
+});

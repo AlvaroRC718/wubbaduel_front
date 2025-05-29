@@ -1,5 +1,97 @@
 let cards = [];
 let userCards = [];
+let favoriteCardIds = [];
+
+/////////////////////////////////////Favoritas//////////////////////////////////
+async function fetchFavoriteCardIds() {
+  try {
+    const savedUser = JSON.parse(localStorage.getItem("user"));
+    if (!savedUser || !savedUser.id) return [];
+
+    const response = await fetch('http://localhost:8080/api/decks/favorites', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ userId: savedUser.id }),
+    });
+
+    if (response.ok) {
+      const favorites = await response.json();
+      return favorites.map(fav => fav.card.id);
+    } else {
+      console.error("Error al obtener las cartas favoritas", response.status);
+      return [];
+    }
+  } catch (error) {
+    console.error("Error en la solicitud de favoritos", error);
+    return [];
+  }
+}
+
+async function toggleFavorite(event, cardId) {
+  const savedUser = JSON.parse(localStorage.getItem("user"));
+  if (!savedUser || !savedUser.id) return;
+
+  // Verificamos que la carta este desbloqueada
+  const userCardsIds = userCards.map(uc => uc.card.id);
+  if (!userCardsIds.includes(cardId)) {
+    alert("No puedes seleccionar como favorito una carta que no está desbloqueada.");
+    return;
+  }
+
+  const button = event.currentTarget;
+  const isCurrentlyFavorite = favoriteCardIds.includes(cardId);
+
+  if (isCurrentlyFavorite) {
+    // 🔴 Eliminar de favoritos
+    const success = await removeFromFavorites(savedUser.id, cardId);
+    if (success) {
+      favoriteCardIds = favoriteCardIds.filter(id => id !== cardId);
+      button.textContent = "🤍";
+    }
+  } else {
+    // ⚪ Agregar a favoritos (máximo 3)
+    if (favoriteCardIds.length >= 3) {
+      alert("Solo puedes tener 3 cartas favoritas.");
+      return;
+    }
+
+    const success = await addToFavorites(savedUser.id, cardId);
+    if (success) {
+      favoriteCardIds.push(cardId);
+      button.textContent = "❤️";
+    }
+  }
+}
+
+async function addToFavorites(userId, cardId) {
+  try {
+    const response = await fetch('http://localhost:8080/api/decks/add-favorite', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ userId, cardId }),
+    });
+    return response.ok;
+  } catch (error) {
+    console.error("Error al añadir a favoritos", error);
+    return false;
+  }
+}
+
+async function removeFromFavorites(userId, cardId) {
+  try {
+    const response = await fetch('http://localhost:8080/api/decks/remove-favorite', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ userId, cardId }),
+    });
+    return response.ok;
+  } catch (error) {
+    console.error("Error al quitar de favoritos", error);
+    return false;
+  }
+}
+
+/////////////////////////////////////Solicitar cartas//////////////////////////////////
 
 async function fetchAllCards() {
   try {
@@ -65,6 +157,15 @@ function generateCards() {
   for (const character of filteredCards) {
     const isUnlocked = !savedUser || userCardsIds.includes(character.id);
     const lockedClass = isUnlocked ? '' : 'locked-card';
+    const isFavorite = favoriteCardIds.includes(character.id);
+    const favoriteIcon = isFavorite ? "❤️" : "🤍";
+
+    const favoriteBtn = savedUser
+      ? (isUnlocked
+        ? `<button class="favorite-btn" data-id="${character.id}" onclick="toggleFavorite(event,${character.id})">${favoriteIcon}</button>`
+        : `<span class="favorite-btn locked">🤍</span>`)
+      : '';
+
 
     const card = `
       <div class="album-card">
@@ -86,6 +187,7 @@ function generateCards() {
             <div class="rarity-label ${character.rarity}">${character.rarity}</div>
           </div>
         </div>
+        ${favoriteBtn}
       </div>
     `;
     container.innerHTML += card;
@@ -112,9 +214,11 @@ async function init() {
     const fetchCards = fetchAllCards();
     const savedUser = JSON.parse(localStorage.getItem("user"));
     const fetchUserCards = savedUser ? fetchUnlockedCards() : Promise.resolve([]);
+    const fetchFavorites = savedUser ? fetchFavoriteCardIds() : Promise.resolve([]);
 
     cards = await fetchCards;
     userCards = await fetchUserCards;
+    favoriteCardIds = await fetchFavorites;
 
     const duration = performance.now() - start;
     const minDuration = 1500;
@@ -132,6 +236,7 @@ async function init() {
     loadingModal.style.display = "none";
   }
 }
+
 
 init();
 document.getElementById("searchInput").addEventListener("input", generateCards);

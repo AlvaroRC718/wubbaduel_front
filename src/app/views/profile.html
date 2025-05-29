@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Wubba Lubba Dub-Duel!: Iniciar sesión</title>
+    <title>Wubba Lubba Dub-Duel!: Perfil</title>
     <link rel="icon" href="resources/img/logo.png" type="image/png">
     <link href="https://fonts.googleapis.com/css2?family=Bungee&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
@@ -15,6 +15,7 @@
         <a href="/index" class="logo"><img src="resources/img/portal.gif" alt="Wubba Lubba Dub-Duel logo"></a>
         <a href="/cards">Dubdex</a>
         <a href="/shop">Dub-Market</a>
+        <a href="/social">Social</a>
         <a href="/login " id="login-link"></a>
         <div class="music-control">
             <button id="toggleMusic">🔇</button>
@@ -24,6 +25,7 @@
             </audio>
         </div>
     </nav>
+
     <main>
         <section id="userProfile" class="user-profile">
             <h2>Perfil de Usuario</h2>
@@ -37,11 +39,18 @@
                         <img src="resources/img/ticket.webp" alt="ticket" class="ticket-icon" />
                     </p>
                 </div>
+                <p><strong>Miembro desde:</strong> <span id="memberSince">2025</span></p>
+                <div class="favorite-cards">
+                    <h2 class="pixel-font-dark" style="font-size: medium;">Favoritos</h2>
+                    <div id="favoriteCardsContainer" class="favorite-cards-container"></div>
+                </div>
+                <p>Opciones de cuenta</p>
                 <div class="account-actions">
                     <button id="logoutButton" class="action-button">Cerrar sesión</button>
                     <button id="deleteAccountButton" class="action-button danger">Borrar cuenta</button>
                 </div>
             </div>
+
         </section>
     </main>
 
@@ -58,6 +67,11 @@
             <button id="confirmDelete">Confirmar eliminación</button>
             <button id="cancelDelete">Cancelar</button>
         </div>
+    </div>
+    <!-- MODAL CARTAS-->
+    <div class="modal" id="modal" onclick="closeModal(event)">
+        <div class="modal-content" id="modalContent"></div>
+        <span class="close" onclick="closeModal(event)">×</span>
     </div>
     <!-- TOKENS USUARIO-->
     <div id="userTokens" class="user-tokens">

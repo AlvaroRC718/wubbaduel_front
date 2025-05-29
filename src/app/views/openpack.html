@@ -9,12 +9,13 @@
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body class="body-index">
+<body class="body-index no-scroll">
 
     <nav>
         <a href="/index" class="logo"><img src="resources/img/portal.gif" alt="Wubba Lubba Dub-Duel logo"></a>
         <a href="/cards">Dubdex</a>
         <a href="/shop">Dub-Market</a>
+        <a href="/social">Social</a>
         <a href="/login " id="login-link"></a>
         <div class="music-control">
             <button id="toggleMusic">🔇</button>
@@ -24,17 +25,29 @@
             </audio>
         </div>
     </nav>
+
     <main>
-        <section >
+        <section>
             <img id="pack" src="resources/img/portal.gif" alt="Sobre de Cartas" class="pack-image">
             <div id="cards-container-pack"></div>
         </section>
     </main>
 
-    <footer>
+    <footer class="fixed-footer">
         ©2025 Cybercode Creations. Wubba Lubba Dub-Duel!.
     </footer>
 
+    <!-- LOADING MODAL -->
+    <div id="loadingModal" class="loading-modal">
+        <div class="loading-content">
+            <h2 class="pixel-font-dark">Cargando Sobre...</h2>
+            <div class="progress-bar">
+                <div class="progress-fill"></div>
+            </div>
+            <img src="resources/img/portal.gif" alt="Portal animado" class="loading-portal">
+            <p id="loadingMessage"></p>
+        </div>
+    </div>
     <!-- MODAL -->
     <div class="modal" id="modal" onclick="closeModal(event)">
         <div class="modal-content" id="modalContent"></div>

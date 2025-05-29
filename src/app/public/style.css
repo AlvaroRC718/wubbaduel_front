@@ -32,6 +32,11 @@
   transform-origin: center;
 }
 
+.no-scroll {
+  overflow: hidden;
+  height: 100%;
+}
+
 @keyframes spinPortal {
   from {
     transform: rotate(0deg) scale(2);
@@ -127,15 +132,15 @@ section {
   margin: auto;
 }
 
+.hidden {
+  display: none;
+}
+
 .card-grid {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 5%;
-}
-
-.card-base {
-  width: 250px;
 }
 
 .card {
@@ -327,22 +332,11 @@ section {
   border-radius: 20px;
   box-shadow: 0 0 30px rgba(0, 255, 136, 0.3), 0 0 10px rgba(0, 255, 255, 0.2);
   color: #f0f0f0;
-  animation: fadeDown 1s ease-out;
   border: 2px solid #00ff88;
   position: relative;
   overflow: hidden;
   margin-top: 6%;
   margin-bottom: 6%;
-}
-
-.how-to-play-section::before {
-  content: "";
-  position: absolute;
-  top: -20%;
-  left: -20%;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(circle at center, rgba(0, 255, 136, 0.08), transparent);
 }
 
 h2 {
@@ -437,12 +431,112 @@ h2 {
   }
 }
 
+
+.evil-morty-promo-section {
+  width: 70%;
+  margin: auto;
+  padding: 3%;
+  background: radial-gradient(circle at center, #260026 0%, #000 100%);
+  border-radius: 20px;
+  box-shadow:
+    0 0 40px rgba(255, 0, 85, 0.6),
+    0 0 25px rgba(255, 255, 0, 0.3),
+    0 0 15px rgba(0, 255, 255, 0.25);
+  color: #f0f0f0;
+  border: 2px solid #ff0055;
+  position: relative;
+  overflow: hidden;
+  margin-top: 6%;
+  margin-bottom: 6%;
+  text-align: center;
+}
+
+.evil-morty-promo-section .section-title {
+  font-family: 'Bungee', cursive;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: #ff0055;
+  text-shadow: 0 0 8px #ff0077;
+  text-shadow:
+    -3px -3px 0 #000,
+    3px -3px 0 #000,
+    -3px 3px 0 #000,
+    3px 3px 0 #000,
+    -3px 0px 0 #000,
+    3px 0px 0 #000,
+    0px -3px 0 #000,
+    0px 3px 0 #000,
+    -2px -2px 0 #000,
+    2px -2px 0 #000,
+    -2px 2px 0 #000,
+    2px 2px 0 #000,
+    0 0 8px #ff0077;
+}
+
+.evil-morty-promo-section .section-subtitle {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  color: #ccc;
+}
+
+.promo-card-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.album-card-dark {
+  padding: 20px 15px;
+  border-radius: 20px;
+  background: linear-gradient(145deg, #1a001a, #000000);
+  border: 1px solid rgba(255, 0, 85, 0.3);
+  box-shadow:
+    inset 0 0 20px rgba(255, 0, 85, 0.1),
+    0 0 20px rgba(255, 0, 85, 0.3),
+    0 0 10px rgba(255, 255, 0, 0.2);
+  backdrop-filter: blur(4px);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 285px;
+}
+
+.play-button-dark {
+  font-family: 'Bungee', cursive;
+  background: #ff0055;
+  color: #000;
+  border: none;
+  border-radius: 50px;
+  padding: 0.5rem 1.5rem;
+  font-size: 1.1rem;
+  text-decoration: none;
+  box-shadow: 0 0 10px #ff0055, 0 0 20px #ff9900;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  animation: float 4s infinite;
+}
+
+.play-button-dark:hover {
+  cursor: pointer;
+  background: linear-gradient(90deg, #ff0055, #ff9900);
+  transform: scale(1.05);
+  box-shadow: 0 0 25px rgba(255, 0, 85, 0.6), 0 0 8px rgba(255, 204, 0, 0.4);
+}
+
 footer {
   text-align: center;
   font-size: 12px;
   background: #111;
   color: #666;
-  padding: 20px;
+  padding: 15px;
+}
+
+.fixed-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
 }
 
 /* Modal */
@@ -466,7 +560,8 @@ footer {
   padding: 0.5%;
   font-size: x-large;
 }
-.modal-content.card{
+
+.modal-content.card {
   max-width: 375px;
   width: 375px;
 }
@@ -528,6 +623,8 @@ footer {
   transform: scale(1.05);
   box-shadow: 0 0 15px rgba(0, 255, 136, 0.8);
 }
+
+
 
 /*/////////////////////////////////////////////register.html/////////////////////////////////////////////////*/
 .registro-seccion {
@@ -592,7 +689,7 @@ footer {
   margin-left: 4px;
 }
 
-.red{
+.red {
   color: #ff4444;
   font-weight: lighter;
   font-size: small;
@@ -711,10 +808,7 @@ footer {
 }
 
 .album-card {
-  padding-top: 15px;
-  padding-left: 20px;
-  padding-right: 10px;
-  padding-bottom: 20px;
+  padding: 20px 15px;
   border-radius: 16px;
   background: linear-gradient(145deg, #1c1c1c, #000000);
   border: 1px solid rgba(0, 255, 136, 0.2);
@@ -724,9 +818,33 @@ footer {
   backdrop-filter: blur(3px);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   max-width: 285px;
+}
+
+.favorite-btn {
+  background: none;
+  border: none;
+  margin-top: 5%;
+  font-size: xx-large;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.favorite-btn:hover {
+  cursor: pointer;
+  transform: scale(1.10);
+}
+
+.favorite-btn.locked {
+  color: lightgray;
+  cursor: not-allowed;
+  user-select: none;
+}
+
+.favorite-btn.locked:hover {
+  transform: none;
 }
 
 .locked-card {
@@ -776,8 +894,13 @@ footer {
 }
 
 @keyframes loadingProgress {
-  0% { width: 0%; }
-  100% { width: 100%; }
+  0% {
+    width: 0%;
+  }
+
+  100% {
+    width: 100%;
+  }
 }
 
 .loading-portal {
@@ -786,8 +909,13 @@ footer {
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 .card-filters {
@@ -797,6 +925,7 @@ footer {
   justify-content: center;
   flex-wrap: wrap;
 }
+
 .search-input,
 .rarity-select {
   font-family: 'Press Start 2P', cursive;
@@ -829,7 +958,7 @@ footer {
   background: #000;
 }
 
-.card-count{
+.card-count {
   font-family: 'Press Start 2P', cursive;
   color: #00ff88;
   text-align: center;
@@ -896,7 +1025,6 @@ footer {
   justify-content: center;
   flex-wrap: wrap;
   gap: 2.5rem;
-  margin: 4%;
 }
 
 .booster-card {
@@ -953,6 +1081,94 @@ footer {
   width: 25%;
 }
 
+.ratios-button {
+  font-family: 'Bungee', cursive;
+  background: #00ccff;
+  color: #000;
+  border: none;
+  text-decoration: none;
+  border-radius: 50px;
+  padding: 4%;
+  font-size: small;
+  cursor: pointer;
+  box-shadow: 0 0 10px #00ccff, 0 0 20px #00ccff;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  margin-bottom: 5%;
+}
+
+.ratios-button:hover {
+  cursor: pointer;
+  background: linear-gradient(90deg, #00ccff, #00ffaa);
+  transform: scale(1.05);
+  box-shadow: 0 0 25px rgba(0, 255, 136, 0.6), 0 0 8px rgba(0, 255, 255, 0.4);
+}
+
+.ratios-modal {
+  display: none;
+  position: fixed;
+  z-index: 9998;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  justify-content: center;
+  align-items: center;
+}
+
+.ratios-content {
+  background: #0f0f0f;
+  color: white;
+  padding: 2rem;
+  max-width: 400px;
+  width: 90%;
+  text-align: center;
+  font-family: 'Bungee', sans-serif;
+  border: 2px solid rgba(0, 255, 136, 0.3);
+  border-radius: 18px;
+  box-shadow: 0 0 18px rgba(0, 255, 136, 0.2);
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.ratios-content:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 28px rgba(0, 255, 136, 0.5);
+}
+
+.close-modal {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.ratios-list {
+  list-style: none;
+  margin-top: 1rem;
+}
+
+.ratios-list li {
+  display: flex;
+  align-items: center;
+  gap: 5%;
+  margin: 0.5rem 0;
+  font-size: x-large;
+}
+
+.rarity-icon {
+  width: 34px;
+  height: auto;
+  object-fit: contain;
+}
+
+.rarity-icon:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 25px rgba(0, 255, 136, 0.6), 0 0 8px rgba(0, 255, 255, 0.4);
+}
+
+
 /*///////////////////////////////////////profile.html/////////////////////////////////////////////////*/
 .user-profile {
   margin: 6% auto;
@@ -994,6 +1210,18 @@ footer {
   font-size: 1.1rem;
 }
 
+#memberSince {
+  color: #00ffcc;
+}
+
+#userRank {
+  color: #00ffcc;
+}
+
+#userPhrase {
+  color: #00ffcc;
+}
+
 .tickets-info {
   display: flex;
   align-items: center;
@@ -1012,22 +1240,22 @@ footer {
 }
 
 .action-button {
-    background: #00ffaa;
-    font-family: 'Bungee', sans-serif;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 10px;
-    margin: 10px;
-    cursor: pointer;
-    transition: background 0.3s ease;
+  background: #00ffaa;
+  font-family: 'Bungee', sans-serif;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10px;
+  margin: 10px;
+  cursor: pointer;
+  transition: background 0.3s ease;
 }
 
 .action-button:hover {
-    background: linear-gradient(90deg, #00ffaa, #00ccff);
+  background: linear-gradient(90deg, #00ffaa, #00ccff);
 }
 
 .action-button.danger {
-    background-color: #ff5050;
+  background-color: #ff5050;
 }
 
 .action-button.danger:hover {
@@ -1035,90 +1263,118 @@ footer {
 }
 
 #passwordModal {
-    display: none;
-    background-color: rgba(0, 0, 0, 0.7);
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 9999;
-    text-align: center;
+  display: none;
+  background-color: rgba(0, 0, 0, 0.7);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  text-align: center;
 }
 
-#passwordModal > div {
-    background-color: #2c2c2c; 
-    margin-top: 5%; 
-    padding: 2%;
-    border-radius: 8px;
-    width: 20%;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+#passwordModal>div {
+  background-color: #2c2c2c;
+  margin-top: 5%;
+  padding: 2%;
+  border-radius: 8px;
+  width: 20%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 
 }
 
 #passwordModal p {
-    color: #ff4c4c; 
-    font-weight: bold;
-    font-size: 18px;
+  color: #ff4c4c;
+  font-weight: bold;
+  font-size: 18px;
 }
 
 #passwordInput {
-    padding: 10px;
-    margin-top: 10px;
-    border: 2px solid #ff4c4c; 
-    border-radius: 5px;
-    width: 100%;
-    font-size: 16px;
-    background-color: #333; 
-    color: white; 
+  padding: 10px;
+  margin-top: 10px;
+  border: 2px solid #ff4c4c;
+  border-radius: 5px;
+  width: 100%;
+  font-size: 16px;
+  background-color: #333;
+  color: white;
 }
 
 #passwordInput:hover {
-    box-shadow: 0 0 10px #e60000;
+  box-shadow: 0 0 10px #e60000;
 }
 
 #passwordInput:focus {
-    box-shadow: 0 0 10px #e60000;
+  box-shadow: 0 0 10px #e60000;
 }
 
-#confirmDelete, #cancelDelete {
-    width: 100%;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-top: 10px;
-    border: none;
-    font-size: 16px;
+#confirmDelete,
+#cancelDelete {
+  width: 100%;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+  border: none;
+  font-size: 16px;
 }
 
 #confirmDelete {
-    background-color: #ff4c4c; 
-    color: white;
+  background-color: #ff4c4c;
+  color: white;
 }
 
 #confirmDelete:hover {
-    background-color: #e60000;
+  background-color: #e60000;
 }
 
 #cancelDelete {
-    background-color: #444; 
-    color: white;
+  background-color: #444;
+  color: white;
 }
 
 #cancelDelete:hover {
-    background-color: #666; 
+  background-color: #666;
 }
 
-#confirmDelete:hover, #cancelDelete:hover {
-    transform: scale(1.05); 
-    transition: 0.2s ease-in-out;
+#confirmDelete:hover,
+#cancelDelete:hover {
+  transform: scale(1.05);
+  transition: 0.2s ease-in-out;
+}
+
+.favorite-cards {
+  display: none;
+  margin-top: 2%;
+  margin-bottom: 2%;
+  padding: 2%;
+  background: linear-gradient(145deg, #1c1c1c, #0d0d0d);
+  border-radius: 20px;
+  box-shadow: 0 0 30px rgba(0, 255, 136, 0.3), 0 0 10px rgba(0, 255, 255, 0.2);
+  border: 2px solid #00ff88;
+}
+
+.favorite-cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6%;
+  margin: 3%;
+}
+
+.company-note {
+  font-size: 0.8rem;
+  color: #aaa;
+  text-align: center;
+  margin-top: 10px;
 }
 
 /*///////////////////////////////////////addtokens.html/////////////////////////////////////////////////*/
@@ -1207,7 +1463,7 @@ footer {
   cursor: pointer;
   transition: transform 0.6s ease, opacity 0.6s ease;
   margin: auto;
-  margin-top: 5%;
+  margin-top: 10%;
   display: block;
 }
 
@@ -1219,8 +1475,7 @@ footer {
 #cards-container-pack {
   width: 90%;
   margin: auto;
-  margin-top: 4%;
-  margin-bottom: 4%;
+  margin-top: 10%;
   display: flex;
   flex-wrap: wrap;
   gap: 5%;
