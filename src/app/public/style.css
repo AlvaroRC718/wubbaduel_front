@@ -639,8 +639,8 @@ footer {
   border: 2px solid #00ff88;
   position: relative;
   overflow: hidden;
-  margin-top: 5%;
-  margin-bottom: 5%;
+  margin-top: 1.5%;
+  margin-bottom: 2%;
 }
 
 .contenedor-formulario {
@@ -782,7 +782,7 @@ footer {
 
 .album {
   width: 90%;
-  margin: 2% auto;
+  margin: 1.5% auto;
   padding: 1%;
   padding-top: 2%;
   padding-bottom: 2%;
