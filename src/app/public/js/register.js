@@ -1,10 +1,22 @@
 "use strict";
 document.addEventListener('DOMContentLoaded', () => {
-  // Si existe un usuario, redirigir a /profile
-  const savedUser = JSON.parse(localStorage.getItem('user'));
-  if (savedUser) {
-      window.location.href = '/profile';
-      return; 
+  // Si existe un usuario, desencriptar y redirigir a /profile
+  const encryptedUser = localStorage.getItem('user');
+  if (encryptedUser) {
+    try {
+      const bytes = CryptoJS.AES.decrypt(encryptedUser, 'wubbaduel');
+      const decryptedStr = bytes.toString(CryptoJS.enc.Utf8);
+      if (decryptedStr) {
+        const savedUser = JSON.parse(decryptedStr);
+        if (savedUser) {
+          window.location.href = '/profile';
+          return; 
+        }
+      }
+    } catch (error) {
+      console.error("Error al desencriptar el usuario:", error);
+      // Si hay error, continuar sin redirigir
+    }
   }
 });
 
@@ -12,8 +24,6 @@ document.addEventListener('DOMContentLoaded', () => {
 let resultado;
 let errorPresente = 0;
 let p_operacion = document.createElement('p');
-
-
 
 function genOperacion() { //test OK
   let numSimbolo = Math.floor(Math.random() * 3) + 1;
@@ -50,9 +60,6 @@ function genOperacion() { //test OK
       break;
   }
 }
-
-
-
 
 function comprobarCampos() { //test OK
   let validarNombre = /^[A-Za-z ]{1,15}$/;
@@ -135,7 +142,9 @@ function comprobarCampos() { //test OK
       })
       .then(data => {
         console.log("Registro exitoso:", data);
-        localStorage.setItem('user', JSON.stringify(data));
+        // Encriptar antes de guardar en localStorage
+        const encrypted = CryptoJS.AES.encrypt(JSON.stringify(data), 'wubbaduel').toString();
+        localStorage.setItem('user', encrypted);
         window.location.href = '/profile'; // o a donde quieras ir después del login
       })
       .catch(error => {
@@ -155,7 +164,6 @@ form.addEventListener("submit", function(event) {
   event.preventDefault();  
   comprobarCampos();  
 });
-
 
 function mostrarError(elemento, mensaje) {
 
@@ -199,6 +207,4 @@ function ocultarError(elemento) {
   }
 }
 
-
 genOperacion();
-

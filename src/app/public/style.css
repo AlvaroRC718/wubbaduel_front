@@ -1,4 +1,13 @@
-@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+@font-face {
+  font-family: 'Bungee';
+  src: url('resources/fonts/Bungee-Regular.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'Press Start 2P';
+  src: url('resources/fonts/PressStart2P-Regular.ttf') format('truetype');
+}
+
 
 *,
 *::before,
@@ -9,6 +18,7 @@
 }
 
 .body-index {
+  line-height: 1.2;
   height: 100%;
   overflow-x: hidden;
   overflow-y: auto;
@@ -155,6 +165,7 @@ section {
   box-sizing: border-box;
   max-width: 250px;
   min-width: 250px;
+  text-align: left;
 }
 
 .card:hover {
@@ -327,7 +338,7 @@ section {
 .how-to-play-section {
   width: 70%;
   margin: auto;
-  padding: 3%;
+  padding: 1.5%;
   background: linear-gradient(145deg, #1c1c1c, #0d0d0d);
   border-radius: 20px;
   box-shadow: 0 0 30px rgba(0, 255, 136, 0.3), 0 0 10px rgba(0, 255, 255, 0.2);
@@ -409,6 +420,7 @@ h2 {
   box-shadow: 0 0 10px #00ffaa, 0 0 20px #00ffaa;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   animation: float 4s infinite;
+  line-height: 1.2;
 }
 
 .play-button:hover {
@@ -435,7 +447,7 @@ h2 {
 .evil-morty-promo-section {
   width: 70%;
   margin: auto;
-  padding: 3%;
+  padding: 1.5%;
   background: radial-gradient(circle at center, #260026 0%, #000 100%);
   border-radius: 20px;
   box-shadow:
@@ -486,7 +498,7 @@ h2 {
 }
 
 .album-card-dark {
-  padding: 20px 15px;
+  padding: 1.5%;
   border-radius: 20px;
   background: linear-gradient(145deg, #1a001a, #000000);
   border: 1px solid rgba(255, 0, 85, 0.3);
@@ -595,13 +607,13 @@ footer {
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
   font-family: 'Press Start 2P', cursive;
-  display: none;
-  width: 10%;
+  display: flex;
+  width: 8%;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .user-tokens img {
-  width: 15%;
+  width: 17%;
   filter: drop-shadow(0 0 6px rgba(0, 255, 136, 0.6));
 }
 
@@ -918,7 +930,7 @@ footer {
   }
 }
 
-#loadingMessage{
+#loadingMessage {
   margin-top: 2%;
 }
 
@@ -1073,12 +1085,11 @@ footer {
 }
 
 .booster-description button {
-  margin-top: 10%;
+  margin-top: 7%;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-  gap: 10%;
 }
 
 .booster-description img {
@@ -1098,6 +1109,7 @@ footer {
   box-shadow: 0 0 10px #00ccff, 0 0 20px #00ccff;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   margin-bottom: 5%;
+  line-height: 1.2;
 }
 
 .ratios-button:hover {
@@ -1177,13 +1189,16 @@ footer {
 .user-profile {
   margin: 1.5% auto;
   width: 70%;
-  text-align: center;
-  padding: 3%;
+  padding: 1.5%;
   background: linear-gradient(145deg, #1c1c1c, #0d0d0d);
   color: #f0f0f0;
   border-radius: 20px;
   box-shadow: 0 0 30px rgba(0, 255, 136, 0.3), 0 0 10px rgba(0, 255, 255, 0.2);
   border: 2px solid #00ff88;
+}
+
+.user-info {
+  text-align: center;
 }
 
 .user-info .avatar {
@@ -1252,6 +1267,7 @@ footer {
   cursor: pointer;
   transition: transform 0.2s ease, background-color 0.3s ease;
   transform: scale(1);
+  line-height: 1.2;
 }
 
 .action-button:hover {
@@ -1279,6 +1295,11 @@ footer {
   height: 100%;
   z-index: 9999;
   text-align: center;
+}
+
+#passwordModal img {
+  width: 200px;
+  height: auto;
 }
 
 #passwordModal>div {
@@ -1362,7 +1383,8 @@ footer {
   display: none;
   margin-top: 2%;
   margin-bottom: 2%;
-  padding: 2%;
+  padding-top: 2%;
+  padding-bottom: 2%;
   background: linear-gradient(145deg, #1c1c1c, #0d0d0d);
   border-radius: 20px;
   box-shadow: 0 0 30px rgba(0, 255, 136, 0.3), 0 0 10px rgba(0, 255, 255, 0.2);
@@ -1373,8 +1395,7 @@ footer {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 6%;
-  margin: 3%;
+  gap: 4%;
 }
 
 .company-note {
@@ -1429,6 +1450,7 @@ footer {
   cursor: pointer;
   box-shadow: 0 0 10px #00ffaa, 0 0 20px #00ffaa;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+  line-height: 1.2;
 }
 
 .videobtn:hover {
@@ -1443,12 +1465,13 @@ footer {
   color: #000;
   border: none;
   border-radius: 50px;
-  padding: 0.6rem 2rem;
-  font-size: 1.2rem;
+  padding: 0.6rem 1.5rem;
+  font-size: 1.1rem;
   cursor: pointer;
   box-shadow: 0 0 10px #00ffaa, 0 0 20px #00ffaa;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   animation: float 1.5s infinite;
+  line-height: 1.2;
 }
 
 .claim-btn:disabled {
@@ -1480,7 +1503,7 @@ footer {
 }
 
 #cards-container-pack {
-  width: 90%;
+  width: 100%;
   margin: auto;
   margin-top: 10%;
   display: flex;
@@ -1522,12 +1545,23 @@ footer {
   overflow: hidden;
   margin-top: 1.5%;
   max-width: 1300px;
-  min-height: 600px;
+}
+
+.social-section h2 {
+  margin: 0%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.glootie {
+  width: 5%; 
+  height: auto;
 }
 
 #div-social-cards {
   width: 100%;
-  height: 500px;
+  height: 80%;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -1535,6 +1569,7 @@ footer {
 
 #divButtons {
   width: 100%;
+  height: 10%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -1545,14 +1580,14 @@ footer {
   box-shadow: inset 0 0 20px rgba(0, 255, 136, 0.15), 0 0 10px rgba(0, 255, 255, 0.1);
   border: 1px solid rgba(0, 255, 136, 0.2);
   padding: 1%;
-  margin: 1.5%;
-  width: 370px;
+  margin: 1%;
+  width: 30%;
+  height: 15%;
   text-align: center;
   background: #222;
   color: white;
   transition: transform 0.2s ease;
   display: flex;
-  max-height: 130px;
 }
 
 .social-card:hover {
@@ -1560,8 +1595,8 @@ footer {
 }
 
 .social-card .avatar {
-  width: 100px;
-  height: 100px;
+  width: 25%;
+  height: auto;
   border-radius: 50%;
   object-fit: cover;
   margin-bottom: 0.5rem;
@@ -1594,7 +1629,7 @@ footer {
 }
 
 .pagination-buttons {
-  margin: 1rem 0;
+  margin: 0.5%;
   text-align: center;
 }
 

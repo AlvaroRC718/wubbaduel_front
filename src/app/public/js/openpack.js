@@ -30,7 +30,18 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     showLoading(); // Mostrar al inicio
 
-    const savedUser = JSON.parse(localStorage.getItem('user'));
+    // Desencriptar el usuario directamente
+    let savedUser = null;
+    try {
+        const encryptedUser = localStorage.getItem('user');
+        if (encryptedUser) {
+            const decrypted = CryptoJS.AES.decrypt(encryptedUser, 'wubbaduel').toString(CryptoJS.enc.Utf8);
+            savedUser = JSON.parse(decrypted);
+        }
+    } catch (error) {
+        console.error("Error al desencriptar el usuario:", error);
+    }
+
     if (!savedUser) {
         window.location.href = '/login';
         return;

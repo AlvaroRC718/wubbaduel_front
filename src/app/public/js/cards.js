@@ -5,7 +5,12 @@ let favoriteCardIds = [];
 /////////////////////////////////////Favoritas//////////////////////////////////
 async function fetchFavoriteCardIds() {
   try {
-    const savedUser = JSON.parse(localStorage.getItem("user"));
+    // Desencriptar en línea al leer localStorage
+    const encryptedUser = localStorage.getItem("user");
+    if (!encryptedUser) return [];
+    const decryptedUserStr = CryptoJS.AES.decrypt(encryptedUser, 'wubbaduel').toString(CryptoJS.enc.Utf8);
+    if (!decryptedUserStr) return [];
+    const savedUser = JSON.parse(decryptedUserStr);
     if (!savedUser || !savedUser.id) return [];
 
     const response = await fetch('http://localhost:8080/api/decks/favorites', {
@@ -28,38 +33,46 @@ async function fetchFavoriteCardIds() {
 }
 
 async function toggleFavorite(event, cardId) {
-  const savedUser = JSON.parse(localStorage.getItem("user"));
-  if (!savedUser || !savedUser.id) return;
+  try {
+    const encryptedUser = localStorage.getItem("user");
+    if (!encryptedUser) return;
+    const decryptedUserStr = CryptoJS.AES.decrypt(encryptedUser, 'wubbaduel').toString(CryptoJS.enc.Utf8);
+    if (!decryptedUserStr) return;
+    const savedUser = JSON.parse(decryptedUserStr);
+    if (!savedUser || !savedUser.id) return;
 
-  // Verificamos que la carta este desbloqueada
-  const userCardsIds = userCards.map(uc => uc.card.id);
-  if (!userCardsIds.includes(cardId)) {
-    alert("No puedes seleccionar como favorito una carta que no está desbloqueada.");
-    return;
-  }
-
-  const button = event.currentTarget;
-  const isCurrentlyFavorite = favoriteCardIds.includes(cardId);
-
-  if (isCurrentlyFavorite) {
-    // 🔴 Eliminar de favoritos
-    const success = await removeFromFavorites(savedUser.id, cardId);
-    if (success) {
-      favoriteCardIds = favoriteCardIds.filter(id => id !== cardId);
-      button.textContent = "🤍";
-    }
-  } else {
-    // ⚪ Agregar a favoritos (máximo 3)
-    if (favoriteCardIds.length >= 3) {
-      alert("Solo puedes tener 3 cartas favoritas.");
+    // Verificamos que la carta este desbloqueada
+    const userCardsIds = userCards.map(uc => uc.card.id);
+    if (!userCardsIds.includes(cardId)) {
+      alert("No puedes seleccionar como favorito una carta que no está desbloqueada.");
       return;
     }
 
-    const success = await addToFavorites(savedUser.id, cardId);
-    if (success) {
-      favoriteCardIds.push(cardId);
-      button.textContent = "❤️";
+    const button = event.currentTarget;
+    const isCurrentlyFavorite = favoriteCardIds.includes(cardId);
+
+    if (isCurrentlyFavorite) {
+      // 🔴 Eliminar de favoritos
+      const success = await removeFromFavorites(savedUser.id, cardId);
+      if (success) {
+        favoriteCardIds = favoriteCardIds.filter(id => id !== cardId);
+        button.textContent = "🤍";
+      }
+    } else {
+      // ⚪ Agregar a favoritos (máximo 3)
+      if (favoriteCardIds.length >= 3) {
+        alert("Solo puedes tener 3 cartas favoritas.");
+        return;
+      }
+
+      const success = await addToFavorites(savedUser.id, cardId);
+      if (success) {
+        favoriteCardIds.push(cardId);
+        button.textContent = "❤️";
+      }
     }
+  } catch (error) {
+    console.error("Error toggling favorite:", error);
   }
 }
 
@@ -110,9 +123,20 @@ async function fetchAllCards() {
 
 async function fetchUnlockedCards() {
   try {
-    const savedUser = JSON.parse(localStorage.getItem('user'));
-    if (!savedUser || !savedUser.id) {
+    // Desencriptar usuario en línea
+    const encryptedUser = localStorage.getItem("user");
+    if (!encryptedUser) {
       console.error('Usuario no encontrado en localStorage');
+      return [];
+    }
+    const decryptedUserStr = CryptoJS.AES.decrypt(encryptedUser, 'wubbaduel').toString(CryptoJS.enc.Utf8);
+    if (!decryptedUserStr) {
+      console.error('Error al desencriptar usuario');
+      return [];
+    }
+    const savedUser = JSON.parse(decryptedUserStr);
+    if (!savedUser || !savedUser.id) {
+      console.error('Usuario inválido');
       return [];
     }
 
@@ -136,7 +160,15 @@ async function fetchUnlockedCards() {
 
 function generateCards() {
   const container = document.getElementById("cards-container");
-  const savedUser = JSON.parse(localStorage.getItem('user'));
+
+  // Desencriptar usuario en línea
+  const encryptedUser = localStorage.getItem("user");
+  let savedUser = null;
+  if (encryptedUser) {
+    const decryptedUserStr = CryptoJS.AES.decrypt(encryptedUser, 'wubbaduel').toString(CryptoJS.enc.Utf8);
+    if (decryptedUserStr) savedUser = JSON.parse(decryptedUserStr);
+  }
+
   const searchQuery = document.getElementById("searchInput").value.toLowerCase();
   const selectedRarity = document.getElementById("rarityFilter").value;
 
@@ -165,7 +197,6 @@ function generateCards() {
         ? `<button class="favorite-btn" data-id="${character.id}" onclick="toggleFavorite(event,${character.id})">${favoriteIcon}</button>`
         : `<span class="favorite-btn locked">🤍</span>`)
       : '';
-
 
     const card = `
       <div class="album-card">
@@ -202,30 +233,29 @@ async function init() {
   const progressFill = document.querySelector(".progress-fill");
   const loadingMessage = document.getElementById("loadingMessage");
   const messages = [
-  "Escaneando tu Dubdex... Cuidado con los parásitos de memoria.",
-  "Buscando tus Dubs... en el espacio-tiempo cuántico.",
-  "Rick está ordenando tus Dubs. No te emociones, Morty.",
-  "Decodificando ADN de Dubs interdimensionales...",
-  "Wubba Lubba Dub-Dex! Esto puede tardar un poquito...",
-  "Comprobando si tienes una carta que valga la pena.",
-  "Morty está clasificando tus Dubs... espera sentado.",
-  "¡Multiverso inestable! Reiniciando catálogo de Dubs...",
-  "Cargando tus Dubs... con un 3% de ciencia y un 97% de sarcasmo.",
-  "Rick está mezclando tus Dubs con tequila... por eficiencia.",
-  "¿Sabías que tus Dubs podrían estar vivas? Rick no lo niega.",
-  "Recuperando Dubs perdidos en la dimensión de los calcetines.",
-  "Analizando rarezas... sí, la mayoría son basura, Morty.",
-  "¡Alerta de carta legendaria! ...es broma. Sigue esperando.",
-  "Morty se metió en la Dubdex otra vez. Estamos limpiando el desastre.",
-  "Accediendo a tus Dubs... con el permiso de la Federación Galáctica.",
-  "Tus Dubs están encriptadas con ácido... descomponiéndolas ahora.",
-  "Cuidado, hay un Meeseeks ayudando. Esto podría explotar.",
-  "Escaneando tus stats... sí, siguen siendo mediocres.",
-  "Invocando tu colección desde la dimensión Rickroll. Ups."
-];
-const randomIndex = Math.floor(Math.random() * messages.length);
-loadingMessage.textContent = messages[randomIndex];
-
+    "Escaneando tu Dubdex... Cuidado con los parásitos de memoria.",
+    "Buscando tus Dubs... en el espacio-tiempo cuántico.",
+    "Rick está ordenando tus Dubs. No te emociones, Morty.",
+    "Decodificando ADN de Dubs interdimensionales...",
+    "Wubba Lubba Dub-Dex! Esto puede tardar un poquito...",
+    "Comprobando si tienes una carta que valga la pena.",
+    "Morty está clasificando tus Dubs... espera sentado.",
+    "¡Multiverso inestable! Reiniciando catálogo de Dubs...",
+    "Cargando tus Dubs... con un 3% de ciencia y un 97% de sarcasmo.",
+    "Rick está mezclando tus Dubs con tequila... por eficiencia.",
+    "¿Sabías que tus Dubs podrían estar vivas? Rick no lo niega.",
+    "Recuperando Dubs perdidos en la dimensión de los calcetines.",
+    "Analizando rarezas... sí, la mayoría son basura, Morty.",
+    "¡Alerta de carta legendaria! ...es broma. Sigue esperando.",
+    "Morty se metió en la Dubdex otra vez. Estamos limpiando el desastre.",
+    "Accediendo a tus Dubs... con el permiso de la Federación Galáctica.",
+    "Tus Dubs están encriptadas con ácido... descomponiéndolas ahora.",
+    "Cuidado, hay un Meeseeks ayudando. Esto podría explotar.",
+    "Escaneando tus stats... sí, siguen siendo mediocres.",
+    "Invocando tu colección desde la dimensión Rickroll. Ups."
+  ];
+  const randomIndex = Math.floor(Math.random() * messages.length);
+  loadingMessage.textContent = messages[randomIndex];
 
   const token = Symbol("init");
   currentInitToken = token;
@@ -238,7 +268,13 @@ loadingMessage.textContent = messages[randomIndex];
 
   try {
     const fetchCards = fetchAllCards();
-    const savedUser = JSON.parse(localStorage.getItem("user"));
+    const encryptedUser = localStorage.getItem("user");
+    let savedUser = null;
+    if (encryptedUser) {
+      const decryptedUserStr = CryptoJS.AES.decrypt(encryptedUser, 'wubbaduel').toString(CryptoJS.enc.Utf8);
+      if (decryptedUserStr) savedUser = JSON.parse(decryptedUserStr);
+    }
+
     const fetchUserCards = savedUser ? fetchUnlockedCards() : Promise.resolve([]);
     const fetchFavorites = savedUser ? fetchFavoriteCardIds() : Promise.resolve([]);
 
@@ -263,7 +299,7 @@ loadingMessage.textContent = messages[randomIndex];
   }
 }
 
-
 init();
 document.getElementById("searchInput").addEventListener("input", generateCards);
 document.getElementById("rarityFilter").addEventListener("change", generateCards);
+
