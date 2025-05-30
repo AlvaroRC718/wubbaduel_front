@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Wubba Lubba Dub-Duel!: Dubdex</title>
+    <link rel="icon" href="resources/img/logo.png" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=Bungee&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="body-index">
+
+    <nav>
+        <a href="/index" class="logo"><img src="resources/img/portal.gif" alt="Wubba Lubba Dub-Duel logo"></a>
+        <a href="/cards">Dubdex</a>
+        <a href="/shop">Dub-Market</a>
+        <a href="/social">Social</a>
+        <a href="/login " id="login-link"></a>
+        <div class="music-control">
+            <button id="toggleMusic">🔇</button>
+            <audio id="backgroundMusic" loop>
+                <source src="resources/audio/main_theme.weba" type="audio/mpeg">
+                Tu navegador no soporta audio HTML5.
+            </audio>
+        </div>
+    </nav>
+
+    <main>
+        <section class="album">
+            <h2 class="pixel-font-dark">Dubdex</h2>
+            <div class="card-filters">
+                <input type="text" id="searchInput" placeholder="Buscar por nombre..." class="search-input" />
+                <div class="card-count" id="cardCount">0 / 0</div>
+                <select id="rarityFilter" class="rarity-select">
+                    <option value="all">Todas las rarezas</option>
+                    <option value="NORMAL">Normal</option>
+                    <option value="RARE">Rara</option>
+                    <option value="EPIC">Épica</option>
+                    <option value="LEGENDARY">Legendaria</option>
+                </select>
+            </div>
+            <div class="card-container" id="cards-container">
+
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        ©2025 Cybercode Creations. Wubba Lubba Dub-Duel!.
+    </footer>
+
+    <!-- LOADING MODAL -->
+    <div id="loadingModal" class="loading-modal">
+        <div class="loading-content">
+            <h2 class="pixel-font-dark">Cargando Dubdex...</h2>
+            <div class="progress-bar">
+                <div class="progress-fill"></div>
+            </div>
+            <img src="resources/img/portal.gif" alt="Portal animado" class="loading-portal">
+            <p id="loadingMessage"></p>
+        </div>
+    </div>
+    <!-- MODAL -->
+    <div class="modal" id="modal" onclick="closeModal(event)">
+        <div class="modal-content" id="modalContent"></div>
+    </div>
+    <!-- TOKENS USUARIO-->
+    <div id="userTokens" class="user-tokens">
+        <a href="/addtokens" class="tokens-link"><span id="tokensCount">0</span><img src="resources/img/ticket.webp"
+                alt="ticket" /></a>
+    </div>
+    <!-- RESOURCES -->
+    <audio id="portalSound" src="resources/audio/portal_sound.mp3" preload="auto"></audio>
+    <!-- SCRIPTS -->
+    <script src="js/comun.js"></script>
+    <script src="js/cards.js"></script>
+    <script src="js/modalPortalAnimation.js" defer></script>
+</body>
+
+</html>

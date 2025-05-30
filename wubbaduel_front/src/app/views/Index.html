@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Wubba Lubba Dub-Duel!</title>
+  <link rel="icon" href="resources/img/logo.png" type="image/png">
+  <link href="https://fonts.googleapis.com/css2?family=Bungee&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="body-index">
+
+  <nav>
+    <a href="/index" class="logo"><img src="resources/img/portal.gif" alt="Wubba Lubba Dub-Duel logo"></a>
+    <a href="/cards">Dubdex</a>
+    <a href="/shop">Dub-Market</a>
+    <a href="/social">Social</a>
+    <a href="/login " id="login-link"></a>
+    <div class="music-control">
+      <button id="toggleMusic">🔇</button>
+      <audio id="backgroundMusic" loop>
+        <source src="resources/audio/main_theme.weba" type="audio/mpeg">
+        Tu navegador no soporta audio HTML5.
+      </audio>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="hero-content">
+      <h1>Wubba Lubba Dub-Duel!</h1>
+      <p>¡Colecciona Dub's de Rick and Morty y lucha por el multiverso con estrategia y fluido de portal!</p>
+    </div>
+  </header>
+
+  <main>
+    <section id="cartas">
+      <!--
+      <h2>Cartas destacadas</h2>
+      -->
+      <div class="card-grid" id="cards-container">
+
+        <div class="card-base">
+          <div class="card card-LEGENDARY" onclick="openModal(this)">
+            <div class="card-header">
+              <span class="card-name">Rick Sánchez</span>
+              <span class="card-cost">⚡ 5</span>
+            </div>
+            <img src="https://rickandmortyapi.com/api/character/avatar/1.jpeg" alt="Rick" class="LEGENDARY">
+            <div class="card-stats">
+              <div>🗡 5</div>
+              <div>❤️ 10</div>
+            </div>
+            <div class="card-description">
+              Un científico genio con una actitud imprudente y una fuerte adicción al alcohol.
+            </div>
+            <div class="card-info">
+              <div class="card-number">Nº 001</div>
+              <div class="rarity-label LEGENDARY">LEGENDARY</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-base">
+          <div class="card card-NORMAL" onclick="openModal(this)">
+            <div class="card-header">
+              <span class="card-name">Morty Smith</span>
+              <span class="card-cost">⚡ 3</span>
+            </div>
+            <img src="https://rickandmortyapi.com/api/character/avatar/2.jpeg" alt="Morty" class="NORMAL">
+            <div class="card-stats">
+              <div>🗡 3</div>
+              <div>❤️ 7</div>
+            </div>
+            <div class="card-description">
+              El nieto ansioso e impresionable de Rick que lo acompaña en sus aventuras.
+            </div>
+            <div class="card-info">
+              <div class="card-number">Dub Nº 002</div>
+              <div class="rarity-label NORMAL">NORMAL</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-base">
+          <div class="card card-RARE" onclick="openModal(this)">
+            <div class="card-header">
+              <span class="card-name">Summer Smith</span>
+              <span class="card-cost">⚡ 3</span>
+            </div>
+            <img src="https://rickandmortyapi.com/api/character/avatar/3.jpeg" alt="Summer" class="RARE">
+            <div class="card-stats">
+              <div>🗡 4</div>
+              <div>❤️ 6</div>
+            </div>
+            <div class="card-description">
+              La hermana mayor de Morty. Inteligente, atrevida y a veces sorprendentemente útil.
+            </div>
+            <div class="card-info">
+              <div class="card-number">Dub Nº 003</div>
+              <div class="rarity-label RARE">RARE</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="reward-section hidden" id="reward-section">
+      <h2 class="section-title">¿Quieres conseguir Tickets de Blitz & Chits? <br>¡Reproduce este anuncio!</h2>
+      <div class="video-container">
+        <video id="reward-video" class="reward-video">
+          <source src="resources/video/anuncio.mp4" type="video/mp4">
+          Tu navegador no soporta la reproducción de videos.
+        </video>
+      </div>
+      <div class="video-controls">
+        <button class="btn videobtn" id="play-pause-btn">▶️</button>
+        <button class="btn videobtn" id="mute-btn">🔊</button>
+      </div>
+      <br>
+      <button id="claim-coins" class="btn claim-btn" disabled>¡Dale play para comenzar!</button>
+    </section>
+
+    <section class="evil-morty-promo-section">
+      <h2 class="section-title">¡Consigue ya la DUB legendaria de Morty Malvado!</h2>
+      <p class="section-subtitle">Solo los más astutos pueden controlarla. ¿Estás listo?</p>
+
+      <div class="promo-card-container">
+        <div class="album-card-dark">
+          <div class="card card-LEGENDARY" onclick="openModal(this)">
+            <div class="card-header">
+              <span class="card-name">Morty Malvado</span>
+              <span class="card-cost">⚡ 6</span>
+            </div>
+            <img src="https://rickandmortyapi.com/api/character/avatar/118.jpeg" alt="Morty Malvado" class="LEGENDARY">
+            <div class="card-stats">
+              <div>🗡 6</div>
+              <div>❤️ 9</div>
+            </div>
+            <div class="card-description">
+              Un Morty despiadado y calculador, dispuesto a todo por el control del multiverso.
+            </div>
+            <div class="card-info">
+              <div class="card-number">Nº 124</div>
+              <div class="rarity-label LEGENDARY">LEGENDARY</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="play-button-container">
+        <a href="/shop" class="play-button-dark">¡Abrir sobres ahora!</a>
+      </div>
+    </section>
+
+    <section id="how-to-play" class="how-to-play-section">
+      <h2>¿Cómo se juega?</h2>
+      <div class="portal-glow"></div>
+      <div class="how-to-play-content">
+        <img src="resources/img/jerry.gif" alt="Jerry burlándose" class="how-to-play-image">
+        <ol class="how-to-play-steps">
+          <li>🎟️ Reproduce anuncios para ganar Tickets de Blitz & Chits.</li>
+          <li>📦 Usa tus tickets para abrir sobres con cartas únicas del multiverso.</li>
+          <li>🃏 Colecciona y presume tus cartas frente a otros jugadores en el Dubdex.</li>
+        </ol>
+      </div>
+      <div class="play-button-container">
+        <a href="/register" class="play-button">¡Empieza ahora!</a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    ©2025 Cybercode Creations. Wubba Lubba Dub-Duel!.
+  </footer>
+
+  <!-- MODAL CARTAS-->
+  <div class="modal" id="modal" onclick="closeModal(event)">
+    <div class="modal-content" id="modalContent"></div>
+  </div>
+  <!-- TOKENS USUARIO-->
+  <div id="userTokens" class="user-tokens">
+    <a href="/addtokens" class="tokens-link"><span id="tokensCount">0</span><img src="resources/img/ticket.webp"
+        alt="ticket" /></a>
+  </div>
+  <!-- RESOURCES -->
+  <audio id="portalSound" preload="auto">
+    <source src="resources/audio/portal_sound.mp3" type="audio/mpeg">
+    Tu navegador no soporta audio HTML5.
+  </audio>
+  <!-- SCRIPTS -->
+  <script src="js/comun.js"></script>
+  <script src="js/index.js"></script>
+  <script src="js/addtokens.js"></script>
+  <script src="js/modalPortalAnimation.js" defer></script>
+</body>
+
+</html>

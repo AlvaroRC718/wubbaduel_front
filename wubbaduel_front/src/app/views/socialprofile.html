@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Wubba Lubba Dub-Duel!: Perfil</title>
+    <link rel="icon" href="resources/img/logo.png" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=Bungee&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="body-index">
+
+    <nav>
+        <a href="/index" class="logo"><img src="resources/img/portal.gif" alt="Wubba Lubba Dub-Duel logo"></a>
+        <a href="/cards">Dubdex</a>
+        <a href="/shop">Dub-Market</a>
+        <a href="/social">Social</a>
+        <a href="/login " id="login-link"></a>
+        <div class="music-control">
+            <button id="toggleMusic">🔇</button>
+            <audio id="backgroundMusic" loop>
+                <source src="resources/audio/main_theme.weba" type="audio/mpeg">
+                Tu navegador no soporta audio HTML5.
+            </audio>
+        </div>
+    </nav>
+
+    <main>
+        <section id="userProfile" class="user-profile">
+            <h2>Perfil de Usuario</h2>
+            <div id="userInfo" class="user-info">
+                <img id="userAvatar" alt="Avatar de usuario" class="avatar" />
+                <p><strong><span id="username"></span></strong></p>
+                <p><strong>Email:</strong> <span id="emailprofile"></span></p>
+                <div class="tickets-info">
+                    <p><span><strong>Tickets de Blitz & Chits:</strong> </span> <span id="userTokensCount"
+                            class="tickets-count"></span>
+                        <img src="resources/img/ticket.webp" alt="ticket" class="ticket-icon" />
+                    </p>
+                </div>
+                <p><strong>Miembro desde:</strong> <span id="memberSince">2025</span></p>
+                <div class="favorite-cards">
+                    <h2 class="pixel-font-dark" style="font-size: medium;">Favoritos</h2>
+                    <div id="favoriteCardsContainer" class="favorite-cards-container"></div>
+                </div>
+            </div>
+
+        </section>
+    </main>
+
+
+    <footer>
+        ©2025 Cybercode Creations. Wubba Lubba Dub-Duel!.
+    </footer>
+
+
+    <!-- MODAL CARTAS-->
+    <div class="modal" id="modal" onclick="closeModal(event)">
+        <div class="modal-content" id="modalContent"></div>
+        <span class="close" onclick="closeModal(event)">×</span>
+    </div>
+    <!-- TOKENS USUARIO-->
+    <div id="userTokens" class="user-tokens">
+        <a href="/addtokens" class="tokens-link"><span id="tokensCount">0</span><img src="resources/img/ticket.webp"
+                alt="ticket" /></a>
+    </div>
+    <!-- RESOURCES -->
+    <audio id="portalSound" src="resources/audio/portal_sound.mp3" preload="auto"></audio>
+    <!-- SCRIPTS -->
+    <script src="js/comun.js"></script>
+    <script src="js/socialprofile.js"></script>
+</body>
+
+</html>
