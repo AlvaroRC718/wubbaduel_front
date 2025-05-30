@@ -61,7 +61,7 @@ async function toggleFavorite(event, cardId) {
     } else {
       // ⚪ Agregar a favoritos (máximo 3)
       if (favoriteCardIds.length >= 3) {
-        alert("Solo puedes tener 3 cartas favoritas.");
+        alert("Solo puedes tener 3 dub's favoritas.");
         return;
       }
 

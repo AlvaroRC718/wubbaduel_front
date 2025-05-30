@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     } catch (error) {
       console.warn("Error al desencriptar usuario:", error);
-      localStorage.removeItem('user'); // Limpia dato corrupto
+      localStorage.removeItem('user');
     }
   }
 
@@ -31,6 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
   } else {
     loginLink.textContent = 'Iniciar sesión';
     loginLink.href = '/login';
+    userTokensDiv.style.display = 'none';
   }
 });
 
