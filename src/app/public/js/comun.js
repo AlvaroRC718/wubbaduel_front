@@ -1,21 +1,26 @@
 "use strict";
 //////////////////////////////////Usuario y sesion////////////////////////////////
-/*/Usuario Pruebas
-const userTest = {
-  id: 718,
-  username: 'El_Kaki718',
-  email: 'alvaro_718@hotmail.es',
-  avatarUrl: 'resources/img/logo.png',
-  tokens: 9999999,
-};
-localStorage.setItem('user', JSON.stringify(userTest));*/
 
 document.addEventListener('DOMContentLoaded', () => {
   const loginLink = document.getElementById('login-link');
   const userTokensDiv = document.getElementById('userTokens');
   const tokensCount = document.getElementById('tokensCount');
 
-  const savedUser = JSON.parse(localStorage.getItem('user'));
+  const encryptedUser = localStorage.getItem('user');
+  let savedUser = null;
+
+  if (encryptedUser) {
+    try {
+      const bytes = CryptoJS.AES.decrypt(encryptedUser, 'wubbaduel');
+      const decryptedStr = bytes.toString(CryptoJS.enc.Utf8);
+      if (decryptedStr) {
+        savedUser = JSON.parse(decryptedStr);
+      }
+    } catch (error) {
+      console.warn("Error al desencriptar usuario:", error);
+      localStorage.removeItem('user');
+    }
+  }
 
   if (savedUser) {
     loginLink.textContent = savedUser.username;
@@ -23,12 +28,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     userTokensDiv.style.display = 'block';
     tokensCount.textContent = savedUser.tokens || 0;
-  }else{
+  } else {
     loginLink.textContent = 'Iniciar sesión';
     loginLink.href = '/login';
+    userTokensDiv.style.display = 'none';
   }
 });
-
 
 //////////////////////////////////Musica y efectos de sonido////////////////////////////////
 const buttons = document.querySelectorAll("a"); 
@@ -75,7 +80,6 @@ window.addEventListener("beforeunload", () => {
 });
 
 musicButton.addEventListener("click", toggleMusic);
-
 
 //////////////////////////////////Modal Cartas////////////////////////////////
 

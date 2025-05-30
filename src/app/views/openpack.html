@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <title>Wubba Lubba Dub-Duel!: Apertura</title>
     <link rel="icon" href="resources/img/logo.png" type="image/png">
-    <link href="https://fonts.googleapis.com/css2?family=Bungee&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -51,15 +50,16 @@
     <!-- MODAL -->
     <div class="modal" id="modal" onclick="closeModal(event)">
         <div class="modal-content" id="modalContent"></div>
-        <span class="close" onclick="closeModal(event)">×</span>
     </div>
     <!-- CANVAS -->
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
     <!-- RESOURCES -->
     <audio id="portalSound" src="resources/audio/portal_sound.mp3" preload="auto"></audio>
     <!-- SCRIPTS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.2.0/crypto-js.min.js"></script>
     <script src="js/comun.js"></script>
     <script src="js/openpack.js"></script>
+    <script src="js/modalPortalAnimation.js" defer></script>
 </body>
 
 </html>

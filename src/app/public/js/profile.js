@@ -1,6 +1,10 @@
 "use strict";
 document.addEventListener('DOMContentLoaded', () => {
-    const savedUser = JSON.parse(localStorage.getItem('user'));
+    // Desencriptar el usuario desde localStorage
+    const encrypted = localStorage.getItem('user');
+    const savedUser = encrypted ? JSON.parse(
+        CryptoJS.AES.decrypt(encrypted, 'wubbaduel').toString(CryptoJS.enc.Utf8)
+    ) : null;
 
     if (!savedUser) {
         window.location.href = '/login';
@@ -94,28 +98,30 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Función para cargar las cartas favoritas
     async function loadFavoriteCards() {
-    const container = document.getElementById('favoriteCardsContainer');
-    const favoritesSection = document.querySelector('.favorite-cards');
+        const container = document.getElementById('favoriteCardsContainer');
+        const favoritesSection = document.querySelector('.favorite-cards');
 
-    container.innerHTML = ''; 
+        container.innerHTML = ''; 
 
-    const favoriteCards = await fetchFavoriteCards();
-    console.log(favoriteCards);
+        const favoriteCards = await fetchFavoriteCards();
 
-    if (favoriteCards.length > 0) {
-        favoritesSection.style.display = 'block';
-        favoriteCards.forEach(favWrapper => {
-            container.insertAdjacentHTML('beforeend', createCardHTML(favWrapper.card));
-        });
-    } else {
-        favoritesSection.style.display = 'none'; // Ocultar si no hay favoritas
-        document.querySelector('footer').classList.add('fixed-footer');
+        if (favoriteCards.length > 0) {
+            favoritesSection.style.display = 'block';
+            favoriteCards.forEach(favWrapper => {
+                container.insertAdjacentHTML('beforeend', createCardHTML(favWrapper.card));
+            });
+        } else {
+            favoritesSection.style.display = 'none'; // Ocultar si no hay favoritas
+            document.querySelector('footer').classList.add('fixed-footer');
+        }
     }
-}
 
     async function fetchFavoriteCards() {
         try {
-            const savedUser = JSON.parse(localStorage.getItem("user"));
+            const encrypted = localStorage.getItem("user");
+            const savedUser = encrypted ? JSON.parse(
+                CryptoJS.AES.decrypt(encrypted, 'wubbaduel').toString(CryptoJS.enc.Utf8)
+            ) : null;
             if (!savedUser || !savedUser.id) return [];
 
             const response = await fetch('http://localhost:8080/api/decks/favorites', {

@@ -1,10 +1,20 @@
 "use strict";
 document.addEventListener('DOMContentLoaded', () => {
-    // Si existe un usuario, redirigir a /profile
-    const savedUser = JSON.parse(localStorage.getItem('user'));
-    if (savedUser) {
-        window.location.href = '/profile';
-        return; 
+    const encryptedUser = localStorage.getItem('user');
+    if (encryptedUser) {
+        try {
+            const bytes = CryptoJS.AES.decrypt(encryptedUser, 'wubbaduel');
+            const decryptedStr = bytes.toString(CryptoJS.enc.Utf8);
+            if (decryptedStr) {
+                const savedUser = JSON.parse(decryptedStr);
+                if (savedUser) {
+                    window.location.href = '/profile';
+                    return;
+                }
+            }
+        } catch (error) {
+            console.error("Error al desencriptar el usuario:", error);
+        }
     }
 
     const form = document.querySelector('.tarjeta-formulario');
@@ -15,7 +25,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const email = document.getElementById('email').value;
         const password = document.getElementById('password').value;
-
 
         try {
             const response = await fetch('http://localhost:8080/api/login', {
@@ -30,7 +39,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 const data = await response.json();
                 console.log('Inicio de sesión exitoso:', data);
 
-                localStorage.setItem('user', JSON.stringify(data));
+                const encrypted = CryptoJS.AES.encrypt(JSON.stringify(data), 'wubbaduel').toString();
+                localStorage.setItem('user', encrypted);
+
                 window.location.href = '/profile';
             } else {
                 const error = await response.json();

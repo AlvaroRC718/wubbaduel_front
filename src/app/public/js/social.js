@@ -1,14 +1,25 @@
 "use strict";
 
 document.addEventListener('DOMContentLoaded', () => {
-    const section = document.getElementById('div-social-cards')
+    const section = document.getElementById('div-social-cards');
 
     const pageSize = 9;
     let currentPage = 0;
     let totalPages = 0;
 
     function fetchUsers(page = 0) {
-        const savedUser = JSON.parse(localStorage.getItem('user')); // Asegúrate de que se guardó como objeto JSON
+        let savedUser = null;
+        const encryptedUser = localStorage.getItem('user');
+        if (encryptedUser) {
+            try {
+                const bytes = CryptoJS.AES.decrypt(encryptedUser, 'wubbaduel');
+                const decrypted = bytes.toString(CryptoJS.enc.Utf8);
+                savedUser = JSON.parse(decrypted);
+            } catch (e) {
+                console.error("Error al desencriptar el usuario:", e);
+            }
+        }
+
         const body = savedUser && savedUser.id
             ? { page, userId: savedUser.id }
             : { page };
@@ -23,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 return res.json();
             })
             .then(data => {
-                const users = data.users || data; // por si solo envía lista o con wrapper
+                const users = data.users || data;
                 const totalUsers = data.totalUsers || 0;
                 totalPages = Math.ceil(totalUsers / pageSize);
                 section.innerHTML = "";
@@ -33,12 +44,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     card.className = 'social-card';
                     card.style.cursor = 'pointer';
                     card.innerHTML = `
-                    <img src="${user.avatar || 'resources/img/default-avatar.png'}" alt="Avatar de ${user.username}" class="avatar">
-                    <div class="social-info">
-                        <h3>${user.username}</h3>
-                        <p class ="social-email"> ${user.email}</p>
-                        <p class ="social-tickets"> ${user.tokens}<img src="resources/img/ticket.webp" alt="ticket" /></p>
-                    </div>
+                        <img src="${user.avatar || 'resources/img/default-avatar.png'}" alt="Avatar de ${user.username}" class="avatar">
+                        <div class="social-info">
+                            <h3>${user.username}</h3>
+                            <p class="social-email">${user.email}</p>
+                            <p class="social-tickets">${user.tokens}<img src="resources/img/ticket.webp" alt="ticket" /></p>
+                        </div>
                     `;
                     card.addEventListener('click', () => {
                         sessionStorage.setItem('socialUser', JSON.stringify(user));

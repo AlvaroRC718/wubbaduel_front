@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <title>Wubba Lubba Dub-Duel!: Perfil</title>
     <link rel="icon" href="resources/img/logo.png" type="image/png">
-    <link href="https://fonts.googleapis.com/css2?family=Bungee&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -63,6 +62,7 @@
     <div id="passwordModal">
         <div>
             <p>Estás a punto de eliminar tu cuenta. ¿Seguro que quieres continuar?</p>
+            <img src="resources/img/rick_birra.gif" alt="Rick" />
             <input type="password" id="passwordInput" placeholder="Introduce tu contraseña">
             <button id="confirmDelete">Confirmar eliminación</button>
             <button id="cancelDelete">Cancelar</button>
@@ -71,7 +71,6 @@
     <!-- MODAL CARTAS-->
     <div class="modal" id="modal" onclick="closeModal(event)">
         <div class="modal-content" id="modalContent"></div>
-        <span class="close" onclick="closeModal(event)">×</span>
     </div>
     <!-- TOKENS USUARIO-->
     <div id="userTokens" class="user-tokens">
@@ -81,8 +80,10 @@
     <!-- RESOURCES -->
     <audio id="portalSound" src="resources/audio/portal_sound.mp3" preload="auto"></audio>
     <!-- SCRIPTS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.2.0/crypto-js.min.js"></script>
     <script src="js/comun.js"></script>
     <script src="js/profile.js"></script>
+    <script src="js/modalPortalAnimation.js" defer></script>
 </body>
 
 </html>
