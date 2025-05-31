@@ -36,15 +36,25 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 //////////////////////////////////Musica y efectos de sonido////////////////////////////////
+
 const buttons = document.querySelectorAll("a"); 
 const musicButton = document.getElementById("toggleMusic");
 const clickSound = document.getElementById("portalSound");
 const backgroundMusic = document.getElementById("backgroundMusic"); 
-const isMusicPlaying = localStorage.getItem("musicPlaying") === "true"; 
+const volumeControl = document.getElementById("volumeControl");
+
 let musicTime = localStorage.getItem("musicTime"); 
+let savedVolume = localStorage.getItem("musicVolume");
+
+if (savedVolume !== null) {
+  backgroundMusic.volume = parseFloat(savedVolume);
+  if (volumeControl) volumeControl.value = savedVolume;
+} else {
+  backgroundMusic.volume = 1;
+  if (volumeControl) volumeControl.value = 1;
+}
 
 clickSound.volume = 0.4;
-backgroundMusic.volume = 1;
 
 function updateMusicIcon() { 
   musicButton.textContent = backgroundMusic.paused ? "🔇" : "🔊";
@@ -62,17 +72,28 @@ function toggleMusic() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  if (isMusicPlaying) {
-    clickSound.currentTime = 0;
-    clickSound.play().catch(() => {});
-
-    if (musicTime) {
-      backgroundMusic.currentTime = parseFloat(musicTime);
-    }
-
-    backgroundMusic.play().catch(() => {});
+  // Restaurar posición si existía
+  if (musicTime) {
+    backgroundMusic.currentTime = parseFloat(musicTime);
   }
-  updateMusicIcon(); 
+
+  // Intentar reproducir directamente
+  backgroundMusic.play()
+    .then(() => {
+      localStorage.setItem("musicPlaying", "true");
+      updateMusicIcon();
+    })
+    .catch(() => {
+      // Si falla, esperar interacción del usuario
+      const resumeMusic = () => {
+        backgroundMusic.play().then(() => {
+          localStorage.setItem("musicPlaying", "true");
+          updateMusicIcon();
+        });
+        document.removeEventListener("click", resumeMusic);
+      };
+      document.addEventListener("click", resumeMusic);
+    });
 });
 
 window.addEventListener("beforeunload", () => {
@@ -80,6 +101,15 @@ window.addEventListener("beforeunload", () => {
 });
 
 musicButton.addEventListener("click", toggleMusic);
+
+// Control del volumen de la música
+if (volumeControl) {
+  volumeControl.addEventListener("input", () => {
+    const volume = parseFloat(volumeControl.value);
+    backgroundMusic.volume = volume;
+    localStorage.setItem("musicVolume", volume);
+  });
+}
 
 //////////////////////////////////Modal Cartas////////////////////////////////
 

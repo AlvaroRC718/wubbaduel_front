@@ -17,11 +17,15 @@
         <a href="/social">Social</a>
         <a href="/login " id="login-link"></a>
         <div class="music-control">
-            <button id="toggleMusic">🔇</button>
+            <button id="toggleMusic">🔊</button>
             <audio id="backgroundMusic" loop>
                 <source src="resources/audio/main_theme.weba" type="audio/mpeg">
                 Tu navegador no soporta audio HTML5.
             </audio>
+        </div>
+        <div>
+            <label for="volumeControl">Volumen 🎵</label>
+            <input type="range" id="volumeControl" min="0" max="1" step="0.01">
         </div>
     </nav>
 
