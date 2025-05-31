@@ -35,79 +35,106 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
-//////////////////////////////////Musica y efectos de sonido////////////////////////////////
+////////////////////////////////// Música y efectos de sonido //////////////////////////////////
 
-const buttons = document.querySelectorAll("a"); 
 const musicButton = document.getElementById("toggleMusic");
 const clickSound = document.getElementById("portalSound");
-const backgroundMusic = document.getElementById("backgroundMusic"); 
+const backgroundMusic = document.getElementById("backgroundMusic");
 const volumeControl = document.getElementById("volumeControl");
 
-let musicTime = localStorage.getItem("musicTime"); 
 let savedVolume = localStorage.getItem("musicVolume");
+let savedPlaying = localStorage.getItem("musicPlaying");
 
-if (savedVolume !== null) {
-  backgroundMusic.volume = parseFloat(savedVolume);
-  if (volumeControl) volumeControl.value = savedVolume;
-} else {
-  backgroundMusic.volume = 1;
-  if (volumeControl) volumeControl.value = 1;
+function updateMusicIcon(volume) {
+  if (musicButton) {
+    musicButton.textContent = volume > 0 ? "🔊" : "🔇";
+  }
 }
 
-clickSound.volume = 0.4;
-
-function updateMusicIcon() { 
-  musicButton.textContent = backgroundMusic.paused ? "🔇" : "🔊";
+function setVolume(volume) {
+  if (volumeControl) volumeControl.value = volume;
+  if (backgroundMusic) backgroundMusic.volume = volume;
+  if (clickSound) clickSound.volume = volume * 0.4;
+  updateMusicIcon(volume);
 }
 
-function toggleMusic() {
-  if (backgroundMusic.paused) {
-    backgroundMusic.play();
-    localStorage.setItem("musicPlaying", "true");
-  } else {
-    backgroundMusic.pause();
+document.addEventListener("DOMContentLoaded", () => {
+  let initialVolume = 0;
+  let isPlaying = false;
+
+  if (savedVolume === null) {
+    initialVolume = 0;
+    localStorage.setItem("musicVolume", "0");
     localStorage.setItem("musicPlaying", "false");
-  }
-  updateMusicIcon(); 
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-  // Restaurar posición si existía
-  if (musicTime) {
-    backgroundMusic.currentTime = parseFloat(musicTime);
+  } else {
+    initialVolume = parseFloat(savedVolume);
   }
 
-  // Intentar reproducir directamente
-  backgroundMusic.play()
-    .then(() => {
-      localStorage.setItem("musicPlaying", "true");
-      updateMusicIcon();
-    })
-    .catch(() => {
-      // Si falla, esperar interacción del usuario
-      const resumeMusic = () => {
-        backgroundMusic.play().then(() => {
-          localStorage.setItem("musicPlaying", "true");
-          updateMusicIcon();
-        });
-        document.removeEventListener("click", resumeMusic);
-      };
-      document.addEventListener("click", resumeMusic);
+  if (savedPlaying === "true" && initialVolume > 0) {
+    backgroundMusic.play().then(() => {
+      isPlaying = true;
+      setVolume(initialVolume);
+    }).catch(() => {
+      initialVolume = 0;
+      isPlaying = false;
+      setVolume(0);
+      localStorage.setItem("musicPlaying", "false");
+      localStorage.setItem("musicVolume", "0");
     });
+  } else {
+    setVolume(0);
+    localStorage.setItem("musicPlaying", "false");
+    localStorage.setItem("musicVolume", "0");
+  }
+
+  const savedTime = localStorage.getItem("musicTime");
+  if (backgroundMusic && savedTime) {
+    backgroundMusic.currentTime = parseFloat(savedTime);
+  }
+
+  if (clickSound) {
+    clickSound.currentTime = 0;
+    clickSound.play().catch(() => {});
+  }
 });
 
 window.addEventListener("beforeunload", () => {
-  localStorage.setItem("musicTime", backgroundMusic.currentTime);
+  if (backgroundMusic) {
+    localStorage.setItem("musicTime", backgroundMusic.currentTime);
+  }
 });
 
-musicButton.addEventListener("click", toggleMusic);
-
-// Control del volumen de la música
 if (volumeControl) {
   volumeControl.addEventListener("input", () => {
     const volume = parseFloat(volumeControl.value);
-    backgroundMusic.volume = volume;
+
+    if (backgroundMusic) {
+      backgroundMusic.volume = volume;
+
+      if (volume > 0 && backgroundMusic.paused) {
+        backgroundMusic.play().catch(() => {});
+        localStorage.setItem("musicPlaying", "true");
+      }
+
+      if (volume === 0 && !backgroundMusic.paused) {
+        backgroundMusic.pause();
+        localStorage.setItem("musicPlaying", "false");
+      }
+    }
+
+    if (clickSound) clickSound.volume = volume * 0.4;
+
     localStorage.setItem("musicVolume", volume);
+    updateMusicIcon(volume);
+  });
+}
+
+if (musicButton && volumeControl) {
+  musicButton.addEventListener("click", () => {
+    const currentVolume = parseFloat(volumeControl.value);
+    const newVolume = currentVolume > 0 ? 0 : 1;
+    volumeControl.value = newVolume;
+    volumeControl.dispatchEvent(new Event("input"));
   });
 }
 
