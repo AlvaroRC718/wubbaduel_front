@@ -36,6 +36,25 @@
         ©2025 Cybercode Creations. Wubba Lubba Dub-Duel!.
     </footer>
 
+    <!-- MODAL RECOMPENSA-->
+    <div id="dailyRewardModal" class="daily-modal">
+        <div class="daily-modal-content">
+            <span id="closeDailyModal" class="daily-close">&times;</span>
+            <h2 class="daily-title">¡Wubba Lubba Dub-Dub!</h2>
+            <p class="daily-message">
+                ¡Felicidades, <strong>morty!</strong> Has desbloqueado tu recompensa diaria de <strong>200</strong>
+                <img src="resources/img/ticket.webp" alt="ticket"
+                    style="vertical-align:middle; width:24px; height:auto;" />
+                tickets para el Blitz &amp; Chitz, el mejor arcade de toda la galaxia!
+            </p>
+            <button id="claimDailyRewardBtn" class="btn claim-btn">
+                ¡Atrapa esos tickets, Morty!
+            </button>
+            <p class="daily-submessage" style="font-style: italic; font-size: 0.9em; color:#0ff;">
+                (¡No te duermas en los laureles o Rick te va a regañar!)
+            </p>
+        </div>
+    </div>
     <!-- LOADING MODAL -->
     <div id="loadingModal" class="loading-modal">
         <div class="loading-content">
@@ -51,6 +70,11 @@
     <div class="modal" id="modal" onclick="closeModal(event)">
         <div class="modal-content" id="modalContent"></div>
         <span class="close" onclick="closeModal(event)">×</span>
+    </div>
+    <!-- TOKENS USUARIO-->
+    <div id="userTokens" class="user-tokens">
+        <a href="/addtokens" class="tokens-link"><span id="tokensCount">0</span><img src="resources/img/ticket.webp"
+                alt="ticket" /></a>
     </div>
     <!-- CANVAS -->
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>

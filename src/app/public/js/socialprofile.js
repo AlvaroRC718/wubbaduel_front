@@ -13,6 +13,10 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('userTokensCount').textContent = socialUser.tokens || 0;
     document.getElementById('userAvatar').src = socialUser.avatar || 'resources/img/default-avatar.png';
     document.getElementById('tokensCount').textContent = socialUser.tokens || 0;
+    const createdDate = socialUser.createdDate;
+    const dateOnly = createdDate ? createdDate.split('T')[0] : '2025';
+
+    document.getElementById('memberSince').textContent = dateOnly;
 
     // Función para crear el HTML de cada carta
     function createCardHTML(character) {
@@ -41,24 +45,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Función para cargar las cartas favoritas
     async function loadFavoriteCards() {
-    const container = document.getElementById('favoriteCardsContainer');
-    const favoritesSection = document.querySelector('.favorite-cards');
+        const container = document.getElementById('favoriteCardsContainer');
+        const favoritesSection = document.querySelector('.favorite-cards');
 
-    container.innerHTML = ''; 
+        container.innerHTML = '';
 
-    const favoriteCards = await fetchFavoriteCards();
-    console.log(favoriteCards);
+        const favoriteCards = await fetchFavoriteCards();
+        console.log(favoriteCards);
 
-    if (favoriteCards.length > 0) {
-        favoritesSection.style.display = 'block';
-        favoriteCards.forEach(favWrapper => {
-            container.insertAdjacentHTML('beforeend', createCardHTML(favWrapper.card));
-        });
-    } else {
-        favoritesSection.style.display = 'none'; // Ocultar si no hay favoritas
-        document.querySelector('footer').classList.add('fixed-footer');
+        if (favoriteCards.length > 0) {
+            favoritesSection.style.display = 'block';
+            favoriteCards.forEach(favWrapper => {
+                container.insertAdjacentHTML('beforeend', createCardHTML(favWrapper.card));
+            });
+        } else {
+            favoritesSection.style.display = 'none'; // Ocultar si no hay favoritas
+            document.querySelector('footer').classList.add('fixed-footer');
+        }
     }
-}
 
     async function fetchFavoriteCards() {
         try {

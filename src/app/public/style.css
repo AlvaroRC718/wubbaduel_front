@@ -637,7 +637,61 @@ footer {
   box-shadow: 0 0 15px rgba(0, 255, 136, 0.8);
 }
 
+.daily-modal {
+  display: none;
+  position: fixed;
+  z-index: 9998;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  justify-content: center;
+  align-items: center;
+  font-family: 'Bungee', sans-serif;
+}
 
+.daily-modal-content {
+  background: #0f0f0f;
+  color: white;
+  padding: 2rem;
+  max-width: 700px;
+  width: 90%;
+  text-align: center;
+  border: 2px solid rgba(0, 255, 136, 0.3);
+  border-radius: 18px;
+  box-shadow: 0 0 18px rgba(0, 255, 136, 0.2);
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.daily-modal-content:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 28px rgba(0, 255, 136, 0.5);
+}
+
+.daily-close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.daily-title {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.daily-message {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+}
+
+.daily-submessage{
+  font-style: italic; 
+  font-size: 0.9em; 
+  color:#0ff;
+  margin-top: 2%;
+}
 
 /*/////////////////////////////////////////////register.html/////////////////////////////////////////////////*/
 .registro-seccion {
