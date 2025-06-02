@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('username').textContent = socialUser.username;
     document.getElementById('emailprofile').textContent = socialUser.email;
     document.getElementById('userTokensCount').textContent = socialUser.tokens || 0;
-    document.getElementById('userAvatar').src = socialUser.avatar || 'resources/img/default-avatar.png';
+    document.getElementById('userAvatar').src = socialUser.avatar || 'resources/img/default-avatar.jpeg';
     const createdDate = socialUser.createdDate;
     const dateOnly = createdDate ? createdDate.split('T')[0] : '2025';
 
