@@ -1017,6 +1017,11 @@ footer {
   margin-top: 2%;
 }
 
+.rarity-select option[value="FAVORITES"] {
+  color: red;
+  font-weight: bold;
+}
+
 .search-input::placeholder {
   color: #00ffaa88;
   text-shadow: none;

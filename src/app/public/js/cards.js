@@ -178,7 +178,10 @@ function generateCards() {
 
   const filteredCards = cards.filter(character => {
     const matchesName = character.name.toLowerCase().includes(searchQuery);
-    const matchesRarity = selectedRarity === "all" || character.rarity === selectedRarity;
+    const matchesRarity =
+      selectedRarity === "all" ||
+      character.rarity === selectedRarity ||
+      (selectedRarity === "FAVORITES" && favoriteCardIds.includes(character.id));
     return matchesName && matchesRarity;
   });
 

@@ -16,7 +16,6 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('emailprofile').textContent = savedUser.email;
     document.getElementById('userTokensCount').textContent = savedUser.tokens || 0;
     document.getElementById('userAvatar').src = savedUser.avatarUrl || 'resources/img/default-avatar.png';
-    document.getElementById('tokensCount').textContent = savedUser.tokens || 0;
     const createdAt = savedUser.createdAt;
     const dateOnly = createdAt ? createdAt.split('T')[0] : '2025';
 
