@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
     claimButton.disabled = remainingTime > 0;
     claimButton.textContent = remainingTime > 0
       ? `Espera ${remainingTime}s`
-      : "Reclamar Tickets de Blitz & Chits";
+      : "Reclamar Tickets de Blitz & Chitz";
     lastTime = Math.max(lastTime, video.currentTime);
   });
 

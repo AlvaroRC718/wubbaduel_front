@@ -335,6 +335,22 @@ section {
   border: 2px solid #a020f0;
 }
 
+.NORMAL-text {
+  color: #aaa;
+}
+
+.RARE-text {
+  color: #00aaff;
+}
+
+.LEGENDARY-text {
+  color: gold;
+}
+
+.EPIC-text {
+  color: #a020f0;
+}
+
 .how-to-play-section {
   width: 70%;
   margin: auto;
@@ -684,14 +700,19 @@ footer {
 .daily-message {
   font-size: 1.2rem;
   margin-bottom: 2rem;
+  text-align: center;
 }
+
 
 .daily-submessage{
   font-style: italic; 
   font-size: 0.9em; 
   color:#0ff;
   margin-top: 2%;
+  text-align: center;
 }
+
+
 
 /*/////////////////////////////////////////////register.html/////////////////////////////////////////////////*/
 .registro-seccion {
@@ -1707,4 +1728,17 @@ footer {
 .pagination-buttons button:disabled {
   background-color: #888;
   cursor: not-allowed;
+}
+/*///////////////////////////////////////socialprofile.html/////////////////////////////////////////////////*/
+.album-card .play-button{
+  margin-top: 20%;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  gap: 2%;
+}
+.album-card .play-button img{
+  width: 15%;
+  height: auto;
 }

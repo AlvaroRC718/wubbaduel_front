@@ -85,11 +85,12 @@ document.addEventListener('DOMContentLoaded', () => {
     clickSound.currentTime = 0;
     clickSound.play().catch(() => { });
 
-    if (musicTime) {
-      backgroundMusic.currentTime = parseFloat(musicTime);
-    }
-
-    backgroundMusic.play().catch(() => { });
+    backgroundMusic.addEventListener("canplaythrough", () => {
+      if (musicTime) {
+        backgroundMusic.currentTime = parseFloat(musicTime);
+      }
+      backgroundMusic.play().catch(() => { });
+    }, { once: true });
   }
   updateMusicIcon();
 
