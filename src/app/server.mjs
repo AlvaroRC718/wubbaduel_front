@@ -1,5 +1,4 @@
 import app from "./app.mjs"
-import process from "process"
 
 //node server.mjs 
 const port = 4000;

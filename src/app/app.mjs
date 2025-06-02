@@ -1,7 +1,6 @@
 import express from "express"
 import path from "path";
 import index_routes from "./routes/index.mjs"
-import process from "process"
 
 const app = express()
 
