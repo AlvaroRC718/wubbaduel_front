@@ -126,11 +126,21 @@ document.addEventListener('DOMContentLoaded', async () => {
                 pack.remove();
 
                 const confettiColor = getConfettiColor(maxRarity);
+                const confettiSound = document.getElementById('confettiSound');
+                const backgroundMusic = document.getElementById('backgroundMusic');
+
                 confetti({
                     particleCount: 200,
                     spread: 120,
                     colors: [confettiColor]
                 });
+
+                if (!backgroundMusic.paused) {
+                    confettiSound.volume = 0.6;
+                    confettiSound.currentTime = 0;
+                    confettiSound.play().catch(() => {
+                    });
+                }
 
                 container.classList.add("visible");
 
@@ -160,6 +170,12 @@ document.addEventListener('DOMContentLoaded', async () => {
                     container.appendChild(div);
                 });
             }, 1000);
+            setTimeout(() => {
+                const returnContainer = document.getElementById("return-button-container");
+                if (returnContainer) {
+                    returnContainer.classList.remove("hidden");
+                }
+            }, cards.length * 900);
         });
 
     } catch (error) {

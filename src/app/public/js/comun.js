@@ -85,14 +85,27 @@ document.addEventListener('DOMContentLoaded', () => {
     clickSound.currentTime = 0;
     clickSound.play().catch(() => { });
 
-    backgroundMusic.addEventListener("canplaythrough", () => {
+    if (backgroundMusic.readyState >= 2) {
+      // Ya está cargado y listo
       if (musicTime) {
         backgroundMusic.currentTime = parseFloat(musicTime);
       }
-      backgroundMusic.play().catch(() => { });
-    }, { once: true });
+
+      backgroundMusic.play().then(updateMusicIcon).catch(updateMusicIcon);
+    } else {
+      backgroundMusic.addEventListener("canplaythrough", () => {
+        if (musicTime) {
+          backgroundMusic.currentTime = parseFloat(musicTime);
+        }
+
+        backgroundMusic.play().then(updateMusicIcon).catch(updateMusicIcon);
+      }, { once: true });
+    }
+  } else {
+    updateMusicIcon();
   }
-  updateMusicIcon();
+
+
 
   window.addEventListener("beforeunload", () => {
     localStorage.setItem("musicTime", backgroundMusic.currentTime);

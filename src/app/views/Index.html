@@ -17,7 +17,7 @@
     <a href="/social">Social</a>
     <a href="/login " id="login-link"></a>
     <div class="music-control">
-      <button id="toggleMusic">🔇</button>
+      <button id="toggleMusic"></button>
       <audio id="backgroundMusic" loop>
         <source src="resources/audio/main_theme.weba" type="audio/mpeg">
         Tu navegador no soporta audio HTML5.
@@ -104,6 +104,22 @@
       </div>
     </section>
 
+    <section id="how-to-play" class="how-to-play-section">
+      <h2>¿Cómo se juega?</h2>
+      <div class="portal-glow"></div>
+      <div class="how-to-play-content">
+        <img src="resources/img/jerry.gif" alt="Jerry burlándose" class="how-to-play-image">
+        <ol class="how-to-play-steps">
+          <li>🎟️ Reproduce anuncios para ganar Tickets de Blitz & Chitz.</li>
+          <li>📦 Usa tus tickets para abrir sobres con cartas únicas del multiverso.</li>
+          <li>🃏 Colecciona y presume tus cartas frente a otros jugadores en Dubfinderrz.</li>
+        </ol>
+      </div>
+      <div class="play-button-container">
+        <a href="/register" class="play-button">¡Empieza ahora!</a>
+      </div>
+    </section>
+
     <section class="evil-morty-promo-section">
       <h2 class="section-title">¡Consigue ya la DUB de Morty Malvado!</h2>
       <p class="section-subtitle">Solo los más astutos pueden controlarla. ¿Estás listo?</p>
@@ -115,7 +131,7 @@
               <span class="card-name">Morty Malvado</span>
               <span class="card-cost">⚡ 6</span>
             </div>
-            <img src="https://rickandmortyapi.com/api/character/avatar/118.jpeg" alt="Morty Malvado" class="LEGENDARY">
+            <img src="http://localhost:8080/img/124_Morty_Malvado_Legendary.jpeg" alt="Morty Malvado" class="LEGENDARY">
             <div class="card-stats">
               <div>🗡 6</div>
               <div>❤️ 9</div>
@@ -130,9 +146,27 @@
           </div>
         </div>
       </div>
-
       <div class="play-button-container">
         <a href="/shop" class="play-button-dark">¡Abrir sobres ahora!</a>
+      </div>
+    </section>
+
+    <section id="new-season" class="how-to-play-section">
+      <h2>🌀 ¡La Temporada 8 de Rick y Morty ya está aquí!</h2>
+      <div class="portal-glow"></div>
+      <div class="how-to-play-content">
+        <iframe src="https://www.youtube.com/embed/ySYnTO7leqI"
+          title="Rick and Morty | Season 8 Official Trailer | adult swim" frameborder="0" allowfullscreen class="video-promo"></iframe>
+        <ol class="how-to-play-steps">
+          <li>🧪 Nuevas aventuras interdimensionales con Rick, Morty y toda la familia Smith.</li>
+          <li>📺 Estreno el 25 de mayo de 2025 en Adult Swim; disponible en Max a partir del 1
+            de septiembre de 2025.</li>
+          <li>🎉 10 episodios semanales llenos de caos, humor y ciencia ficción.</li>
+        </ol>
+      </div>
+      <div class="play-button-container">
+        <a href="https://www.max.com/es/es/shows/rick-y-morty/ab553cdc-e15d-4597-b65f-bec9201fd2dd" class="play-button"
+          target="_blank">¡Ver ahora en Max!</a>
       </div>
     </section>
 
@@ -152,22 +186,6 @@
       <button id="claim-coins" class="btn claim-btn" disabled>¡Dale play para comenzar!</button>
     </section>
 
-    <section id="how-to-play" class="how-to-play-section">
-      <h2>¿Cómo se juega?</h2>
-      <div class="portal-glow"></div>
-      <div class="how-to-play-content">
-        <img src="resources/img/jerry.gif" alt="Jerry burlándose" class="how-to-play-image">
-        <ol class="how-to-play-steps">
-          <li>🎟️ Reproduce anuncios para ganar Tickets de Blitz & Chitz.</li>
-          <li>📦 Usa tus tickets para abrir sobres con cartas únicas del multiverso.</li>
-          <li>🃏 Colecciona y presume tus cartas frente a otros jugadores en el Dubdex.</li>
-        </ol>
-      </div>
-      <div class="play-button-container">
-        <a href="/register" class="play-button">¡Empieza ahora!</a>
-      </div>
-    </section>
-
   </main>
 
   <footer>
@@ -175,24 +193,23 @@
   </footer>
 
   <!-- MODAL RECOMPENSA-->
-    <div id="dailyRewardModal" class="daily-modal">
-        <div class="daily-modal-content">
-            <span id="closeDailyModal" class="daily-close">&times;</span>
-            <h2 class="daily-title">¡Wubba Lubba Dub-Dub!</h2>
-            <p class="daily-message">
-                ¡Felicidades, <strong>morty!</strong> Has desbloqueado tu recompensa diaria de <strong>200</strong>
-                <img src="resources/img/ticket.webp" alt="ticket"
-                    style="vertical-align:middle; width:24px; height:auto;" />
-                tickets para el Blitz &amp; Chitz, el mejor arcade de toda la galaxia!
-            </p>
-            <button id="claimDailyRewardBtn" class="btn claim-btn">
-                ¡Atrapa esos tickets, Morty!
-            </button>
-            <p class="daily-submessage">
-                (¡No te duermas en los laureles o Rick te va a regañar!)
-            </p>
-        </div>
+  <div id="dailyRewardModal" class="daily-modal">
+    <div class="daily-modal-content">
+      <span id="closeDailyModal" class="daily-close">&times;</span>
+      <h2 class="daily-title">¡Wubba Lubba Dub-Dub!</h2>
+      <p class="daily-message">
+        ¡Felicidades, <strong>morty!</strong> Has desbloqueado tu recompensa diaria de <strong>200</strong>
+        <img src="resources/img/ticket.webp" alt="ticket" style="vertical-align:middle; width:24px; height:auto;" />
+        tickets para el Blitz &amp; Chitz, el mejor arcade de toda la galaxia!
+      </p>
+      <button id="claimDailyRewardBtn" class="btn claim-btn">
+        ¡Atrapa esos tickets, Morty!
+      </button>
+      <p class="daily-submessage">
+        (¡No te duermas en los laureles o Rick te va a regañar!)
+      </p>
     </div>
+  </div>
   <!-- MODAL CARTAS-->
   <div class="modal" id="modal" onclick="closeModal(event)">
     <div class="modal-content" id="modalContent"></div>

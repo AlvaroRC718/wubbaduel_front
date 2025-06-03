@@ -31,15 +31,29 @@ document.addEventListener('DOMContentLoaded', () => {
     function createCardHTML(character) {
         const price = rarityPrices[character.rarity.toUpperCase()] || 0;
 
+        // Intentar recuperar savedUser de localStorage
+        const encryptedUser = localStorage.getItem('user');
+        let showBuyButton = false;
+
+        if (encryptedUser) {
+            try {
+                const bytes = CryptoJS.AES.decrypt(encryptedUser, 'wubbaduel');
+                const savedUser = JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
+                if (savedUser) showBuyButton = true;
+            } catch (error) {
+                console.warn("Error al desencriptar savedUser:", error);
+            }
+        }
+
         return `
         <div class="album-card">
-          <div class="card card-${character.rarity}" onclick="openModal(this)">
-            <div class="card-header">
-                <span class="card-name">${character.name}</span>
-                <span class="card-cost">⚡ ${character.cost}</span>
-            </div>
-            <img src="${character.image}" alt="${character.name}" class="${character.rarity}">
-            <div class="card-stats">
+            <div class="card card-${character.rarity}" onclick="openModal(this)">
+                <div class="card-header">
+                    <span class="card-name">${character.name}</span>
+                    <span class="card-cost">⚡ ${character.cost}</span>
+                </div>
+                <img src="${character.image}" alt="${character.name}" class="${character.rarity}">
+                <div class="card-stats">
                 <div>🗡 ${character.attack}</div>
                 <div>❤️ ${character.hp}</div>
             </div>
@@ -50,11 +64,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div class="card-number">Nº ${character.id}</div>
                 <div class="rarity-label ${character.rarity}">${character.rarity}</div>
             </div>
-          </div>
-          <button class="play-button" onclick="openBuyModal(event, ${character.id}, '${character.name}', '${character.rarity}')">
-            ${price} <img src="resources/img/ticket.webp" alt="ticket" /> </button>
-        </div>`;
+      </div>
+      ${showBuyButton ? `
+        <button class="play-button" onclick="openBuyModal(event, ${character.id}, '${character.name}', '${character.rarity}')">
+          ${price} <img src="resources/img/ticket.webp" alt="ticket" />
+        </button>` : ''}
+    </div>`;
     }
+
 
     // Cargar favoritas
     async function loadFavoriteCards() {
@@ -189,6 +206,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
 
             if (addCardRes.ok) {
+                alert("¡Carta comprada exitosamente y agregada a tu inventario!");
 
                 await fetch("http://localhost:8080/api/user/tokens", {
                     method: "POST",
@@ -196,7 +214,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     body: JSON.stringify({ userId: socialUser.id, tokens: 100 })
                 });
 
-                alert("¡Carta comprada exitosamente y agregada a tu inventario!");
                 selectedCard = null;
                 buyCardModal.style.display = 'none';
                 window.location.href = "/cards";

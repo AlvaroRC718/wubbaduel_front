@@ -17,7 +17,7 @@
         <a href="/social">Social</a>
         <a href="/login " id="login-link"></a>
         <div class="music-control">
-            <button id="toggleMusic">🔇</button>
+            <button id="toggleMusic"></button>
             <audio id="backgroundMusic" loop>
                 <source src="resources/audio/main_theme.weba" type="audio/mpeg">
                 Tu navegador no soporta audio HTML5.
@@ -29,6 +29,9 @@
         <section>
             <img id="pack" src="resources/img/portal.gif" alt="Sobre de Cartas" class="pack-image">
             <div id="cards-container-pack"></div>
+            <div id="return-button-container" class="play-button-container hidden" >
+                <a href="/shop" class="play-button">← Volver al Dub-Market</a>
+            </div>
         </section>
     </main>
 
@@ -80,6 +83,7 @@
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
     <!-- RESOURCES -->
     <audio id="portalSound" src="resources/audio/portal_sound.mp3" preload="auto"></audio>
+    <audio id="confettiSound" src="resources/audio/confetti.wav" preload="auto"></audio>
     <!-- SCRIPTS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.2.0/crypto-js.min.js"></script>
     <script src="js/comun.js"></script>
