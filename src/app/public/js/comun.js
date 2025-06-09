@@ -135,6 +135,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     claimBtn.onclick = async () => {
+      claimBtn.disabled = true;
       try {
         const encrypted = localStorage.getItem('user');
         const bytes = CryptoJS.AES.decrypt(encrypted, 'wubbaduel');

@@ -151,6 +151,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Confirmar compra
     confirmBuyBtn.addEventListener('click', async () => {
+        confirmBuyBtn.disabled = true;
         if (!selectedCard) return;
 
         const cost = rarityPrices[selectedCard.rarity.toUpperCase()];
