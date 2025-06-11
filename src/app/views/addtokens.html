@@ -28,13 +28,24 @@
     <main>
 
         <section class="reward-section">
-            <h2 class="section-title flappy"><br>¡Juega Flappy Birdperson!<img class="personapajaro"
-                    src="resources/img/personapajaro.png" alt="personapajaro"></h2>
-            <div>
-                <!--JUEGO DE FLAPPY BIRDPERSON-->
-            </div>
+            <h2 class="section-title flappy">
+                <br>¡Juega Flappy Birdperson!
+                <img class="personapajaro" src="resources/img/personapajaro.png" alt="personapajaro">
+            </h2>
 
-            <button id="claim-coins" class="btn claim-btn" disabled>¡Dale play para comenzar!</button>
+            <div class="flappy-container">
+                <div class="background">
+                    <div class="clouds-box"></div>
+                </div>
+                <img class="bird" src="resources/img/birdpersonfly.png" alt="birdperson">
+                <div class="message">Press Enter To Start Game</div>
+                <div class="score">
+                    <span class="score_title LEGENDARY-text">Score: </span>
+                    <span class="score_val">0</span> <img src="resources/img/ticket.webp" alt="ticket"
+                        style="vertical-align:middle; width:24px; height:auto;" />
+                </div>
+            </div>
+            <button id="claim-tokens" class="btn claim-btn" disabled>¡Pulsa para reclamar tus Blitz and Chitz!</button>
         </section>
 
         <section class="reward-section">
@@ -93,6 +104,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.2.0/crypto-js.min.js"></script>
     <script src="js/comun.js"></script>
     <script src="js/addtokens.js"></script>
+    <script src="js/flappybirdperson.js"></script>
 </body>
 
 </html>

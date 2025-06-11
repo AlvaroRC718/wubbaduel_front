@@ -8,9 +8,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
       if (savedUser) {
         const rewardSection = document.getElementById('reward-section');
-        if (rewardSection) {
-          rewardSection.classList.remove('hidden');
-        }
+        const rewardSection2 = document.getElementById('reward-section2');
+        
+        rewardSection.classList.remove('hidden');
+        rewardSection2.classList.remove('hidden');
       }
     }
   } catch (e) {

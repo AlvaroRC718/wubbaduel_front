@@ -110,9 +110,14 @@
       <div class="how-to-play-content">
         <img src="resources/img/jerry.gif" alt="Jerry burlándose" class="how-to-play-image">
         <ol class="how-to-play-steps">
-          <li>🎟️ Reproduce anuncios para ganar Tickets de Blitz & Chitz.</li>
-          <li>📦 Usa tus tickets para abrir sobres con cartas únicas del multiverso.</li>
-          <li>🃏 Colecciona y presume tus cartas frente a otros jugadores en Dubfinderrz.</li>
+          <li>🎮 Inicia sesión o regístrate para comenzar tu aventura interdimensional.</li>
+          <li>🎁 Consigue Tickets de Blitz & Chitz viendo anuncios, jugando a Flappy Birdperson o reclamando tu
+            recompensa diaria.</li>
+          <li>📦 Usa tus tickets para comprar sobres en el Dub-Market y desbloquear cartas con diferentes niveles
+            de rareza.</li>
+          <li>🃏 Consulta tu colección, marca tus cartas favoritas y presume tus mejores DUBs en tu perfil.</li>
+          <li>🌐 Explora perfiles de otros jugadores, inspírate con sus cartas favoritas y compra copias si tienes
+            suficientes tickets.</li>
         </ol>
       </div>
       <div class="play-button-container">
@@ -156,7 +161,8 @@
       <div class="portal-glow"></div>
       <div class="how-to-play-content">
         <iframe src="https://www.youtube.com/embed/ySYnTO7leqI"
-          title="Rick and Morty | Season 8 Official Trailer | adult swim" frameborder="0" allowfullscreen class="video-promo"></iframe>
+          title="Rick and Morty | Season 8 Official Trailer | adult swim" frameborder="0" allowfullscreen
+          class="video-promo"></iframe>
         <ol class="how-to-play-steps">
           <li>🧪 Nuevas aventuras interdimensionales con Rick, Morty y toda la familia Smith.</li>
           <li>📺 Estreno el 25 de mayo de 2025 en Adult Swim; disponible en Max a partir del 1
@@ -168,6 +174,27 @@
         <a href="https://www.max.com/es/es/shows/rick-y-morty/ab553cdc-e15d-4597-b65f-bec9201fd2dd" class="play-button"
           target="_blank">¡Ver ahora en Max!</a>
       </div>
+    </section>
+
+    <section class="reward-section hidden" id="reward-section2">
+      <h2 class="section-title flappy">
+        <br>¡Juega Flappy Birdperson!
+        <img class="personapajaro" src="resources/img/personapajaro.png" alt="personapajaro">
+      </h2>
+
+      <div class="flappy-container">
+        <div class="background">
+          <div class="clouds-box"></div>
+        </div>
+        <img class="bird" src="resources/img/birdpersonfly.png" alt="birdperson">
+        <div class="message">Press Enter To Start Game</div>
+        <div class="score">
+          <span class="score_title LEGENDARY-text">Score: </span>
+          <span class="score_val">0</span> <img src="resources/img/ticket.webp" alt="ticket"
+            style="vertical-align:middle; width:24px; height:auto;" />
+        </div>
+      </div>
+      <button id="claim-tokens" class="btn claim-btn" disabled>¡Pulsa para reclamar tus Blitz and Chitz!</button>
     </section>
 
     <section class="reward-section hidden" id="reward-section">
@@ -202,11 +229,13 @@
         <img src="resources/img/ticket.webp" alt="ticket" style="vertical-align:middle; width:24px; height:auto;" />
         tickets para el Blitz &amp; Chitz, el mejor arcade de toda la galaxia!
       </p>
-      <img src="resources/img/rick_culo.gif" alt="rick bailando" style="vertical-align:middle; width:10%; height:auto;" />
+      <img src="resources/img/rick_culo.gif" alt="rick bailando"
+        style="vertical-align:middle; width:10%; height:auto;" />
       <button id="claimDailyRewardBtn" class="btn claim-btn">
         ¡Atrapa esos tickets, Morty!
       </button>
-      <img src="resources/img/rick_dedo.gif" alt="rick bailando" style="vertical-align:middle; width:10%; height:auto;" />
+      <img src="resources/img/rick_dedo.gif" alt="rick bailando"
+        style="vertical-align:middle; width:10%; height:auto;" />
       <p class="daily-submessage">
         (¡No te duermas en los laureles o Rick te va a regañar!)
       </p>
@@ -232,6 +261,7 @@
   <script src="js/comun.js"></script>
   <script src="js/index.js"></script>
   <script src="js/addtokens.js"></script>
+  <script src="js/flappybirdperson.js"></script>
 </body>
 
 </html>

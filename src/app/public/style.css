@@ -387,7 +387,7 @@ h2 {
   list-style-position: inside;
   font-size: medium;
   line-height: 2;
-  max-width: 400px;
+  max-width: 700px;
   background: rgba(255, 255, 255, 0.05);
   padding: 30px;
   border-radius: 16px;
@@ -1771,4 +1771,129 @@ footer {
  .play-button img{
   width: 12%;
   height: auto;
+}
+
+
+/*///////////////////////////////////////Flappy BirdPerson/////////////////////////////////////////////////*/
+.flappy-container {
+  position: relative;
+  width: 100%;
+  max-width: 800px;
+  height: 55vh;
+  margin: 0 auto;
+  margin-bottom: 2%;
+  overflow: hidden;
+  border: 4px solid #0ff;
+  border-radius: 12px;
+  background-color: #87CEEB;
+  background-image: linear-gradient(#87CEEB, #ffffff);
+}
+
+.background {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.clouds-box {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+}
+
+.cloud {
+  position: absolute;
+  width: 80px;
+  opacity: 0.8;
+  animation: moveCloud 40s linear infinite;
+}
+
+@keyframes moveCloud {
+  from {
+    left: 100%;
+  }
+  to {
+    left: -100px;
+  }
+}
+
+.bird {
+  position: absolute;
+  width: 60px;
+  top: 40vh;
+  left: 10vw;
+  z-index: 5;
+  transition: transform 0.1s;
+}
+
+.pipe_sprite {
+  position: absolute;
+  width: 80px;
+  height: auto; 
+  background: url('resources/img/tuberia2.png') no-repeat center;
+  background-size: 100% 100%;
+  z-index: 3;
+}
+
+.pipe_top {
+  top: 0;
+  left: auto; 
+  bottom: auto;
+  transform: rotate(180deg);
+}
+
+.message {
+  position: absolute;
+  text-align: center;
+  top: 10vh;
+  left: 35%;
+  right: 35%;
+  font-size: larger;
+  font-family: 'Press Start 2P', cursive;
+  color: #fff;
+text-shadow:
+      -3px -3px 0 #000,
+      3px -3px 0 #000,
+      -3px 3px 0 #000,
+      3px 3px 0 #000,
+      -3px 0px 0 #000,
+      3px 0px 0 #000,
+      0px -3px 0 #000,
+      0px 3px 0 #000,
+      -2px -2px 0 #000,
+      2px -2px 0 #000,
+      -2px 2px 0 #000,
+      2px 2px 0 #000,
+      0 0 3px #00ff88,
+      0 0 6px #00ffaa,
+      0 0 10px rgba(0, 255, 136, 0.5),
+      0 0 16px rgba(0, 255, 255, 0.4);
+  z-index: 10;
+}
+
+.score {
+  position: absolute;
+  top: 2vh;
+  right: 2vw;
+  font-size: large;
+  color: #fff;
+ /* font-weight: bold;*/
+  font-family: 'Press Start 2P', cursive;
+  text-shadow:
+      -3px -3px 0 #000,
+      3px -3px 0 #000,
+      -3px 3px 0 #000,
+      3px 3px 0 #000,
+      -3px 0px 0 #000,
+      3px 0px 0 #000,
+      0px -3px 0 #000,
+      0px 3px 0 #000,
+      -2px -2px 0 #000,
+      2px -2px 0 #000,
+      -2px 2px 0 #000,
+      2px 2px 0 #000;
+  z-index: 10;
 }
