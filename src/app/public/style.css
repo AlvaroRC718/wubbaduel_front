@@ -416,7 +416,7 @@ h2 {
   transform: scale(1.12) rotate(-4deg);
 }
 
-.video-promo  {
+.video-promo {
   height: 45vh;
   width: 35vw;
   border: 1px solid rgba(0, 255, 136, 0.2);
@@ -425,7 +425,7 @@ h2 {
   transition: transform 0.4s ease-in-out, filter 0.3s;
 }
 
-.video-promo:hover  {
+.video-promo:hover {
   transform: scale(1.08) rotate(-4deg);
 }
 
@@ -674,8 +674,10 @@ footer {
   display: none;
   position: fixed;
   z-index: 9998;
-  left: 0; top: 0;
-  width: 100%; height: 100%;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
   background-color: rgba(0, 0, 0, 0.8);
   justify-content: center;
   align-items: center;
@@ -721,10 +723,10 @@ footer {
 }
 
 
-.daily-submessage{
-  font-style: italic; 
-  font-size: 0.9em; 
-  color:#0ff;
+.daily-submessage {
+  font-style: italic;
+  font-size: 0.9em;
+  color: #0ff;
   margin-top: 2%;
   text-align: center;
 }
@@ -1324,7 +1326,6 @@ footer {
 
 #emailprofile {
   color: #00ffcc;
-  font-size: 1.1rem;
 }
 
 #memberSince {
@@ -1505,7 +1506,7 @@ footer {
 }
 
 /*///////////////////////////////////////addtokens.html/////////////////////////////////////////////////*/
-.section-title.flappy  {
+.section-title.flappy {
   margin: 0%;
   display: flex;
   justify-content: center;
@@ -1513,7 +1514,7 @@ footer {
   text-align: center;
 }
 
-.personapajaro{
+.personapajaro {
   width: 10%;
   height: auto;
 }
@@ -1666,7 +1667,7 @@ footer {
 }
 
 .glootie {
-  width: 5%; 
+  width: 5%;
   height: auto;
 }
 
@@ -1759,8 +1760,9 @@ footer {
   background-color: #888;
   cursor: not-allowed;
 }
+
 /*///////////////////////////////////////socialprofile.html/////////////////////////////////////////////////*/
-.album-card .play-button{
+.album-card .play-button {
   margin-top: 20%;
   display: flex;
   text-align: center;
@@ -1768,7 +1770,8 @@ footer {
   justify-content: center;
   gap: 2%;
 }
- .play-button img{
+
+.play-button img {
   width: 12%;
   height: auto;
 }
@@ -1780,6 +1783,7 @@ footer {
   width: 100%;
   max-width: 800px;
   height: 55vh;
+
   margin: 0 auto;
   margin-bottom: 2%;
   overflow: hidden;
@@ -1815,6 +1819,7 @@ footer {
   from {
     left: 100%;
   }
+
   to {
     left: -100px;
   }
@@ -1832,7 +1837,7 @@ footer {
 .pipe_sprite {
   position: absolute;
   width: 80px;
-  height: auto; 
+  height: auto;
   background: url('resources/img/tuberia2.png') no-repeat center;
   background-size: 100% 100%;
   z-index: 3;
@@ -1840,7 +1845,7 @@ footer {
 
 .pipe_top {
   top: 0;
-  left: auto; 
+  left: auto;
   bottom: auto;
   transform: rotate(180deg);
 }
@@ -1854,23 +1859,23 @@ footer {
   font-size: larger;
   font-family: 'Press Start 2P', cursive;
   color: #fff;
-text-shadow:
-      -3px -3px 0 #000,
-      3px -3px 0 #000,
-      -3px 3px 0 #000,
-      3px 3px 0 #000,
-      -3px 0px 0 #000,
-      3px 0px 0 #000,
-      0px -3px 0 #000,
-      0px 3px 0 #000,
-      -2px -2px 0 #000,
-      2px -2px 0 #000,
-      -2px 2px 0 #000,
-      2px 2px 0 #000,
-      0 0 3px #00ff88,
-      0 0 6px #00ffaa,
-      0 0 10px rgba(0, 255, 136, 0.5),
-      0 0 16px rgba(0, 255, 255, 0.4);
+  text-shadow:
+    -3px -3px 0 #000,
+    3px -3px 0 #000,
+    -3px 3px 0 #000,
+    3px 3px 0 #000,
+    -3px 0px 0 #000,
+    3px 0px 0 #000,
+    0px -3px 0 #000,
+    0px 3px 0 #000,
+    -2px -2px 0 #000,
+    2px -2px 0 #000,
+    -2px 2px 0 #000,
+    2px 2px 0 #000,
+    0 0 3px #00ff88,
+    0 0 6px #00ffaa,
+    0 0 10px rgba(0, 255, 136, 0.5),
+    0 0 16px rgba(0, 255, 255, 0.4);
   z-index: 10;
 }
 
@@ -1880,20 +1885,295 @@ text-shadow:
   right: 2vw;
   font-size: large;
   color: #fff;
- /* font-weight: bold;*/
+  /* font-weight: bold;*/
   font-family: 'Press Start 2P', cursive;
   text-shadow:
-      -3px -3px 0 #000,
-      3px -3px 0 #000,
-      -3px 3px 0 #000,
-      3px 3px 0 #000,
-      -3px 0px 0 #000,
-      3px 0px 0 #000,
-      0px -3px 0 #000,
-      0px 3px 0 #000,
-      -2px -2px 0 #000,
-      2px -2px 0 #000,
-      -2px 2px 0 #000,
-      2px 2px 0 #000;
+    -3px -3px 0 #000,
+    3px -3px 0 #000,
+    -3px 3px 0 #000,
+    3px 3px 0 #000,
+    -3px 0px 0 #000,
+    3px 0px 0 #000,
+    0px -3px 0 #000,
+    0px 3px 0 #000,
+    -2px -2px 0 #000,
+    2px -2px 0 #000,
+    -2px 2px 0 #000,
+    2px 2px 0 #000;
   z-index: 10;
+}
+
+
+@media (max-width: 1000px) {
+
+  nav {
+    height: 5vh;
+  }
+
+  nav a {
+    font-size: larger;
+  }
+
+  .hero h1 {
+    margin-top: 5%;
+    font-size: 50px;
+  }
+
+  .hero p {
+    font-size: 10px;
+    margin-bottom: 5%;
+  }
+
+  .card {
+    height: 350px;
+    max-width: 220px;
+    min-width: 220px;
+  }
+
+  .modal-content.card {
+    height: 600px;
+    max-width: 375px;
+    width: 375px;
+  }
+
+  .video-promo {
+    height: 20vh;
+    width: 60vw;
+  }
+
+  .reward-section{
+    margin-bottom: 5%;
+  }
+
+  .pixel-font-dark {
+    font-size: xx-large;
+  }
+
+  .loading-content {
+    width: 75%;
+  }
+
+  .loading-content p {
+    font-size: x-large;
+  }
+
+  .card-filters {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10%;
+  }
+
+  .search-input {
+    width: 50%;
+    margin-bottom: 4%;
+  }
+
+  .rarity-select {
+    width: 50%;
+  }
+
+  .card-container {
+    padding: 0%;
+  }
+
+  .shop-title {
+    margin-top: 5%;
+  }
+
+  .booster-grid {
+    height: 80vh;
+    gap: 2%;
+  }
+
+  .booster-card {
+    width: 30vw;
+    height: 40vh;
+  }
+
+  .booster-description h2 {
+    font-size: xx-large;
+  }
+
+  .booster-image{
+    width: 90%;
+    height: auto;
+  }
+
+  .booster-description button {
+    font-size: xx-large;
+  }
+
+  .ratios-content{
+    max-width: 500px;
+  }
+
+  .ratios-list li{
+    font-size: x-large;
+  }
+
+  .social-section {
+    height: 90vh;
+    margin-top: 2%;
+  }
+
+  .social-card {
+    width: 47%;
+    height: 15vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .social-card .avatar {
+    width: 110px;
+    height: 110px;
+  }
+
+  .social-info h3 {
+    font-size: xx-large;
+  }
+
+  .social-email {
+    font-size: larger;
+  }
+
+  .social-tickets {
+    font-size: x-large;
+  }
+
+  .pagination-buttons {
+    margin-top: 18%;
+  }
+
+  .pagination-buttons button {
+    font-size: xx-large;
+  }
+
+  .registro-seccion {
+    padding: 4%;
+    width: 90vw;
+    height: auto;
+    margin-top: 5%;
+  }
+
+  .registro-seccion h2 {
+    margin-top: 10%;
+    margin-bottom: 2%;
+  }
+
+  .contenedor-formulario {
+    font-size: x-large;
+  }
+
+  #btnIniciarSesion {
+    margin-top: 5%;
+    margin-bottom: 5%;
+    font-size: xx-large;
+  }
+
+  .tarjeta-formulario {
+    width: 60vw;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .tarjeta-formulario input {
+    font-size: x-large;
+    width: 90%;
+    margin-top: 10%;
+    margin-bottom: 10%;
+  }
+
+  .contenedor-formulario label {
+    font-size: xx-large;
+  }
+
+  .nota-formulario {
+    margin-top: 5%;
+  }
+
+  .registro-seccion {
+    margin-bottom: 21%;
+  }
+
+  #formularioRegistro input {
+    font-size: medium;
+    margin-top: 2%;
+    margin-bottom: 2%;
+  }
+
+  .red {
+    font-size: medium;
+  }
+
+  .tarjeta-formulario #btnRegistrar {
+    margin-top: 5%;
+    margin-bottom: 5%;
+    font-size: xx-large;
+  }
+
+  .pack-image {
+    margin-top: 35vh;
+  }
+
+  #cards-container-pack {
+    margin-top: 25vh;
+    width: 50vw;
+    display: flex;
+    gap: 10%;
+  }
+
+  #cards-container-pack>div {
+    margin-top: 10%;
+  }
+
+  #return-button-container a {
+    font-size: xx-large;
+  }
+
+  .user-info p {
+    margin: 1%;
+    font-size: xx-large;
+  }
+
+  .user-profile {
+    height: 85vh;
+    margin-top: 5%;
+    margin-bottom: 8%;
+  }
+
+  .favorite-cards {
+    margin-top: 2%;
+    margin-bottom: 2%;
+  }
+
+  .account-actions button {
+    font-size: x-large;
+  }
+
+  .daily-modal-content{
+    height: 50%;
+  }
+
+  .daily-modal-content button{
+    font-size: xx-large;
+  }
+
+  .daily-title{
+    font-size: 4rem;
+  }
+
+  .daily-message{
+    font-size: xx-large;
+  }
+
+  .daily-submessage{
+     font-size: x-large;
+  }
 }

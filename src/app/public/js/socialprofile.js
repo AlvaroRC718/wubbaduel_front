@@ -8,7 +8,6 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
     }
 
-    // Mostrar datos usuario
     document.getElementById('username').textContent = socialUser.username;
     document.getElementById('emailprofile').textContent = socialUser.email;
     document.getElementById('userTokensCount').textContent = socialUser.tokens || 0;
@@ -17,7 +16,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const dateOnly = createdDate ? createdDate.split('T')[0] : '2025-01-01';
     document.getElementById('memberSince').textContent = dateOnly;
 
-    // Precios por rareza
     const rarityPrices = {
         NORMAL: 1000,
         RARE: 2500,
@@ -27,11 +25,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let selectedCard = null;
 
-    // Crear HTML de cada carta
     function createCardHTML(character) {
         const price = rarityPrices[character.rarity.toUpperCase()] || 0;
 
-        // Intentar recuperar savedUser de localStorage
         const encryptedUser = localStorage.getItem('user');
         let showBuyButton = false;
 
@@ -72,8 +68,6 @@ document.addEventListener('DOMContentLoaded', () => {
     </div>`;
     }
 
-
-    // Cargar favoritas
     async function loadFavoriteCards() {
         const container = document.getElementById('favoriteCardsContainer');
         const favoritesSection = document.querySelector('.favorite-cards');
@@ -119,7 +113,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const confirmBuyBtn = document.getElementById('confirmBuyBtn');
     const closeBuyBtn = buyCardModal.querySelector('.daily-close');
 
-    // Abrir modal de compra
     window.openBuyModal = function (event, cardId, name, rarity) {
         event.stopPropagation();
         selectedCard = { id: cardId, name, rarity };
@@ -135,13 +128,11 @@ document.addEventListener('DOMContentLoaded', () => {
         buyCardModal.style.display = 'flex';
     };
 
-    // Cerrar modal compra con botón cerrar (x)
     closeBuyBtn.addEventListener('click', () => {
         selectedCard = null;
         buyCardModal.style.display = 'none';
     });
 
-    // Cerrar modal compra al hacer click fuera del contenido
     buyCardModal.addEventListener('click', (e) => {
         if (e.target === buyCardModal) {
             selectedCard = null;
@@ -149,7 +140,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Confirmar compra
     confirmBuyBtn.addEventListener('click', async () => {
         confirmBuyBtn.disabled = true;
         if (!selectedCard) return;
@@ -162,7 +152,6 @@ document.addEventListener('DOMContentLoaded', () => {
             const bytes = CryptoJS.AES.decrypt(encryptedUser, 'wubbaduel');
             const savedUser = JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
 
-            // Verificar tokens
             const tokenRes = await fetch('http://localhost:8080/api/user/get-tokens', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -175,7 +164,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
 
-            // Descontar tokens
             const res = await fetch("http://localhost:8080/api/user/tokens", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
@@ -190,12 +178,10 @@ document.addEventListener('DOMContentLoaded', () => {
             const { tokens: updatedTokens } = await res.json();
             savedUser.tokens = updatedTokens;
 
-            // Actualizar tokens localStorage y UI
             const newEncrypted = CryptoJS.AES.encrypt(JSON.stringify(savedUser), 'wubbaduel').toString();
             localStorage.setItem('user', newEncrypted);
             document.getElementById('tokensCount').textContent = updatedTokens;
 
-            // Añadir carta al inventario backend
             const addCardRes = await fetch("http://localhost:8080/api/user-cards/add", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },

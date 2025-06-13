@@ -17,8 +17,8 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     const showLoading = () => {
         loadingModal.style.display = "flex";
-        progressFill.style.animation = "none"; // reiniciar
-        progressFill.offsetHeight; // forzar reflow
+        progressFill.style.animation = "none"; 
+        progressFill.offsetHeight; 
         progressFill.style.animation = `loadingProgress 1500ms linear forwards`;
     };
 
@@ -28,9 +28,8 @@ document.addEventListener('DOMContentLoaded', async () => {
         }, 1500);
     };
 
-    showLoading(); // Mostrar al inicio
+    showLoading(); 
 
-    // Desencriptar el usuario directamente
     let savedUser = null;
     try {
         const encryptedUser = localStorage.getItem('user');
@@ -86,7 +85,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         const duration = performance.now() - start;
         const waitTime = Math.max(1500, duration);
         setTimeout(() => {
-            hideLoading(); // Ocultar después de esperar mínimo
+            hideLoading(); 
         }, waitTime);
 
         const container = document.getElementById("cards-container-pack");
@@ -112,8 +111,6 @@ document.addEventListener('DOMContentLoaded', async () => {
             };
             return colors[rarity] || "#c5c5c5";
         }
-
-        // Permitir clic en el sobre para abrir cartas
 
         let clicked = false;
 

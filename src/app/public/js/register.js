@@ -1,6 +1,5 @@
 "use strict";
 document.addEventListener('DOMContentLoaded', () => {
-  // Si existe un usuario, desencriptar y redirigir a /profile
   const encryptedUser = localStorage.getItem('user');
   if (encryptedUser) {
     try {
@@ -15,7 +14,6 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     } catch (error) {
       console.error("Error al desencriptar el usuario:", error);
-      // Si hay error, continuar sin redirigir
     }
   }
 });
@@ -25,7 +23,7 @@ let resultado;
 let errorPresente = 0;
 let p_operacion = document.createElement('p');
 
-function genOperacion() { //test OK
+function genOperacion() { 
   let numSimbolo = Math.floor(Math.random() * 3) + 1;
   let simbolo;
 
@@ -61,7 +59,7 @@ function genOperacion() { //test OK
   }
 }
 
-function comprobarCampos() { //test OK
+function comprobarCampos() { 
   let validarNombre = /^[A-Za-z ]{1,15}$/;
   let validarApellidos = /^[A-Za-z ]{1,30}$/;
   let validarUsuario = /^[a-zA-Z0-9._-]{4,20}$/;

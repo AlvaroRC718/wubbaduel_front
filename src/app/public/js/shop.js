@@ -11,7 +11,6 @@ document.querySelectorAll('.play-button').forEach(button => {
         const cost = packCosts[rarity];
 
         try {
-            // Desencriptar el usuario desde localStorage con clave 'wubbaduel'
             const encryptedUser = localStorage.getItem('user');
             if (!encryptedUser) {
                 window.location.href = "/login";

@@ -1,6 +1,5 @@
 "use strict";
 document.addEventListener('DOMContentLoaded', () => {
-    // Desencriptar el usuario desde localStorage
     const encrypted = localStorage.getItem('user');
     const savedUser = encrypted ? JSON.parse(
         CryptoJS.AES.decrypt(encrypted, 'wubbaduel').toString(CryptoJS.enc.Utf8)
@@ -11,7 +10,6 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
     }
 
-    // Mostrar los datos del usuario
     document.getElementById('username').textContent = savedUser.username;
     document.getElementById('emailprofile').textContent = savedUser.email;
     document.getElementById('userTokensCount').textContent = savedUser.tokens || 0;
@@ -21,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.getElementById('memberSince').textContent = dateOnly;
 
-    // Cerrar sesión
+    // Cerrar sesion
     document.getElementById('logoutButton').addEventListener('click', () => {
         localStorage.removeItem('user');
         window.location.href = '/login';
@@ -32,13 +30,13 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('passwordModal').style.display = 'block';
     });
 
-    // Cancelar eliminación
+    // Cancelar eliminacion
     document.getElementById('cancelDelete').addEventListener('click', () => {
         document.getElementById('passwordModal').style.display = 'none';
         document.getElementById('passwordInput').value = '';
     });
 
-    // Confirmar eliminación
+    // Confirmar eliminacion
     document.getElementById('confirmDelete').addEventListener('click', async () => {
         const password = document.getElementById('passwordInput').value;
 
@@ -74,7 +72,6 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('passwordModal').style.display = 'none';
     });
 
-    // Función para crear el HTML de cada carta
     function createCardHTML(character) {
         return `
         <div class="album-card">
@@ -114,7 +111,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 container.insertAdjacentHTML('beforeend', createCardHTML(favWrapper.card));
             });
         } else {
-            favoritesSection.style.display = 'none'; // Ocultar si no hay favoritas
+            favoritesSection.style.display = 'none'; 
             document.querySelector('footer').classList.add('fixed-footer');
         }
     }

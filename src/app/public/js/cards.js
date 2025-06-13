@@ -5,7 +5,6 @@ let favoriteCardIds = [];
 /////////////////////////////////////Favoritas//////////////////////////////////
 async function fetchFavoriteCardIds() {
   try {
-    // Desencriptar en línea al leer localStorage
     const encryptedUser = localStorage.getItem("user");
     if (!encryptedUser) return [];
     const decryptedUserStr = CryptoJS.AES.decrypt(encryptedUser, 'wubbaduel').toString(CryptoJS.enc.Utf8);
@@ -52,14 +51,14 @@ async function toggleFavorite(event, cardId) {
     const isCurrentlyFavorite = favoriteCardIds.includes(cardId);
 
     if (isCurrentlyFavorite) {
-      // 🔴 Eliminar de favoritos
+      // Eliminar de favoritos
       const success = await removeFromFavorites(savedUser.id, cardId);
       if (success) {
         favoriteCardIds = favoriteCardIds.filter(id => id !== cardId);
         button.textContent = "🤍";
       }
     } else {
-      // ⚪ Agregar a favoritos (máximo 3)
+      //Agregar a favoritos
       if (favoriteCardIds.length >= 3) {
         alert("Solo puedes tener 3 dub's favoritas.");
         return;
@@ -123,7 +122,6 @@ async function fetchAllCards() {
 
 async function fetchUnlockedCards() {
   try {
-    // Desencriptar usuario en línea
     const encryptedUser = localStorage.getItem("user");
     if (!encryptedUser) {
       console.error('Usuario no encontrado en localStorage');
@@ -161,7 +159,6 @@ async function fetchUnlockedCards() {
 function generateCards() {
   const container = document.getElementById("cards-container");
 
-  // Desencriptar usuario en línea
   const encryptedUser = localStorage.getItem("user");
   let savedUser = null;
   if (encryptedUser) {
@@ -171,6 +168,12 @@ function generateCards() {
 
   const searchQuery = document.getElementById("searchInput").value.toLowerCase();
   const selectedRarity = document.getElementById("rarityFilter").value;
+  const rarityFilter = document.getElementById("rarityFilter");
+
+  if (!savedUser) {
+    const favoritesOption = [...rarityFilter.options].find(opt => opt.value === "FAVORITES");
+    rarityFilter.removeChild(favoritesOption);
+  } 
 
   container.innerHTML = '';
 

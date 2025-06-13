@@ -101,6 +101,5 @@ document.addEventListener('DOMContentLoaded', () => {
         divButtons.appendChild(nextBtn);
     }
 
-    // Carga inicial
     fetchUsers(currentPage);
 });

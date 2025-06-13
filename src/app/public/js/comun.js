@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (shouldShowReward) {
-      openDailyRewardModal(savedUser); // Ya no se actualiza la fecha aquí
+      openDailyRewardModal(savedUser);
     }
   } else {
     loginLink.textContent = 'Iniciar sesión';
@@ -56,11 +56,10 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   ////////////////////////////////////Musica y efectos de sonido////////////////////////////////
-  const buttons = document.querySelectorAll("a");
   const musicButton = document.getElementById("toggleMusic");
   const clickSound = document.getElementById("portalSound");
   const backgroundMusic = document.getElementById("backgroundMusic");
-  const isMusicPlaying = localStorage.getItem("musicPlaying") === "true";
+  let isMusicPlaying = localStorage.getItem("musicPlaying") === "true";
   let musicTime = localStorage.getItem("musicTime");
 
   clickSound.volume = 0.4;
@@ -73,9 +72,11 @@ document.addEventListener('DOMContentLoaded', () => {
   function toggleMusic() {
     if (backgroundMusic.paused) {
       backgroundMusic.play();
+      isMusicPlaying = true;
       localStorage.setItem("musicPlaying", "true");
     } else {
       backgroundMusic.pause();
+      isMusicPlaying = false;
       localStorage.setItem("musicPlaying", "false");
     }
     updateMusicIcon();
@@ -84,34 +85,37 @@ document.addEventListener('DOMContentLoaded', () => {
   if (isMusicPlaying) {
     clickSound.currentTime = 0;
     clickSound.play().catch(() => { });
+    musicButton.textContent = "🔊";
 
     if (backgroundMusic.readyState >= 2) {
-      // Ya está cargado y listo
       if (musicTime) {
         backgroundMusic.currentTime = parseFloat(musicTime);
       }
 
-      backgroundMusic.play().then(updateMusicIcon).catch(updateMusicIcon);
+      setTimeout(() => {
+        backgroundMusic.play().then(updateMusicIcon).catch(updateMusicIcon);
+      }, 500);
     } else {
       backgroundMusic.addEventListener("canplaythrough", () => {
         if (musicTime) {
           backgroundMusic.currentTime = parseFloat(musicTime);
         }
 
-        backgroundMusic.play().then(updateMusicIcon).catch(updateMusicIcon);
+        setTimeout(() => {
+          backgroundMusic.play().then(updateMusicIcon).catch(updateMusicIcon);
+        }, 500);
       }, { once: true });
     }
   } else {
     updateMusicIcon();
   }
 
-
-
   window.addEventListener("beforeunload", () => {
     localStorage.setItem("musicTime", backgroundMusic.currentTime);
   });
 
   musicButton.addEventListener("click", toggleMusic);
+
 
   ////////////////////////////////////Modal recompensa diaria (modificado)////////////////////////////////
 
