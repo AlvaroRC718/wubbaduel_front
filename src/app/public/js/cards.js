@@ -153,7 +153,6 @@ function generateCards() {
   const rarityFilter = document.getElementById("rarityFilter");
   const selectedRarity = rarityFilter.value;
 
-  // Ocultar opción FAVORITES si no hay usuario
   if (!savedUser) {
     const favoritesOption = [...rarityFilter.options].find(opt => opt.value === "FAVORITES");
     if (favoritesOption) rarityFilter.removeChild(favoritesOption);
