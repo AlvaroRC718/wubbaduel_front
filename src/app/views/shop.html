@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Wubba Lubba Dub-Duel!: Dub-Market</title>
+    <link rel="icon" href="resources/img/logo.png" type="image/png">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="body-index no-scroll">
+
+    <nav>
+        <a href="/index" class="logo"><img src="resources/img/portal.gif" alt="Wubba Lubba Dub-Duel logo"></a>
+        <a href="/index">Inicio</a>
+        <a href="/cards">Dubdex</a>
+        <a href="/shop">Dub-Market</a>
+        <a href="/social">Social</a>
+        <a href="/login " id="login-link"></a>
+        <div class="music-control">
+            <button id="toggleMusic"></button>
+            <audio id="backgroundMusic" loop>
+                <source src="resources/audio/main_theme.weba" type="audio/webm">
+                Tu navegador no soporta audio HTML5.
+            </audio>
+        </div>
+    </nav>
+
+    <main>
+        <section class="shop-section">
+            <h1 class="shop-title">¡Bienvenido al <span class="dub-glow">Dub-Market</span>!</h1>
+
+            <div class="booster-grid">
+                <div class="booster-card">
+                    <img src="resources/img/sobre3.png" alt="Sobre Normal" class="booster-image">
+                    <div class="booster-description">
+                        <h2>Sobre<br />Normal</h2>
+                        <button class="play-button" data-pack="NORMAL">100 <img src="resources/img/ticket.webp"
+                                alt="ticket" /></button>
+                        <button class="ratios-button" data-pack="NORMAL">Ver ratios</button>
+                    </div>
+                </div>
+
+                <div class="booster-card">
+                    <img src="resources/img/sobre1.png" alt="Sobre Raro" class="booster-image">
+                    <div class="booster-description">
+                        <h2>Sobre<br />Raro</h2>
+                        <button class="play-button" data-pack="RARE">250 <img src="resources/img/ticket.webp"
+                                alt="ticket" /></button>
+                        <button class="ratios-button" data-pack="RARE">Ver ratios</button>
+                    </div>
+                </div>
+
+                <div class="booster-card">
+                    <img src="resources/img/sobre2.png" alt="Sobre Épico" class="booster-image">
+                    <div class="booster-description">
+                        <h2>Sobre<br />Épico</h2>
+                        <button class="play-button" data-pack="EPIC">500 <img src="resources/img/ticket.webp"
+                                alt="ticket" /></button>
+                        <button class="ratios-button" data-pack="EPIC">Ver ratios</button>
+                    </div>
+                </div>
+
+                <div class="booster-card">
+                    <img src="resources/img/sobre4.png" alt="Sobre Legendario" class="booster-image">
+                    <div class="booster-description">
+                        <h2>Sobre<br />Legendario</h2>
+                        <button class="play-button" data-pack="LEGENDARY">1000 <img src="resources/img/ticket.webp"
+                                alt="ticket" /></button>
+                        <button class="ratios-button" data-pack="LEGENDARY">Ver ratios</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="fixed-footer">
+        ©2025 Cybercode Creations. Wubba Lubba Dub-Duel!.
+    </footer>
+
+    <!-- MODAL RECOMPENSA-->
+    <div id="dailyRewardModal" class="daily-modal">
+        <div class="daily-modal-content">
+            <span id="closeDailyModal" class="daily-close">&times;</span>
+            <h2 class="daily-title">¡Wubba Lubba Dub-Dub!</h2>
+            <p class="daily-message">
+                ¡Felicidades, <strong>morty!</strong> Has desbloqueado tu recompensa diaria de <strong>200</strong>
+                <img src="resources/img/ticket.webp" alt="ticket"
+                    style="vertical-align:middle; width:24px; height:auto;" />
+                tickets para el Blitz &amp; Chitz, el mejor arcade de toda la galaxia!
+            </p>
+            <img src="resources/img/rick_culo.gif" alt="rick bailando"
+                style="vertical-align:middle; width:10%; height:auto;" />
+            <button id="claimDailyRewardBtn" class="btn claim-btn">
+                ¡Atrapa esos tickets, Morty!
+            </button>
+            <img src="resources/img/rick_dedo.gif" alt="rick bailando"
+                style="vertical-align:middle; width:10%; height:auto;" />
+            <p class="daily-submessage">
+                (¡No te duermas en los laureles o Rick te va a regañar!)
+            </p>
+        </div>
+    </div>
+    <!-- MODAL RATIOS -->
+    <div id="ratiosModal" class="ratios-modal">
+        <div class="ratios-content">
+            <span class="close-modal" onclick="closeRatiosModal()">&times;</span>
+            <h2 id="modalTitle">Ratios de aparición</h2>
+            <ul id="ratiosList" class="ratios-list"></ul>
+        </div>
+    </div>
+    <!-- TOKENS USUARIO-->
+    <div id="userTokens" class="user-tokens">
+        <a href="/addtokens" class="tokens-link"><span id="tokensCount">0</span><img src="resources/img/ticket.webp"
+                alt="ticket" /></a>
+    </div>
+    <!-- RESOURCES -->
+    <audio id="portalSound" src="resources/audio/portal_sound.mp3" preload="auto"></audio>
+    <!-- SCRIPTS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.2.0/crypto-js.min.js"></script>
+    <script src="js/comun.js"></script>
+    <script src="js/shop.js"></script>
+</body>
+
+</html>

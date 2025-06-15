@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Wubba Lubba Dub-Duel!</title>
+  <link rel="icon" href="resources/img/logo.png" type="image/png">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="body-index">
+
+  <nav>
+    <a href="/index" class="logo"><img src="resources/img/portal.gif" alt="Wubba Lubba Dub-Duel logo"></a>
+    <a href="/index">Inicio</a>
+    <a href="/cards">Dubdex</a>
+    <a href="/shop">Dub-Market</a>
+    <a href="/social">Social</a>
+    <a href="/login " id="login-link"></a>
+    <div class="music-control">
+      <button id="toggleMusic"></button>
+      <audio id="backgroundMusic" loop>
+        <source src="resources/audio/main_theme.weba" type="audio/webm">
+        Tu navegador no soporta audio HTML5.
+      </audio>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="hero-content">
+      <h1>Wubba Lubba Dub-Duel!</h1>
+      <p>¡Colecciona Dub's de Rick and Morty y lucha por el multiverso con estrategia y fluido de portal!</p>
+    </div>
+  </header>
+
+  <main>
+    <section id="cartas">
+      <div class="card-grid" id="cards-container">
+
+        <div class="card-base">
+          <div class="card card-LEGENDARY" onclick="openModal(this)">
+            <div class="card-header">
+              <span class="card-name">Rick Sánchez</span>
+              <span class="card-cost">⚡ 5</span>
+            </div>
+            <img src="http://localhost:8080/img/1_Rick_Sanchez_Legendary.jpeg" alt="Rick" class="LEGENDARY">
+            <div class="card-stats">
+              <div>🗡 5</div>
+              <div>❤️ 10</div>
+            </div>
+            <div class="card-description">
+              Un científico genio con una actitud imprudente y una fuerte adicción al alcohol.
+            </div>
+            <div class="card-info">
+              <div class="card-number">Nº 001</div>
+              <div class="rarity-label LEGENDARY">LEGENDARY</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-base">
+          <div class="card card-NORMAL" onclick="openModal(this)">
+            <div class="card-header">
+              <span class="card-name">Morty Smith</span>
+              <span class="card-cost">⚡ 3</span>
+            </div>
+            <img src="http://localhost:8080/img/2_Morty_Smith_Epic.jpeg" alt="Morty" class="NORMAL">
+            <div class="card-stats">
+              <div>🗡 3</div>
+              <div>❤️ 7</div>
+            </div>
+            <div class="card-description">
+              El nieto ansioso e impresionable de Rick que lo acompaña en sus aventuras.
+            </div>
+            <div class="card-info">
+              <div class="card-number">Nº 002</div>
+              <div class="rarity-label NORMAL">NORMAL</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-base">
+          <div class="card card-RARE" onclick="openModal(this)">
+            <div class="card-header">
+              <span class="card-name">Summer Smith</span>
+              <span class="card-cost">⚡ 3</span>
+            </div>
+            <img src="http://localhost:8080/img/3_Summer_Smith_Rare.jpeg" alt="Summer" class="RARE">
+            <div class="card-stats">
+              <div>🗡 4</div>
+              <div>❤️ 6</div>
+            </div>
+            <div class="card-description">
+              La hermana mayor de Morty. Inteligente, atrevida y a veces sorprendentemente útil.
+            </div>
+            <div class="card-info">
+              <div class="card-number">Nº 003</div>
+              <div class="rarity-label RARE">RARE</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="how-to-play" class="how-to-play-section">
+      <h2>¿Cómo se juega?</h2>
+      <div class="portal-glow"></div>
+      <div class="how-to-play-content">
+        <img src="resources/img/jerry.gif" alt="Jerry burlándose" class="how-to-play-image">
+        <ol class="how-to-play-steps">
+          <li>🎮 Inicia sesión o regístrate para comenzar tu aventura interdimensional.</li>
+          <li>🎁 Consigue Tickets de Blitz & Chitz viendo anuncios, jugando a Flappy Birdperson o reclamando tu
+            recompensa diaria.</li>
+          <li>📦 Usa tus tickets para comprar sobres en el Dub-Market y desbloquear cartas con diferentes niveles
+            de rareza.</li>
+          <li>🃏 Consulta tu colección, marca tus cartas favoritas y presume tus mejores DUBs en tu perfil.</li>
+          <li>🌐 Explora perfiles de otros jugadores, inspírate con sus cartas favoritas y compra copias si tienes
+            suficientes tickets.</li>
+        </ol>
+      </div>
+      <div class="play-button-container">
+        <a href="/register" class="play-button">¡Empieza ahora!</a>
+      </div>
+    </section>
+
+    <section class="evil-morty-promo-section">
+      <h2 class="section-title">¡Consigue ya la DUB de Morty Malvado!</h2>
+      <p class="section-subtitle">Solo los más astutos pueden controlarla. ¿Estás listo?</p>
+
+      <div class="promo-card-container">
+        <div class="album-card-dark">
+          <div class="card card-LEGENDARY" onclick="openModal(this)">
+            <div class="card-header">
+              <span class="card-name">Morty Malvado</span>
+              <span class="card-cost">⚡ 6</span>
+            </div>
+            <img src="http://localhost:8080/img/124_Morty_Malvado_Legendary.jpeg" alt="Morty Malvado" class="LEGENDARY">
+            <div class="card-stats">
+              <div>🗡 6</div>
+              <div>❤️ 9</div>
+            </div>
+            <div class="card-description">
+              Un Morty despiadado y calculador, dispuesto a todo por el control del multiverso.
+            </div>
+            <div class="card-info">
+              <div class="card-number">Nº 124</div>
+              <div class="rarity-label LEGENDARY">LEGENDARY</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="play-button-container">
+        <a href="/shop" class="play-button-dark">¡Abrir sobres ahora!</a>
+      </div>
+    </section>
+
+    <section id="new-season" class="how-to-play-section">
+      <h2>🌀 ¡La Temporada 8 de Rick y Morty ya está aquí!</h2>
+      <div class="how-to-play-content">
+        <iframe src="https://www.youtube.com/embed/ySYnTO7leqI"
+          title="Rick and Morty | Season 8 Official Trailer | adult swim" frameborder="0" allowfullscreen
+          class="video-promo"></iframe>
+      </div>
+      <div class="play-button-container">
+        <a href="https://www.max.com/es/es/shows/rick-y-morty/ab553cdc-e15d-4597-b65f-bec9201fd2dd" class="play-button"
+          target="_blank">¡Ver ahora en Max!</a>
+      </div>
+    </section>
+
+    <section class="reward-section hidden" id="reward-section2">
+      <h2 class="section-title flappy">
+        <br>¡Juega Flappy Birdperson!
+        <img class="personapajaro" src="resources/img/personapajaro.png" alt="personapajaro">
+      </h2>
+
+      <div class="flappy-container">
+        <div class="background">
+          <div class="clouds-box"></div>
+        </div>
+        <img class="bird" src="resources/img/birdpersonfly.png" alt="birdperson">
+        <div class="message">Press Enter To Start Game</div>
+        <div class="score">
+          <span class="score_title LEGENDARY-text">Score: </span>
+          <span class="score_val">0</span> <img src="resources/img/ticket.webp" alt="ticket"
+            style="vertical-align:middle; width:24px; height:auto;" />
+        </div>
+      </div>
+      <button id="claim-tokens" class="btn claim-btn" disabled>¡Pulsa para reclamar tus Blitz and Chitz!</button>
+    </section>
+
+    <section class="reward-section hidden" id="reward-section">
+      <h2 class="section-title">¿Quieres conseguir Tickets de Blitz & Chitz? <br>¡Reproduce este anuncio!</h2>
+      <div class="video-container">
+        <video id="reward-video" class="reward-video">
+          <source src="resources/video/anuncio.mp4" type="video/mp4">
+          Tu navegador no soporta la reproducción de videos.
+        </video>
+      </div>
+      <div class="video-controls">
+        <button class="btn videobtn" id="play-pause-btn">▶️</button>
+        <button class="btn videobtn" id="mute-btn">🔊</button>
+      </div>
+      <br>
+      <button id="claim-coins" class="btn claim-btn" disabled>¡Dale play para comenzar!</button>
+    </section>
+
+  </main>
+
+  <footer>
+    ©2025 Cybercode Creations. Wubba Lubba Dub-Duel!.
+  </footer>
+
+  <!-- MODAL RECOMPENSA-->
+  <div id="dailyRewardModal" class="daily-modal">
+    <div class="daily-modal-content">
+      <span id="closeDailyModal" class="daily-close">&times;</span>
+      <h2 class="daily-title">¡Wubba Lubba Dub-Dub!</h2>
+      <p class="daily-message">
+        ¡Felicidades, <strong>morty!</strong> Has desbloqueado tu recompensa diaria de <strong>200</strong>
+        <img src="resources/img/ticket.webp" alt="ticket" style="vertical-align:middle; width:24px; height:auto;" />
+        tickets para el Blitz &amp; Chitz, el mejor arcade de toda la galaxia!
+      </p>
+      <img src="resources/img/rick_culo.gif" alt="rick bailando"
+        style="vertical-align:middle; width:10%; height:auto;" />
+      <button id="claimDailyRewardBtn" class="btn claim-btn">
+        ¡Atrapa esos tickets, Morty!
+      </button>
+      <img src="resources/img/rick_dedo.gif" alt="rick bailando"
+        style="vertical-align:middle; width:10%; height:auto;" />
+      <p class="daily-submessage">
+        (¡No te duermas en los laureles o Rick te va a regañar!)
+      </p>
+    </div>
+  </div>
+  <!-- MODAL CARTAS-->
+  <div class="modal" id="modal" onclick="closeModal(event)">
+    <div class="modal-content" id="modalContent"></div>
+    <span class="close" onclick="closeModal(event)">×</span>
+  </div>
+  <!-- TOKENS USUARIO-->
+  <div id="userTokens" class="user-tokens">
+    <a href="/addtokens" class="tokens-link"><span id="tokensCount">0</span><img src="resources/img/ticket.webp"
+        alt="ticket" /></a>
+  </div>
+  <!-- RESOURCES -->
+  <audio id="portalSound" preload="auto">
+    <source src="resources/audio/portal_sound.mp3" type="audio/mpeg">
+    Tu navegador no soporta audio HTML5.
+  </audio>
+  <!-- SCRIPTS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.2.0/crypto-js.min.js"></script>
+  <script src="js/comun.js"></script>
+  <script src="js/index.js"></script>
+  <script src="js/addtokens.js"></script>
+  <script src="js/flappybirdperson.js"></script>
+</body>
+
+</html>

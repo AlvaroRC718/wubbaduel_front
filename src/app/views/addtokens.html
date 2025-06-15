@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Wubba Lubba Dub-Duel!: Conseguir Tickets</title>
+    <link rel="icon" href="resources/img/logo.png" type="image/png">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="body-index">
+
+    <nav>
+        <a href="/index" class="logo"><img src="resources/img/portal.gif" alt="Wubba Lubba Dub-Duel logo"></a>
+        <a href="/index">Inicio</a>
+        <a href="/cards">Dubdex</a>
+        <a href="/shop">Dub-Market</a>
+        <a href="/social">Social</a>
+        <a href="/login " id="login-link"></a>
+        <div class="music-control">
+            <button id="toggleMusic"></button>
+            <audio id="backgroundMusic" loop>
+                <source src="resources/audio/main_theme.weba" type="audio/webm">
+                Tu navegador no soporta audio HTML5.
+            </audio>
+        </div>
+    </nav>
+
+    <main>
+
+        <section class="reward-section">
+            <h2 class="section-title flappy">
+                <br>¡Juega Flappy Birdperson!
+                <img class="personapajaro" src="resources/img/personapajaro.png" alt="personapajaro">
+            </h2>
+
+            <div class="flappy-container">
+                <div class="background">
+                    <div class="clouds-box"></div>
+                </div>
+                <img class="bird" src="resources/img/birdpersonfly.png" alt="birdperson">
+                <div class="message">Press Enter To Start Game</div>
+                <div class="score">
+                    <span class="score_title LEGENDARY-text">Score: </span>
+                    <span class="score_val">0</span> <img src="resources/img/ticket.webp" alt="ticket"
+                        style="vertical-align:middle; width:24px; height:auto;" />
+                </div>
+            </div>
+            <button id="claim-tokens" class="btn claim-btn" disabled>¡Pulsa para reclamar tus Blitz and Chitz!</button>
+        </section>
+
+        <section class="reward-section">
+            <h2 class="section-title">¿Quieres conseguir Tickets de Blitz & Chitz? <br>¡Reproduce este anuncio!</h2>
+            <div class="video-container">
+                <video id="reward-video" class="reward-video">
+                    <source src="resources/video/anuncio.mp4" type="video/mp4">
+                    Tu navegador no soporta la reproducción de videos.
+                </video>
+            </div>
+            <div class="video-controls">
+                <button class="btn videobtn" id="play-pause-btn">▶️</button>
+                <button class="btn videobtn" id="mute-btn">🔊</button>
+            </div>
+            <br>
+            <button id="claim-coins" class="btn claim-btn" disabled>¡Dale play para comenzar!</button>
+        </section>
+    </main>
+
+
+    <footer>
+        ©2025 Cybercode Creations. Wubba Lubba Dub-Duel!.
+    </footer>
+
+    <!-- MODAL RECOMPENSA-->
+    <div id="dailyRewardModal" class="daily-modal">
+        <div class="daily-modal-content">
+            <span id="closeDailyModal" class="daily-close">&times;</span>
+            <h2 class="daily-title">¡Wubba Lubba Dub-Dub!</h2>
+            <p class="daily-message">
+                ¡Felicidades, <strong>morty!</strong> Has desbloqueado tu recompensa diaria de <strong>200</strong>
+                <img src="resources/img/ticket.webp" alt="ticket"
+                    style="vertical-align:middle; width:24px; height:auto;" />
+                tickets para el Blitz &amp; Chitz, el mejor arcade de toda la galaxia!
+            </p>
+            <img src="resources/img/rick_culo.gif" alt="rick bailando"
+                style="vertical-align:middle; width:10%; height:auto;" />
+            <button id="claimDailyRewardBtn" class="btn claim-btn">
+                ¡Atrapa esos tickets, Morty!
+            </button>
+            <img src="resources/img/rick_dedo.gif" alt="rick bailando"
+                style="vertical-align:middle; width:10%; height:auto;" />
+            <p class="daily-submessage">
+                (¡No te duermas en los laureles o Rick te va a regañar!)
+            </p>
+        </div>
+    </div>
+    <!-- TOKENS USUARIO-->
+    <div id="userTokens" class="user-tokens">
+        <a href="/addtokens" class="tokens-link"><span id="tokensCount">0</span><img src="resources/img/ticket.webp"
+                alt="ticket" /></a>
+    </div>
+    <!-- RESOURCES -->
+    <audio id="portalSound" src="resources/audio/portal_sound.mp3" preload="auto"></audio>
+    <!-- SCRIPTS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.2.0/crypto-js.min.js"></script>
+    <script src="js/comun.js"></script>
+    <script src="js/addtokens.js"></script>
+    <script src="js/flappybirdperson.js"></script>
+
+</body>
+
+</html>
